@@ -68,6 +68,28 @@ Notre visualisation vise à :
 
 ---
 
+## Wireframe
+
+![Wireframe](./images/wireframe.jpeg)
+
+## Explication du wireframe
+
+Le projet suit une logique de scrollytelling.
+
+L’utilisateur découvre progressivement les données en scrollant : d’abord une vue globale du problème, puis un zoom sur l’Europe et la Suisse.
+
+Des interactions (survol, transitions, déplacement des points) permettent ensuite d’explorer les statistiques et de les transformer en graphiques plus lisibles.
+
+Une section avec des images et vidéos issues des réseaux sociaux vient ensuite illustrer concrètement le phénomène à travers des contenus réels trouvés en ligne.
+
+Enfin, une recherche par code postal permet de localiser des refuges proches, avant une dernière section expliquant la méthode et la provenance des données.
+
+## Remarque
+
+Ce wireframe est une première version conceptuelle. Certains éléments visuels (couleurs, détails graphiques) pourront évoluer lors du développement.
+
+---
+
 ## Sources (sélection)
 - Protection Suisse des Animaux (PSA / STS) — statistiques refuges.
 - RTS (contexte suisse sur les chiffres PSA).
