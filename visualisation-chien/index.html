@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Visualisation de données sur les chiens abandonnés en Suisse — Projet VisualDon" />
+  <title>Chiens Abandonnés — Visualisation de données</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Pulse ring pour le marqueur Suisse (SVG inline) */
+    @keyframes pulseRing {
+      0%   { r: 6px; opacity: 0.8; }
+      100% { r: 18px; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ BARRE DE PROGRESSION ════════════════════════════════════════════ -->
+  <div id="progress-bar"></div>
+
+  <!-- ═══ ÉCRAN DE CHARGEMENT ═════════════════════════════════════════════ -->
+  <div id="loading-screen">
+    <div class="loading-paw">🐾</div>
+    <p style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#8a8278;margin-bottom:1rem">
+      Chargement des données
+    </p>
+    <div class="loading-bar">
+      <div class="loading-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ═══ NAVIGATION ══════════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">🐾 Chiens Abandonnés</div>
+    <ul class="nav-links">
+      <li><a href="#world-section">Monde</a></li>
+      <li><a href="#europe-section">Europe</a></li>
+      <li><a href="#switzerland-section">Suisse</a></li>
+      <li><a href="#social-section">Réseaux</a></li>
+      <li><a href="#search-section">Refuges</a></li>
+      <li><a href="#methodology-section">Méthode</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 1 — HERO
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+
+    <p class="hero-eyebrow">Projet VisualDon · HEIG-VD 2025</p>
+    <h1 class="hero-title">
+      L'invisible<br><em>abandon</em>
+    </h1>
+    <p class="hero-subtitle">
+      Chaque année, des millions de chiens sont abandonnés à travers le monde.
+      Voici leur histoire en données.
+    </p>
+    <div class="hero-stat">
+      <span>200 millions</span> de chiens errants dans le monde
+    </div>
+
+    <div class="scroll-indicator">
+      <p>Défiler pour explorer</p>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 2 — CARTE MONDIALE
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="world-section" class="section-full map-section">
+    <div class="map-container">
+      <div class="map-layout">
+        <div>
+          <div class="section-header fade-in-up">
+            <p class="section-eyebrow">Vue globale</p>
+            <h2>Un problème<br>mondial</h2>
+            <div class="divider"></div>
+            <p style="color:#8a8278;max-width:420px">
+              L'OMS estime à <strong style="color:#f0ece4">200 millions</strong> le nombre de chiens errants dans le monde.
+              Une crise silencieuse qui touche tous les continents, mais inégalement.
+            </p>
+          </div>
+          <div class="map-wrapper fade-in">
+            <div id="world-map"></div>
+          </div>
+        </div>
+        <div class="map-info-panel fade-in-up">
+          <div class="stat-card">
+            <div class="stat-card-number">200M</div>
+            <div class="stat-card-label">Chiens errants estimés dans le monde</div>
+            <div class="stat-card-source">Source : OMS via ONG (2023)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">70%</div>
+            <div class="stat-card-label">Concentrés en Asie du Sud, Europe de l'Est et Amérique latine</div>
+            <div class="stat-card-source">Source : estimation aggregée</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">5 200</div>
+            <div class="stat-card-label">Chiens admis en refuge en Suisse chaque année</div>
+            <div class="stat-card-source">Source : PSA / STS (2023)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 3 — CARTE EUROPE
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="europe-section" class="section-full map-section">
+    <div class="map-container">
+      <div class="map-layout">
+        <div>
+          <div class="section-header fade-in-up">
+            <p class="section-eyebrow">Focus Europe</p>
+            <h2>Des disparités<br>frappantes</h2>
+            <div class="divider"></div>
+            <p style="color:#8a8278;max-width:420px">
+              En Europe, la situation varie radicalement selon les pays.
+              Roumanie, Grèce et Turquie concentrent les chiffres les plus alarmants.
+              La Suisse reste bien placée, mais pas exempte de problèmes.
+            </p>
+          </div>
+          <div class="map-wrapper fade-in" style="position:relative">
+            <div id="europe-map"></div>
+            <div class="map-tooltip" id="europe-tooltip"></div>
+          </div>
+        </div>
+        <div class="map-info-panel fade-in-up">
+          <div class="stat-card">
+            <div class="stat-card-number">890</div>
+            <div class="stat-card-label">Chiens errants pour 100 000 habitants — Roumanie (record européen)</div>
+            <div class="stat-card-source">Source : estimation ONG</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">22</div>
+            <div class="stat-card-label">Chiens abandonnés pour 100 000 habitants — Suisse</div>
+            <div class="stat-card-source">Source : PSA / STS</div>
+          </div>
+          <p style="font-size:0.8rem;color:#8a8278;padding:0.5rem 0">
+            🖱️ Survolez un pays pour voir ses statistiques
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 4 — CARTE SUISSE par canton
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="switzerland-section" class="section-full map-section">
+    <div class="map-container">
+      <div class="map-layout">
+        <div>
+          <div class="section-header fade-in-up">
+            <p class="section-eyebrow">Zoom Suisse</p>
+            <h2>Canton<br>par canton</h2>
+            <div class="divider"></div>
+            <p style="color:#8a8278;max-width:420px">
+              Zürich, Berne, Vaud et Argovie concentrent le plus grand nombre d'admissions,
+              proportionnellement à leur densité de population.
+              Chaque cercle représente un canton — sa taille indique le volume d'admissions.
+            </p>
+          </div>
+          <div class="map-wrapper fade-in">
+            <div id="switzerland-map"></div>
+          </div>
+        </div>
+        <div class="map-info-panel fade-in-up">
+          <div class="stat-card">
+            <div class="stat-card-number">680</div>
+            <div class="stat-card-label">Admissions à Zürich — canton le plus actif</div>
+            <div class="stat-card-source">Source : PSA / STS</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">60%</div>
+            <div class="stat-card-label">Des chiens admis finissent par être adoptés</div>
+            <div class="stat-card-source">Source : PSA / STS</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">3.5%</div>
+            <div class="stat-card-label">Des admissions se terminent par une euthanasie</div>
+            <div class="stat-card-source">Source : PSA / STS</div>
+          </div>
+          <p style="font-size:0.8rem;color:#8a8278;padding:0.5rem 0">
+            🖱️ Cliquez sur un cercle pour les détails du canton
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 5 — NUAGE DE POINTS ANIMÉ
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="dots-section">
+    <div class="dots-container">
+      <div class="dots-header">
+        <div class="section-header fade-in-up" style="margin-bottom:0">
+          <p class="section-eyebrow">Chaque point = 10 chiens</p>
+          <h2>Qui sont<br>ces chiens ?</h2>
+          <div class="divider"></div>
+          <p style="color:#8a8278">
+            40 % sont des abandons volontaires, 30 % des animaux trouvés,
+            15 % des saisies pour maltraitance.
+            Regardez les points se transformer en statistiques.
+          </p>
+        </div>
+        <div class="fade-in-up">
+          <div class="dot-legend">
+            <div class="dot-legend-item">
+              <div class="dot-legend-color" style="background:#e8a020"></div>
+              Abandon volontaire (40%)
+            </div>
+            <div class="dot-legend-item">
+              <div class="dot-legend-color" style="background:#d45a2a"></div>
+              Animal trouvé (30%)
+            </div>
+            <div class="dot-legend-item">
+              <div class="dot-legend-color" style="background:#6c9e6c"></div>
+              Saisi / maltraitance (15%)
+            </div>
+          </div>
+          <div class="dots-controls">
+            <button class="btn btn-secondary active" id="btn-scatter">Nuage de points</button>
+            <button class="btn btn-secondary" id="btn-bars">Diagramme en bâton</button>
+          </div>
+        </div>
+      </div>
+      <canvas id="dot-canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 6 — DIAGRAMME EN BÂTON + TIMELINE
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="chart-section">
+    <div class="chart-container">
+      <div class="section-header fade-in-up">
+        <p class="section-eyebrow">Par canton</p>
+        <h2>Admissions &amp; adoptions</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="chart-layout">
+        <div class="bar-chart-wrapper fade-in">
+          <svg id="bar-chart-svg"></svg>
+        </div>
+        <div class="fade-in-up" style="display:flex;flex-direction:column;gap:1rem">
+          <div class="stat-card">
+            <div class="stat-card-number">15</div>
+            <div class="stat-card-label">Cantons représentés — classement par nombre d'admissions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">
+              <svg id="donut-chart" style="width:100%;max-width:200px"></svg>
+            </div>
+            <div class="stat-card-label" style="margin-top:0.5rem">Répartition des types d'admissions</div>
+            <div class="stat-card-source">Survolez le donut pour les détails</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 7 — TIMELINE
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="timeline-section">
+    <div class="timeline-container">
+      <div class="section-header fade-in-up">
+        <p class="section-eyebrow">Évolution 2018–2023</p>
+        <h2>Une tendance<br>en hausse</h2>
+        <div class="divider"></div>
+        <p style="color:#8a8278;max-width:520px">
+          Les admissions en refuge ont augmenté de <strong style="color:#f0ece4">+8.3%</strong>
+          entre 2018 et 2023. La pandémie de 2020–2021 a engendré un pic d'adoptions
+          suivi d'une vague de retours.
+        </p>
+      </div>
+      <div class="fade-in">
+        <svg id="timeline-svg"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 8 — RÉSEAUX SOCIAUX
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="social-section">
+    <div class="social-container">
+      <div class="social-intro">
+        <div class="section-header fade-in-up" style="margin-bottom:0">
+          <p class="section-eyebrow">Ce que les gens partagent</p>
+          <h2>L'abandon<br>viral</h2>
+          <div class="divider"></div>
+          <p style="color:#8a8278">
+            Sur TikTok et Instagram, les histoires d'abandon et de sauvetage
+            génèrent des centaines de milliers d'interactions.
+            Un phénomène de société documenté en temps réel.
+          </p>
+        </div>
+        <div class="fade-in-up">
+          <div class="stat-card" style="margin-bottom:1rem">
+            <div class="stat-card-number">#abandon</div>
+            <div class="stat-card-label">Hashtag parmi les plus utilisés sur ces thèmes en Suisse francophone</div>
+          </div>
+          <p style="font-size:0.82rem;color:#8a8278;line-height:1.6">
+            Ces contenus sont utilisés à des fins d'illustration uniquement.
+            Aucune donnée personnelle n'est collectée.
+          </p>
+        </div>
+      </div>
+      <div class="social-grid fade-in" id="social-grid-container">
+        <!-- Injecté par app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 9 — RECHERCHE DE REFUGES
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="search-section">
+    <div class="search-container">
+      <div class="section-header fade-in-up">
+        <p class="section-eyebrow">Agir localement</p>
+        <h2>Trouver un refuge<br>près de chez soi</h2>
+        <div class="divider"></div>
+        <p style="color:#8a8278;max-width:520px">
+          Entrez votre code postal pour découvrir les refuges proches
+          et les chiens disponibles à l'adoption.
+        </p>
+      </div>
+      <div class="search-layout">
+        <div class="search-panel fade-in-up">
+          <div class="search-box">
+            <p style="font-size:0.85rem;color:#8a8278;margin-bottom:1rem">
+              🔍 Recherche par code postal ou ville
+            </p>
+            <div class="search-input-wrapper">
+              <span class="search-icon">📮</span>
+              <input
+                type="text"
+                id="postal-input"
+                class="search-input"
+                placeholder="Ex : 1000, Lausanne, Zürich..."
+                maxlength="20"
+                autocomplete="off"
+              />
+            </div>
+            <div class="search-results" id="shelter-results">
+              <!-- Injecté par app.js -->
+            </div>
+          </div>
+          <p style="font-size:0.75rem;color:#8a8278;line-height:1.6">
+            Les coordonnées des refuges sont indicatives.
+            Vérifiez directement auprès du refuge avant de vous déplacer.
+          </p>
+        </div>
+        <div id="shelter-map-container" class="fade-in">
+          <div id="shelter-map"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 10 — MÉTHODOLOGIE & SOURCES
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section id="methodology-section">
+    <div class="methodology-container">
+      <div class="section-header fade-in-up">
+        <p class="section-eyebrow">Transparence</p>
+        <h2>Méthode &amp; sources</h2>
+        <div class="divider"></div>
+        <p style="color:#8a8278;max-width:600px">
+          Ce projet combine des sources statistiques institutionnelles et des données
+          de réseaux sociaux. Voici d'où viennent les données présentées dans cette visualisation.
+        </p>
+      </div>
+
+      <!-- Grille sources -->
+      <div class="sources-grid" id="sources-grid">
+        <!-- Injecté par app.js -->
+      </div>
+
+      <!-- Note méthodologique -->
+      <div class="stat-card fade-in-up" style="margin-top:2.5rem;max-width:700px">
+        <h3 style="font-size:1rem;margin-bottom:0.75rem">⚠️ Remarques importantes</h3>
+        <p style="font-size:0.85rem;color:#8a8278;line-height:1.6">
+          Les données sur les "chiens errants" (OMS) et les "abandons en refuge" (PSA)
+          ne mesurent pas exactement la même réalité — un chien errant n'est pas
+          nécessairement un chien abandonné. Les chiffres par pays sont des estimations
+          d'ordres de grandeur. Les statistiques suisses (PSA/STS) sont les plus fiables
+          car issues de refuges affiliés avec déclarations standardisées.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-logo">🐾 Chiens Abandonnés</div>
+    <p class="footer-text">
+      Projet VisualDon · HEIG-VD 2025 · Ella Maiburg
+    </p>
+    <div class="footer-links">
+      <a href="https://github.com/ellambg/visualisation-chien" target="_blank">GitHub</a>
+      <a href="https://www.protection-animaux.com" target="_blank">PSA / STS</a>
+      <a href="#hero">Retour en haut ↑</a>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════════════════════════════════ -->
+
+  <!-- D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- TopoJSON (pour les cartes D3) -->
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Modules du projet -->
+  <script src="js/map.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

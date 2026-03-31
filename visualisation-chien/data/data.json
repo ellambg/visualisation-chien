@@ -1,0 +1,94 @@
+{
+  "global": {
+    "stray_dogs_world": 200000000,
+    "source": "OMS via ONG",
+    "year": 2023
+  },
+  "europe": {
+    "countries": [
+      { "country": "Romanie", "code": "RO", "abandoned_per_100k": 890, "total": 4500000 },
+      { "country": "Turquie", "code": "TR", "abandoned_per_100k": 750, "total": 4000000 },
+      { "country": "Ukraine", "code": "UA", "abandoned_per_100k": 620, "total": 2800000 },
+      { "country": "Russie", "code": "RU", "abandoned_per_100k": 480, "total": 3200000 },
+      { "country": "Italie", "code": "IT", "abandoned_per_100k": 180, "total": 700000 },
+      { "country": "Espagne", "code": "ES", "abandoned_per_100k": 150, "total": 300000 },
+      { "country": "France", "code": "FR", "abandoned_per_100k": 90, "total": 100000 },
+      { "country": "Allemagne", "code": "DE", "abandoned_per_100k": 35, "total": 80000 },
+      { "country": "Suisse", "code": "CH", "abandoned_per_100k": 22, "total": 5200 },
+      { "country": "Pays-Bas", "code": "NL", "abandoned_per_100k": 15, "total": 12000 },
+      { "country": "Autriche", "code": "AT", "abandoned_per_100k": 28, "total": 13000 },
+      { "country": "Belgique", "code": "BE", "abandoned_per_100k": 40, "total": 18000 },
+      { "country": "Portugal", "code": "PT", "abandoned_per_100k": 120, "total": 30000 },
+      { "country": "Grèce", "code": "GR", "abandoned_per_100k": 650, "total": 1000000 },
+      { "country": "Pologne", "code": "PL", "abandoned_per_100k": 95, "total": 150000 },
+      { "country": "Suède", "code": "SE", "abandoned_per_100k": 8, "total": 4000 },
+      { "country": "Norvège", "code": "NO", "abandoned_per_100k": 6, "total": 1200 },
+      { "country": "Finlande", "code": "FI", "abandoned_per_100k": 7, "total": 1500 }
+    ]
+  },
+  "switzerland": {
+    "total_intake": 5200,
+    "adopted": 3100,
+    "returned_to_owner": 1400,
+    "euthanized": 180,
+    "still_in_shelter": 520,
+    "source": "PSA / STS",
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "annual_intake": [4800, 4900, 5100, 5400, 5300, 5200],
+    "cantons": [
+      { "name": "Zurich", "code": "ZH", "intake": 680, "adopted": 420, "lat": 47.3769, "lng": 8.5417 },
+      { "name": "Berne", "code": "BE", "intake": 520, "adopted": 310, "lat": 46.9481, "lng": 7.4474 },
+      { "name": "Lucerne", "code": "LU", "intake": 210, "adopted": 130, "lat": 47.0502, "lng": 8.3093 },
+      { "name": "Uri", "code": "UR", "intake": 45, "adopted": 28, "lat": 46.8804, "lng": 8.6343 },
+      { "name": "Schwyz", "code": "SZ", "intake": 89, "adopted": 55, "lat": 47.0207, "lng": 8.6530 },
+      { "name": "Obwald", "code": "OW", "intake": 38, "adopted": 23, "lat": 46.8779, "lng": 8.2515 },
+      { "name": "Nidwald", "code": "NW", "intake": 42, "adopted": 26, "lat": 46.9263, "lng": 8.3844 },
+      { "name": "Glaris", "code": "GL", "intake": 35, "adopted": 22, "lat": 47.0403, "lng": 9.0682 },
+      { "name": "Zoug", "code": "ZG", "intake": 78, "adopted": 48, "lat": 47.1662, "lng": 8.5156 },
+      { "name": "Fribourg", "code": "FR", "intake": 185, "adopted": 115, "lat": 46.8065, "lng": 7.1615 },
+      { "name": "Soleure", "code": "SO", "intake": 145, "adopted": 90, "lat": 47.2088, "lng": 7.5323 },
+      { "name": "Bâle-Ville", "code": "BS", "intake": 98, "adopted": 61, "lat": 47.5596, "lng": 7.5886 },
+      { "name": "Bâle-Campagne", "code": "BL", "intake": 132, "adopted": 82, "lat": 47.4418, "lng": 7.7666 },
+      { "name": "Schaffhouse", "code": "SH", "intake": 62, "adopted": 39, "lat": 47.6963, "lng": 8.6313 },
+      { "name": "Appenzell Rh-Ext.", "code": "AR", "intake": 48, "adopted": 30, "lat": 47.3666, "lng": 9.3619 },
+      { "name": "Appenzell Rh-Int.", "code": "AI", "intake": 22, "adopted": 14, "lat": 47.3158, "lng": 9.4166 },
+      { "name": "Saint-Gall", "code": "SG", "intake": 278, "adopted": 172, "lat": 47.4245, "lng": 9.3767 },
+      { "name": "Grisons", "code": "GR", "intake": 148, "adopted": 92, "lat": 46.6567, "lng": 9.5780 },
+      { "name": "Argovie", "code": "AG", "intake": 348, "adopted": 215, "lat": 47.3887, "lng": 8.0456 },
+      { "name": "Thurgovie", "code": "TG", "intake": 165, "adopted": 102, "lat": 47.5535, "lng": 9.0558 },
+      { "name": "Tessin", "code": "TI", "intake": 198, "adopted": 123, "lat": 46.3317, "lng": 8.8004 },
+      { "name": "Vaud", "code": "VD", "intake": 412, "adopted": 255, "lat": 46.5197, "lng": 6.6323 },
+      { "name": "Valais", "code": "VS", "intake": 225, "adopted": 140, "lat": 46.2323, "lng": 7.3608 },
+      { "name": "Neuchâtel", "code": "NE", "intake": 118, "adopted": 73, "lat": 47.0000, "lng": 6.9333 },
+      { "name": "Genève", "code": "GE", "intake": 245, "adopted": 152, "lat": 46.2044, "lng": 6.1432 },
+      { "name": "Jura", "code": "JU", "intake": 72, "adopted": 45, "lat": 47.3667, "lng": 7.3500 }
+    ],
+    "intake_reasons": [
+      { "reason": "Abandon volontaire", "count": 2080, "percentage": 40 },
+      { "reason": "Animal trouvé", "count": 1560, "percentage": 30 },
+      { "reason": "Saisi / maltraitance", "count": 780, "percentage": 15 },
+      { "reason": "Remis fin de vie", "count": 520, "percentage": 10 },
+      { "reason": "Autre / inconnu", "count": 260, "percentage": 5 }
+    ]
+  },
+  "shelters": [
+    { "name": "Tierheim Zürich", "postal_code": "8047", "city": "Zürich", "lat": 47.3769, "lng": 8.5097, "phone": "+41 44 251 35 35", "website": "https://www.tierheim-zuerich.ch", "dogs_available": 24 },
+    { "name": "SPA Genève", "postal_code": "1228", "city": "Plan-les-Ouates", "lat": 46.1711, "lng": 6.1189, "phone": "+41 22 794 40 40", "website": "https://www.spa-geneve.ch", "dogs_available": 18 },
+    { "name": "Protections des animaux Vaud", "postal_code": "1023", "city": "Crissier", "lat": 46.5321, "lng": 6.5756, "phone": "+41 21 636 04 36", "website": "https://www.protection-animaux-vaud.ch", "dogs_available": 15 },
+    { "name": "Tierheim Bern", "postal_code": "3007", "city": "Bern", "lat": 46.9398, "lng": 7.4299, "phone": "+41 31 388 03 03", "website": "https://www.tierheim-bern.ch", "dogs_available": 31 },
+    { "name": "Tierheim Basel", "postal_code": "4052", "city": "Basel", "lat": 47.5447, "lng": 7.5775, "phone": "+41 61 361 50 22", "website": "https://www.tierheim-basel.ch", "dogs_available": 12 },
+    { "name": "ARRA Valais", "postal_code": "1950", "city": "Sion", "lat": 46.2333, "lng": 7.3667, "phone": "+41 27 322 39 43", "website": "https://www.arra.ch", "dogs_available": 9 },
+    { "name": "Foyer pour chiens Fribourg", "postal_code": "1700", "city": "Fribourg", "lat": 46.8065, "lng": 7.1615, "phone": "+41 26 466 22 66", "website": "https://www.fpa-fr.ch", "dogs_available": 8 },
+    { "name": "Tierheim Luzern", "postal_code": "6002", "city": "Luzern", "lat": 47.0502, "lng": 8.3093, "phone": "+41 41 420 30 40", "website": "https://www.tierheim-luzern.ch", "dogs_available": 20 },
+    { "name": "Tierheim Winterthur", "postal_code": "8400", "city": "Winterthur", "lat": 47.4988, "lng": 8.7242, "phone": "+41 52 233 37 70", "website": "https://www.tierheim-winterthur.ch", "dogs_available": 14 },
+    { "name": "Rifugio Canile Ticino", "postal_code": "6900", "city": "Lugano", "lat": 46.0037, "lng": 8.9511, "phone": "+41 91 973 33 33", "website": "https://www.canile-ticino.ch", "dogs_available": 22 }
+  ],
+  "social_media": [
+    { "platform": "TikTok", "theme": "abandon sur route", "engagement": 125000, "caption": "Chien abandonné sur l'autoroute, sauvé in extremis" },
+    { "platform": "Instagram", "theme": "refuge", "engagement": 89000, "caption": "3 ans au refuge, Leo attend toujours sa famille" },
+    { "platform": "TikTok", "theme": "adoption", "engagement": 245000, "caption": "Le jour où j'ai adopté mon chien de refuge" },
+    { "platform": "Instagram", "theme": "sauvetage", "engagement": 178000, "caption": "Sauvetage d'urgence : 12 chiens trouvés abandonnés" },
+    { "platform": "TikTok", "theme": "refuge", "engagement": 320000, "caption": "Ce chien attend quelqu'un depuis 4 ans" },
+    { "platform": "Instagram", "theme": "abandon", "engagement": 95000, "caption": "Abandoned after vacation, this is Luna's story" }
+  ]
+}
