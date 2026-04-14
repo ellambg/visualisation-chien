@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="1 009 chiens abandonnés en Suisse en 2024. Une visualisation pour comprendre, comparer, et agir." />
+  <title>L'abandon invisible — Chiens abandonnés en Suisse</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- LOADING -->
+  <div id="loading-screen">
+    <div class="loading-paw">🐾</div>
+    <p class="loading-label">Chargement des données</p>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">🐾 L'abandon invisible</div>
+    <ul class="nav-links">
+      <li><a href="#section-world">Monde</a></li>
+      <li><a href="#section-europe">Europe</a></li>
+      <li><a href="#section-switzerland">Suisse</a></li>
+      <li><a href="#section-dots">1 009 chiens</a></li>
+      <li><a href="#section-shelters">Refuges</a></li>
+      <li><a href="#section-method">Sources</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+
+    <p class="hero-eyebrow">Projet VisualDon · HEIG-VD 2025</p>
+    <h1 class="hero-title">
+      Un chien<br>toutes les<br><em id="hero-rhythm">8,7 heures</em>
+    </h1>
+    <p class="hero-subtitle">
+      En Suisse, en 2024, <strong>1 009 chiens</strong> ont été abandonnés.
+      C'est <strong>+16,7 %</strong> en un an.
+      Voici leur histoire — et celle de millions d'autres à travers le monde.
+    </p>
+
+    <div class="hero-scroll-cta">
+      <span>Défiler pour explorer</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 1 — LE MONDE
+  ══════════════════════════════════════════════ -->
+  <section id="section-world">
+    <div class="story-block">
+      <div class="story-text fade-in-up">
+        <p class="section-eyebrow">À l'échelle mondiale</p>
+        <h2>200 millions.<br>Le chiffre qu'on<br>préfère ignorer.</h2>
+        <div class="divider"></div>
+        <p class="story-body">
+          L'Organisation mondiale de la santé estime à <strong>200 millions</strong>
+          le nombre de chiens errants dans le monde.
+          D'autres rapports parlent de <strong>360 millions d'animaux</strong>
+          de compagnie sans foyer — chiens et chats confondus.
+        </p>
+        <p class="story-body">
+          Aux États-Unis seuls, <strong>6,5 millions d'animaux</strong> entrent
+          chaque année en refuge. Un animal toutes les cinq secondes.
+        </p>
+        <div class="stat-pill">
+          <span class="stat-pill-number">200M</span>
+          <span class="stat-pill-label">chiens errants estimés dans le monde</span>
+        </div>
+        <p class="story-source">Source : OMS / FOUR PAWS / Mars Inc.</p>
+      </div>
+      <div class="story-visual fade-in">
+        <div class="map-wrapper">
+          <div id="world-map"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 2 — EUROPE : LE GRAND ÉCART
+  ══════════════════════════════════════════════ -->
+  <section id="section-europe">
+    <div class="story-block story-block--reverse">
+      <div class="story-text fade-in-up">
+        <p class="section-eyebrow">Focus Europe</p>
+        <h2>Un continent,<br>deux réalités.</h2>
+        <div class="divider"></div>
+        <p class="story-body">
+          En Europe, on ne parle pas du même problème selon les pays.
+          À l'Ouest : des <strong>flux annuels d'abandons</strong> gérés par des refuges.
+          À l'Est et au Sud : des <strong>populations entières de chiens errants</strong>,
+          héritées de décennies de non-gestion.
+        </p>
+        <p class="story-body">
+          La Roumanie ? Entre 500 000 et 600 000 chiens errants — conséquence directe
+          des démolitions forcées du régime Ceaușescu dans les années 1980.
+          La Grèce ? 3 millions de chiens et chats errants selon une étude MDPI de décembre 2024.
+          La Turquie ? 4 millions, et une loi de capture adoptée en urgence en juillet 2024.
+        </p>
+        <p class="story-body">
+          À l'opposé, les <strong>Pays-Bas</strong> ont quasiment éliminé les chiens errants
+          grâce à des décennies de politique cohérente : microchip obligatoire,
+          prise en charge immédiate, refuges structurés.
+        </p>
+        <p class="story-body europe-highlight">
+          La Suisse : <strong>11 chiens abandonnés pour 100 000 habitants</strong>.
+          Parmi les meilleurs chiffres d'Europe de l'Ouest.
+          Mais une tendance qui s'aggrave.
+        </p>
+        <p class="story-source">Source : Dogs Trust, SPA, Fundación Affinity, ICNF, FOUR PAWS, PSA/STS 2024</p>
+      </div>
+      <div class="story-visual fade-in">
+        <div class="map-wrapper" style="position:relative">
+          <div id="europe-map"></div>
+          <div class="map-tooltip" id="europe-tooltip"></div>
+        </div>
+        <p class="map-hint">🖱 Survolez un pays pour ses données</p>
+        <div class="europe-legend" id="europe-legend"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 3 — ZOOM SUISSE
+  ══════════════════════════════════════════════ -->
+  <section id="section-switzerland">
+    <div class="section-intro fade-in-up">
+      <p class="section-eyebrow">Chez nous</p>
+      <h2>La Suisse, de plus près.</h2>
+      <div class="divider"></div>
+      <p class="story-body" style="max-width:600px;margin:0 auto">
+        La Protection Suisse des Animaux (PSA/STS) a recueilli
+        <strong>32 079 animaux</strong> en 2024 dans ses 66 sections affiliées.
+        Parmi eux, <strong>1 009 chiens</strong> spécifiquement abandonnés —
+        contre 865 l'année précédente, soit une hausse de <strong>16,7 %</strong>.
+      </p>
+    </div>
+
+    <div class="swiss-stats-grid fade-in-up">
+      <div class="swiss-stat-card">
+        <div class="swiss-stat-number counter" data-target="32079">0</div>
+        <div class="swiss-stat-label">animaux recueillis en 2024</div>
+        <div class="swiss-stat-source">PSA / STS 2024</div>
+      </div>
+      <div class="swiss-stat-card swiss-stat-card--accent">
+        <div class="swiss-stat-number counter" data-target="1009">0</div>
+        <div class="swiss-stat-label">chiens abandonnés en 2024</div>
+        <div class="swiss-stat-source">PSA / STS 2024</div>
+      </div>
+      <div class="swiss-stat-card swiss-stat-card--warning">
+        <div class="swiss-stat-number">+16,7 %</div>
+        <div class="swiss-stat-label">par rapport à 2023 (865 chiens)</div>
+        <div class="swiss-stat-source">PSA / STS 2024</div>
+      </div>
+      <div class="swiss-stat-card">
+        <div class="swiss-stat-number">11</div>
+        <div class="swiss-stat-label">chiens abandonnés pour 100 000 habitants</div>
+        <div class="swiss-stat-source">Estimation proportionnelle</div>
+      </div>
+    </div>
+
+    <div class="story-block fade-in">
+      <div class="story-text">
+        <p class="section-eyebrow">Par canton</p>
+        <h3>Où sont ces chiens ?</h3>
+        <p class="story-body">
+          Il n'existe pas de statistiques officielles PSA/STS par canton.
+          La carte ci-contre représente une <strong>estimation proportionnelle
+          à la population</strong> de chaque canton — à interpréter avec prudence.
+        </p>
+        <p class="story-body">
+          Zurich, Berne et Vaud concentrent naturellement les plus grands volumes,
+          en lien avec leur densité de population.
+        </p>
+        <p class="story-note">
+          ⚠️ Ces données sont des estimations. Pour une analyse territoriale précise,
+          la piste officielle est la base de données Identitas (registre Amicus).
+        </p>
+      </div>
+      <div class="story-visual">
+        <div class="map-wrapper">
+          <div id="switzerland-map"></div>
+        </div>
+        <p class="map-hint">🖱 Cliquez sur un cercle pour voir le canton</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 4 — 1 009 POINTS
+  ══════════════════════════════════════════════ -->
+  <section id="section-dots">
+    <div class="section-intro fade-in-up">
+      <p class="section-eyebrow">Chaque point = 1 chien</p>
+      <h2>1 009 chiens.<br>Pas des statistiques.<br>Des <em>individus</em>.</h2>
+      <div class="divider"></div>
+      <p class="story-body" style="max-width:580px;margin:0 auto">
+        Voici les 1 009 chiens abandonnés en Suisse en 2024.
+        Chaque point représente un animal réel.
+        Regardez-les se regrouper en catégories.
+      </p>
+    </div>
+
+    <div class="dots-layout">
+      <div class="dots-sidebar fade-in-up">
+        <div class="dots-legend">
+          <div class="dots-legend-item">
+            <div class="dots-legend-dot" style="background:#e8a020"></div>
+            <div>
+              <strong>Abandonnés volontairement</strong><br>
+              <span class="text-muted">Remis directement en refuge</span>
+            </div>
+          </div>
+          <div class="dots-legend-item">
+            <div class="dots-legend-dot" style="background:#d45a2a"></div>
+            <div>
+              <strong>Trouvés errants</strong><br>
+              <span class="text-muted">Sans propriétaire identifié</span>
+            </div>
+          </div>
+          <div class="dots-legend-item">
+            <div class="dots-legend-dot" style="background:#6c9e6c"></div>
+            <div>
+              <strong>Saisis</strong><br>
+              <span class="text-muted">Maltraitance ou confiscation</span>
+            </div>
+          </div>
+        </div>
+        <div class="dots-controls">
+          <button class="btn btn-secondary active" id="btn-scatter">Tous ensemble</button>
+          <button class="btn btn-secondary" id="btn-bars">Par catégorie</button>
+        </div>
+        <div class="dots-counter-display">
+          <div class="dots-counter-item">
+            <span class="dots-counter-num" style="color:#e8a020">~796</span>
+            <span class="dots-counter-label">abandonnés</span>
+          </div>
+          <div class="dots-counter-item">
+            <span class="dots-counter-num" style="color:#d45a2a">~172</span>
+            <span class="dots-counter-label">trouvés</span>
+          </div>
+          <div class="dots-counter-item">
+            <span class="dots-counter-num" style="color:#6c9e6c">~41</span>
+            <span class="dots-counter-label">saisis</span>
+          </div>
+        </div>
+      </div>
+      <canvas id="dot-canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 5 — ÉVOLUTION TEMPORELLE
+  ══════════════════════════════════════════════ -->
+  <section id="section-timeline">
+    <div class="story-block">
+      <div class="story-text fade-in-up">
+        <p class="section-eyebrow">Évolution 2019–2024</p>
+        <h2>Le COVID a<br>tout changé.</h2>
+        <div class="divider"></div>
+        <p class="story-body">
+          En 2020, le confinement a déclenché un boom des adoptions.
+          Les Suisses voulaient de la compagnie.
+        </p>
+        <p class="story-body">
+          Puis est venu le retour à la normale — le bureau, les voyages,
+          la crise du coût de la vie. Et pour certains chiens, l'abandon.
+        </p>
+        <p class="story-body">
+          En 2024, on atteint un nouveau record : <strong>1 009 chiens</strong>.
+          Le chiffre le plus élevé de ces six dernières années.
+        </p>
+        <div class="timeline-annotations" id="timeline-annotations"></div>
+      </div>
+      <div class="story-visual fade-in">
+        <div class="chart-wrapper">
+          <svg id="timeline-svg"></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 6 — MISE EN PERSPECTIVE
+  ══════════════════════════════════════════════ -->
+  <section id="section-compare">
+    <div class="section-intro fade-in-up">
+      <p class="section-eyebrow">Pour relativiser</p>
+      <h2>La Suisse fait figure d'exception.<br>Mais l'exception peut se perdre.</h2>
+      <div class="divider"></div>
+      <p class="story-body" style="max-width:620px;margin:0 auto">
+        Avec 11 chiens abandonnés pour 100 000 habitants, la Suisse est
+        parmi les meilleurs élèves européens. Mais regardez la pente.
+        La France est à 148. La Belgique à 520. Et la Roumanie à 2 600.
+        Ces pays-là avaient eux aussi de "bons" chiffres — avant.
+      </p>
+    </div>
+    <div class="compare-chart-wrapper fade-in">
+      <svg id="compare-chart"></svg>
+    </div>
+    <p class="chart-note fade-in-up">
+      ⚠️ Attention : les données "stock" (pays de l'Est) et "flux" (Europe de l'Ouest)
+      mesurent des réalités différentes et ne sont pas directement comparables.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 7 — TROUVER UN REFUGE
+  ══════════════════════════════════════════════ -->
+  <section id="section-shelters">
+    <div class="story-block">
+      <div class="story-text fade-in-up">
+        <p class="section-eyebrow">Agir localement</p>
+        <h2>Il y a peut-être<br>un chien qui attend<br>près de chez vous.</h2>
+        <div class="divider"></div>
+        <p class="story-body">
+          Ces 1 009 chiens ne sont pas une abstraction.
+          Ils sont dans des refuges, partout en Suisse, avec un nom, un passé,
+          et besoin d'une famille.
+        </p>
+        <p class="story-body">
+          Entrez votre code postal ou votre ville pour trouver
+          les refuges proches et les chiens disponibles à l'adoption.
+        </p>
+
+        <div class="search-box">
+          <div class="search-input-wrapper">
+            <span class="search-icon">📮</span>
+            <input
+              type="text"
+              id="postal-input"
+              class="search-input"
+              placeholder="Code postal ou ville (ex: 1000, Bern…)"
+              maxlength="30"
+              autocomplete="off"
+            />
+          </div>
+          <div id="shelter-results"></div>
+        </div>
+      </div>
+      <div class="story-visual fade-in">
+        <div id="shelter-map-container">
+          <div id="shelter-map"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 8 — MÉTHODE & SOURCES
+  ══════════════════════════════════════════════ -->
+  <section id="section-method">
+    <div class="section-intro fade-in-up">
+      <p class="section-eyebrow">Transparence</p>
+      <h2>D'où viennent ces données ?</h2>
+      <div class="divider"></div>
+      <p class="story-body" style="max-width:640px;margin:0 auto">
+        Ce projet repose exclusivement sur des sources institutionnelles ou
+        des études académiques publiées. Voici les principales.
+      </p>
+    </div>
+
+    <div class="sources-grid fade-in-up" id="sources-grid"></div>
+
+    <div class="method-note fade-in-up">
+      <h3>⚠️ Limites importantes</h3>
+      <p>
+        <strong>Deux types de mesures coexistent</strong> et ne sont pas comparables :
+        le <em>flux annuel d'abandons en refuge</em> (Europe de l'Ouest) mesure
+        les nouveaux animaux pris en charge chaque année, tandis que le
+        <em>stock de chiens errants</em> (Europe de l'Est, Asie) mesure
+        une population vivant dans la rue depuis des générations.
+        Comparer ces deux métriques serait trompeur.
+      </p>
+      <p>
+        <strong>Données cantonales suisses</strong> : la PSA/STS ne publie pas
+        de répartition officielle par canton. Les estimations présentées sont
+        proportionnelles à la population et doivent être interprétées comme
+        des ordres de grandeur, pas comme des statistiques précises.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">🐾 L'abandon invisible</div>
+    <p class="footer-text">Projet VisualDon · HEIG-VD 2025 · Ella Maiburg</p>
+    <div class="footer-links">
+      <a href="https://github.com/ellambg/visualisation-chien" target="_blank">GitHub ↗</a>
+      <a href="https://www.protection-animaux.com" target="_blank">PSA / STS ↗</a>
+      <a href="#hero">↑ Haut de page</a>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

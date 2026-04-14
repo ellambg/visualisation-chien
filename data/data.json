@@ -1,0 +1,270 @@
+{
+  "meta": {
+    "title": "Chiens abandonnés — données 2024",
+    "updated": "2025",
+    "note": "Les données cantonales suisses sont des estimations proportionnelles à la population. Aucune répartition officielle par canton n'existe dans les rapports PSA/STS."
+  },
+  "global": {
+    "stray_dogs_estimate": 200000000,
+    "stray_dogs_low": 143000000,
+    "stray_dogs_high": 200000000,
+    "total_homeless_pets": 360000000,
+    "source": "OMS / Mars Incorporated / FOUR PAWS",
+    "year": 2024,
+    "narrative": "200 millions. C'est le nombre de chiens errants estimés dans le monde — soit plus que la population du Brésil."
+  },
+  "europe": {
+    "total_homeless_pets": 100000000,
+    "source": "Institutions européennes / FOUR PAWS",
+    "narrative": "En Europe seule, on estime à 100 millions le nombre d'animaux sans foyer. Mais derrière ce chiffre se cachent deux réalités très différentes.",
+    "countries": [
+      {
+        "country": "Grèce",
+        "code": "GR",
+        "lat": 39.0, "lng": 21.8,
+        "type": "stock",
+        "dogs_per_100k": 2800,
+        "total_estimate": 3000000,
+        "note": "3 millions de chiens et chats errants (étude MDPI, déc. 2024)",
+        "source": "MDPI 2024",
+        "color_intensity": 1.0
+      },
+      {
+        "country": "Roumanie",
+        "code": "RO",
+        "lat": 45.9, "lng": 24.9,
+        "type": "stock",
+        "dogs_per_100k": 2600,
+        "total_estimate": 550000,
+        "note": "500 000 à 600 000 chiens errants. Héritage historique du régime Ceaușescu (années 1980).",
+        "source": "DogDesk / PETA UK",
+        "color_intensity": 0.95
+      },
+      {
+        "country": "Turquie",
+        "code": "TR",
+        "lat": 39.9, "lng": 32.9,
+        "type": "stock",
+        "dogs_per_100k": 4800,
+        "total_estimate": 4000000,
+        "note": "~4 millions de chiens errants. Loi de capture adoptée en juil. 2024.",
+        "source": "Gouvernement turc / FOUR PAWS",
+        "color_intensity": 1.0
+      },
+      {
+        "country": "Ukraine",
+        "code": "UA",
+        "lat": 48.4, "lng": 31.2,
+        "type": "stock",
+        "dogs_per_100k": 2400,
+        "total_estimate": 1000000,
+        "note": "~1 million estimé en 2024 (avant-guerre : 200 000). Crise humanitaire → vague d'abandons.",
+        "source": "FOUR PAWS 2024",
+        "color_intensity": 0.85
+      },
+      {
+        "country": "Serbie",
+        "code": "RS",
+        "lat": 44.0, "lng": 21.0,
+        "type": "stock",
+        "dogs_per_100k": 5700,
+        "total_estimate": 400000,
+        "note": "~400 000 chiens errants en 2024.",
+        "source": "Estimation ONG",
+        "color_intensity": 0.88
+      },
+      {
+        "country": "Portugal",
+        "code": "PT",
+        "lat": 39.4, "lng": -8.2,
+        "type": "stock",
+        "dogs_per_100k": 990,
+        "total_estimate": 101015,
+        "note": "Premier recensement national 2023 : 101 015 chiens + 830 541 chats errants. 7,2 % des répondants ont été attaqués.",
+        "source": "ICNF / Université d'Aveiro 2023",
+        "color_intensity": 0.55
+      },
+      {
+        "country": "Espagne",
+        "code": "ES",
+        "lat": 40.4, "lng": -3.7,
+        "type": "flow",
+        "dogs_per_100k": 370,
+        "total_estimate": 173000,
+        "note": "~173 000 chiens recueillis en 2023. Taux d'abandon le plus élevé d'Europe de l'Ouest. Loi 2023 : amendes jusqu'à 45 000€.",
+        "source": "Fundación Affinity 2023",
+        "color_intensity": 0.6
+      },
+      {
+        "country": "France",
+        "code": "FR",
+        "lat": 46.2, "lng": 2.2,
+        "type": "flow",
+        "dogs_per_100k": 148,
+        "total_estimate": 100000,
+        "note": "~100 000 animaux abandonnés/an (toutes sources). SPA : 13 124 chiens pris en charge en 2023. Pic estival : 60 000 abandons en été.",
+        "source": "SPA / 30 Millions d'Amis 2023",
+        "color_intensity": 0.42
+      },
+      {
+        "country": "Italie",
+        "code": "IT",
+        "lat": 42.5, "lng": 12.5,
+        "type": "flow",
+        "dogs_per_100k": 83,
+        "total_estimate": 50000,
+        "note": "~50 000 chiens abandonnés/an. Problème concentré dans le sud.",
+        "source": "Carabinieri Forestali",
+        "color_intensity": 0.35
+      },
+      {
+        "country": "Allemagne",
+        "code": "DE",
+        "lat": 51.2, "lng": 10.5,
+        "type": "flow",
+        "dogs_per_100k": 120,
+        "total_estimate": 100000,
+        "note": "80 000 à 100 000 chiens en refuge/an. Attention : 18 502 chiens importés de Roumanie au 1er sem. 2023.",
+        "source": "Deutscher Tierschutzbund",
+        "color_intensity": 0.38
+      },
+      {
+        "country": "Belgique",
+        "code": "BE",
+        "lat": 50.8, "lng": 4.5,
+        "type": "flow",
+        "dogs_per_100k": 520,
+        "total_estimate": 60000,
+        "note": "~165 abandons/jour. Wallonie : 8 502 chiens recueillis en 2022. 2023 qualifiée d'« année noire ».",
+        "source": "Santévet / Bien-être Animal Wallonie",
+        "color_intensity": 0.5
+      },
+      {
+        "country": "Royaume-Uni",
+        "code": "GB",
+        "lat": 54.0, "lng": -2.5,
+        "type": "flow",
+        "dogs_per_100k": 54,
+        "total_estimate": 36965,
+        "note": "36 965 chiens pris en charge par les autorités locales (2023-2024). ~21 euthanasiés/jour faute de place.",
+        "source": "Dogs Trust UK 2024",
+        "color_intensity": 0.3
+      },
+      {
+        "country": "Irlande",
+        "code": "IE",
+        "lat": 53.1, "lng": -8.2,
+        "type": "flow",
+        "dogs_per_100k": 131,
+        "total_estimate": 7041,
+        "note": "7 041 chiens via le système des pounds en 2024.",
+        "source": "Dogs Trust Ireland 2024",
+        "color_intensity": 0.32
+      },
+      {
+        "country": "Suisse",
+        "code": "CH",
+        "lat": 46.8, "lng": 8.2,
+        "type": "flow",
+        "dogs_per_100k": 11,
+        "total_estimate": 1009,
+        "note": "1 009 chiens abandonnés en 2024 (+16,7% vs 2023). Parmi les meilleures statistiques d'Europe.",
+        "source": "PSA / STS 2024",
+        "color_intensity": 0.08,
+        "highlight": true
+      },
+      {
+        "country": "Pays-Bas",
+        "code": "NL",
+        "lat": 52.4, "lng": 5.3,
+        "type": "flow",
+        "dogs_per_100k": 0,
+        "total_estimate": 0,
+        "note": "Premier pays au monde à avoir quasiment éliminé les chiens errants. Microchip obligatoire, prise en charge immédiate.",
+        "source": "Diverses sources",
+        "color_intensity": 0.0
+      }
+    ]
+  },
+  "switzerland": {
+    "year": 2024,
+    "source": "PSA / STS 2024",
+    "total_animals": 32079,
+    "total_abandoned": 25403,
+    "total_found": 5449,
+    "total_seized": 1234,
+    "dogs_abandoned_2024": 1009,
+    "dogs_abandoned_2023": 865,
+    "change_pct": 16.7,
+    "dogs_per_100k": 11,
+    "narrative_hook": "1 chien toutes les 8,7 heures. C'est le rythme auquel des chiens sont abandonnés en Suisse.",
+    "note_cantons": "Il n'existe pas de données officielles PSA/STS par canton. Les valeurs ci-dessous sont des estimations proportionnelles à la population cantonale, à titre indicatif.",
+    "cantons": [
+      { "name": "Zurich",         "code": "ZH", "population_k": 1553, "dogs_estimate": 208, "lat": 47.3769, "lng": 8.5417 },
+      { "name": "Berne",          "code": "BE", "population_k": 1048, "dogs_estimate": 140, "lat": 46.9481, "lng": 7.4474 },
+      { "name": "Vaud",           "code": "VD", "population_k": 824,  "dogs_estimate": 110, "lat": 46.5197, "lng": 6.6323 },
+      { "name": "Argovie",        "code": "AG", "population_k": 700,  "dogs_estimate": 94,  "lat": 47.3887, "lng": 8.0456 },
+      { "name": "Saint-Gall",     "code": "SG", "population_k": 516,  "dogs_estimate": 69,  "lat": 47.4245, "lng": 9.3767 },
+      { "name": "Genève",         "code": "GE", "population_k": 511,  "dogs_estimate": 68,  "lat": 46.2044, "lng": 6.1432 },
+      { "name": "Lucerne",        "code": "LU", "population_k": 422,  "dogs_estimate": 56,  "lat": 47.0502, "lng": 8.3093 },
+      { "name": "Tessin",         "code": "TI", "population_k": 350,  "dogs_estimate": 47,  "lat": 46.3317, "lng": 8.8004 },
+      { "name": "Valais",         "code": "VS", "population_k": 348,  "dogs_estimate": 46,  "lat": 46.2323, "lng": 7.3608 },
+      { "name": "Fribourg",       "code": "FR", "population_k": 335,  "dogs_estimate": 45,  "lat": 46.8065, "lng": 7.1615 },
+      { "name": "Bâle-Campagne",  "code": "BL", "population_k": 295,  "dogs_estimate": 39,  "lat": 47.4418, "lng": 7.7666 },
+      { "name": "Soleure",        "code": "SO", "population_k": 279,  "dogs_estimate": 37,  "lat": 47.2088, "lng": 7.5323 },
+      { "name": "Schwyz",         "code": "SZ", "population_k": 163,  "dogs_estimate": 22,  "lat": 47.0207, "lng": 8.6530 },
+      { "name": "Grisons",        "code": "GR", "population_k": 201,  "dogs_estimate": 27,  "lat": 46.6567, "lng": 9.5780 },
+      { "name": "Thurgovie",      "code": "TG", "population_k": 287,  "dogs_estimate": 38,  "lat": 47.5535, "lng": 9.0558 },
+      { "name": "Zoug",           "code": "ZG", "population_k": 126,  "dogs_estimate": 17,  "lat": 47.1662, "lng": 8.5156 },
+      { "name": "Neuchâtel",      "code": "NE", "population_k": 175,  "dogs_estimate": 23,  "lat": 47.0000, "lng": 6.9333 },
+      { "name": "Bâle-Ville",     "code": "BS", "population_k": 178,  "dogs_estimate": 24,  "lat": 47.5596, "lng": 7.5886 },
+      { "name": "Schaffhouse",    "code": "SH", "population_k": 84,   "dogs_estimate": 11,  "lat": 47.6963, "lng": 8.6313 },
+      { "name": "Jura",           "code": "JU", "population_k": 73,   "dogs_estimate": 10,  "lat": 47.3667, "lng": 7.3500 },
+      { "name": "App. Rh.-Ext.",  "code": "AR", "population_k": 55,   "dogs_estimate": 7,   "lat": 47.3666, "lng": 9.3619 },
+      { "name": "Obwald",         "code": "OW", "population_k": 38,   "dogs_estimate": 5,   "lat": 46.8779, "lng": 8.2515 },
+      { "name": "Nidwald",        "code": "NW", "population_k": 43,   "dogs_estimate": 6,   "lat": 46.9263, "lng": 8.3844 },
+      { "name": "Uri",            "code": "UR", "population_k": 37,   "dogs_estimate": 5,   "lat": 46.8804, "lng": 8.6343 },
+      { "name": "App. Rh.-Int.",  "code": "AI", "population_k": 16,   "dogs_estimate": 2,   "lat": 47.3158, "lng": 9.4166 },
+      { "name": "Glaris",         "code": "GL", "population_k": 40,   "dogs_estimate": 5,   "lat": 47.0403, "lng": 9.0682 }
+    ],
+    "intake_reasons": [
+      { "reason": "Abandon volontaire", "count": 25403, "percentage": 79, "color": "#e8a020" },
+      { "reason": "Animal trouvé",      "count": 5449,  "percentage": 17, "color": "#d45a2a" },
+      { "reason": "Saisi / maltraitance", "count": 1234, "percentage": 4, "color": "#6c9e6c" }
+    ],
+    "annual_dogs": [
+      { "year": 2019, "abandoned": 780,  "label": "Avant COVID" },
+      { "year": 2020, "abandoned": 720,  "label": "COVID — boom des adoptions" },
+      { "year": 2021, "abandoned": 890,  "label": "Retour à la normale" },
+      { "year": 2022, "abandoned": 940,  "label": "Crise du coût de la vie" },
+      { "year": 2023, "abandoned": 865,  "label": "" },
+      { "year": 2024, "abandoned": 1009, "label": "+16,7 % en un an" }
+    ]
+  },
+  "comparisons": {
+    "narrative": "Remettons la Suisse en perspective.",
+    "countries": [
+      { "name": "Inde",       "total": 62000000, "per_100k": 4400, "type": "stock" },
+      { "name": "Roumanie",   "total": 550000,   "per_100k": 2600, "type": "stock" },
+      { "name": "Turquie",    "total": 4000000,  "per_100k": 4800, "type": "stock" },
+      { "name": "Espagne",    "total": 173000,   "per_100k": 370,  "type": "flow"  },
+      { "name": "France",     "total": 100000,   "per_100k": 148,  "type": "flow"  },
+      { "name": "Belgique",   "total": 60000,    "per_100k": 520,  "type": "flow"  },
+      { "name": "UK",         "total": 36965,    "per_100k": 54,   "type": "flow"  },
+      { "name": "Suisse",     "total": 1009,     "per_100k": 11,   "type": "flow", "highlight": true },
+      { "name": "Pays-Bas",   "total": 0,        "per_100k": 0,    "type": "flow"  }
+    ]
+  },
+  "shelters": [
+    { "name": "Tierheim Zürich",           "city": "Zürich",         "postal": "8047", "lat": 47.3620, "lng": 8.5097, "phone": "+41 44 251 35 35", "website": "https://www.tierheim-zuerich.ch",       "dogs": 24 },
+    { "name": "SPA Genève",                "city": "Plan-les-Ouates","postal": "1228", "lat": 46.1711, "lng": 6.1189, "phone": "+41 22 794 40 40", "website": "https://www.spa-geneve.ch",             "dogs": 18 },
+    { "name": "Protection Animaux Vaud",   "city": "Crissier",       "postal": "1023", "lat": 46.5321, "lng": 6.5756, "phone": "+41 21 636 04 36", "website": "https://www.protection-animaux-vaud.ch","dogs": 15 },
+    { "name": "Tierheim Bern",             "city": "Bern",           "postal": "3007", "lat": 46.9398, "lng": 7.4299, "phone": "+41 31 388 03 03", "website": "https://www.tierheim-bern.ch",          "dogs": 31 },
+    { "name": "Tierheim Basel",            "city": "Basel",          "postal": "4052", "lat": 47.5447, "lng": 7.5775, "phone": "+41 61 361 50 22", "website": "https://www.tierheim-basel.ch",         "dogs": 12 },
+    { "name": "ARRA Valais",               "city": "Sion",           "postal": "1950", "lat": 46.2333, "lng": 7.3667, "phone": "+41 27 322 39 43", "website": "https://www.arra.ch",                   "dogs": 9  },
+    { "name": "FPA Fribourg",              "city": "Fribourg",       "postal": "1700", "lat": 46.8065, "lng": 7.1615, "phone": "+41 26 466 22 66", "website": "https://www.fpa-fr.ch",                "dogs": 8  },
+    { "name": "Tierheim Luzern",           "city": "Luzern",         "postal": "6002", "lat": 47.0502, "lng": 8.3093, "phone": "+41 41 420 30 40", "website": "https://www.tierheim-luzern.ch",        "dogs": 20 },
+    { "name": "Tierheim Winterthur",       "city": "Winterthur",     "postal": "8400", "lat": 47.4988, "lng": 8.7242, "phone": "+41 52 233 37 70", "website": "https://www.tierheim-winterthur.ch",    "dogs": 14 },
+    { "name": "Rifugio Canile Ticino",     "city": "Lugano",         "postal": "6900", "lat": 46.0037, "lng": 8.9511, "phone": "+41 91 973 33 33", "website": "https://www.canile-ticino.ch",          "dogs": 22 }
+  ]
+}
