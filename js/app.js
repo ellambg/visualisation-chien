@@ -242,8 +242,9 @@ function renderShelters(shelters, container) {
   container.innerHTML = shelters.map(shelter => `
     <div class="shelter-card" data-postal="${shelter.postal}">
       <div class="shelter-name">🐾 ${shelter.name}</div>
-      <div class="shelter-info">📍 ${shelter.city} (${shelter.postal}) · ${shelter.phone}</div>
-      <span class="shelter-dogs">🐕 ${shelter.dogs} chiens disponibles</span>
+      <div class="shelter-info">📍 ${shelter.city} · ${shelter.phone}</div>
+      <div class="shelter-info">🕐 ${shelter.hours}</div>
+      <a href="${shelter.website}" target="_blank" rel="noopener" class="shelter-link" onclick="event.stopPropagation()">Visiter le refuge ↗</a>
     </div>
   `).join('');
 

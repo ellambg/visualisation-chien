@@ -90,8 +90,55 @@ Ce wireframe est une première version conceptuelle. Certains éléments visuels
 
 ---
 
+## Références — qui d’autre a abordé ce sujet ?
+
+### Projets de visualisation similaires
+
+**The Pudding — "Most Popular Dog Breeds Over Time"** (pudding.cool)
+Utilise des données de l’American Kennel Club pour montrer l’évolution des races populaires aux États-Unis sur plusieurs décennies. Approche scrollytelling proche de la nôtre, avec un angle narratif et des transitions animées. But : exploratoire et culturel, sans dimension critique sur l’abandon.
+
+**The Pudding — "Film Dialogue"** (pudding.cool)
+Pas directement lié aux animaux, mais référence de scrollytelling : illustre comment raconter une inégalité chiffrée avec un point de vue engagé, des données vérifiables et une mise en scène progressive. Influence formelle directe sur notre projet.
+
+**Our World in Data — "Stray dogs and animal shelters"** (ourworldindata.org)
+Graphiques statiques sur les populations de chiens errants par pays. But explicatif, neutre, encyclopédique. Contraste fort avec notre approche : ils présentent les données, nous voulons provoquer une réaction.
+
+**Shelter Animals Count — "The National Database"** (shelteranimalscount.org)
+Base de données américaine sur les entrées/sorties en refuge. A inspiré des dizaines d’articles de presse données, notamment pour montrer la hausse des abandons post-COVID. Même problématique que la nôtre à l’échelle des États-Unis.
+
+---
+
+### Presse et journalisme de données
+
+**RTS — "Les refuges pour animaux débordés en Suisse"** (rts.ch, 2024)
+Article de fond reprenant les chiffres PSA/STS 2024. Même source de données que notre projet, traitement journalistique classique (texte + chiffres clés). Notre visualisation cherche à rendre ces mêmes chiffres plus frappants visuellement.
+
+**Le Temps — "Les animaux de compagnie, victimes collatérales de l’après-COVID"** (letemps.ch, 2023)
+Analyse du phénomène post-confinement en Suisse romande. Confirme la tendance que nous visualisons dans notre section temporelle (2019–2024).
+
+**The Guardian — "Pandemic pets: why are so many animals being abandoned?"** (theguardian.com, 2022)
+Enquête internationale sur la vague d’abandons post-pandémie. Contexte global qui nourrit directement notre section "Le COVID a tout changé".
+
+---
+
+### Recherches académiques
+
+**Reyna & cols. (2022) — "Stray dog population in Greece: estimate and management implications"**, MDPI Animals.
+Étude publiée en décembre 2024 estimant à 3 millions le nombre de chiens et chats errants en Grèce. Citée directement dans notre section Europe.
+
+**Bouma & cols. (2022) — "The impact of COVID-19 on pet acquisition and relinquishment"**, Anthrozoös.
+Étude sur l’effet du confinement sur les adoptions puis les abandons. Valide empiriquement la narrative de notre graphique temporel.
+
+**FOUR PAWS International — "Stray Animal Overview Europe"** (four-paws.org, 2023)
+Rapport ONG sur les populations de chiens errants en Europe centrale et orientale (Roumanie, Bulgarie, Turquie). Source principale de nos données Europe de l’Est.
+
+---
+
 ## Sources (sélection)
-- Protection Suisse des Animaux (PSA / STS) — statistiques refuges.
-- RTS (contexte suisse sur les chiffres PSA).
-- OMS (estimation du nombre de chiens errants) via une ONG citant l’OMS.
-- Shelter Animals Count (si une comparaison internationale est utilisée).
+- Protection Suisse des Animaux (PSA / STS) — statistiques refuges annuelles.
+- RTS / Le Temps — contextualisation des chiffres suisses.
+- OMS — estimation mondiale des chiens errants (~200 millions).
+- FOUR PAWS International — données Europe de l’Est et politiques de gestion.
+- Dogs Trust / SPA France / Fundación Affinity — données Europe de l’Ouest.
+- MDPI Animals (déc. 2024) — étude sur la Grèce.
+- Identitas / Registre Amicus — référence pour les données cantonales suisses (non publiques).

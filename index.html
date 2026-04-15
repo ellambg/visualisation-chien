@@ -31,6 +31,7 @@
       <li><a href="#section-europe">Europe</a></li>
       <li><a href="#section-switzerland">Suisse</a></li>
       <li><a href="#section-dots">1 009 chiens</a></li>
+      <li><a href="#section-social">Réseaux</a></li>
       <li><a href="#section-shelters">Refuges</a></li>
       <li><a href="#section-method">Sources</a></li>
     </ul>
@@ -75,19 +76,27 @@
           de compagnie sans foyer — chiens et chats confondus.
         </p>
         <p class="story-body">
-          Aux États-Unis seuls, <strong>6,5 millions d'animaux</strong> entrent
-          chaque année en refuge. Un animal toutes les cinq secondes.
+          En <strong>Asie</strong>, l'Inde recense jusqu'à <strong>35 millions</strong> de chiens errants,
+          la Chine <strong>27 millions</strong>. En <strong>Amérique du Sud</strong>, le Brésil en compte
+          <strong>30 millions</strong>, le Mexique <strong>20 millions</strong>. En <strong>Afrique</strong>,
+          l'Éthiopie et le Nigéria dépassent chacun les <strong>7 millions</strong>.
+          Même les pays riches ne sont pas épargnés : les États-Unis voient
+          <strong>3,1 millions d'animaux</strong> entrer en refuge chaque année.
         </p>
         <div class="stat-pill">
           <span class="stat-pill-number">200M</span>
           <span class="stat-pill-label">chiens errants estimés dans le monde</span>
         </div>
-        <p class="story-source">Source : OMS / FOUR PAWS / Mars Inc.</p>
+        <p class="story-note">⚠️ Cette carte ne recense pas tous les pays — elle met en avant les chiffres les plus frappants de chaque continent à titre de représentation.</p>
+        <p class="story-source">Source : OMS / FOUR PAWS / ASPCA / Instituto Pet Brasil / AWBI</p>
       </div>
       <div class="story-visual fade-in">
         <div class="map-wrapper">
           <div id="world-map"></div>
         </div>
+        <p class="map-hint">🖱 Cliquez sur une bulle pour les détails</p>
+        <div class="world-legend" id="world-legend"></div>
+        <div class="world-info-panel" id="world-info"></div>
       </div>
     </div>
   </section>
@@ -128,10 +137,10 @@
       <div class="story-visual fade-in">
         <div class="map-wrapper" style="position:relative">
           <div id="europe-map"></div>
-          <div class="map-tooltip" id="europe-tooltip"></div>
         </div>
-        <p class="map-hint">🖱 Survolez un pays pour ses données</p>
+        <p class="map-hint">🖱 Cliquez sur un pays pour ses données</p>
         <div class="europe-legend" id="europe-legend"></div>
+        <div class="europe-info-panel" id="europe-info"></div>
       </div>
     </div>
   </section>
@@ -266,7 +275,138 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       SECTION 5 — ÉVOLUTION TEMPORELLE
+       SECTION 5 — RÉSEAUX SOCIAUX
+  ══════════════════════════════════════════════ -->
+  <section id="section-social">
+    <div class="section-intro fade-in-up">
+      <p class="section-eyebrow">Sur les réseaux</p>
+      <h2>Des histoires<br>qui circulent.</h2>
+      <div class="divider"></div>
+      <p class="story-body" style="max-width:600px;margin:0 auto">
+        Des témoignages, des photos, des vidéos — partagés par des refuges,
+        des adoptants, des bénévoles. Chaque publication porte une histoire réelle.
+      </p>
+    </div>
+
+    <div class="social-grid fade-in-up">
+
+      <!-- ─── CARTE IMAGE ─────────────────────────────────────────
+           Pour ajouter une image : remplacez src, le lien href,
+           et le texte de caption / source.
+      ──────────────────────────────────────────────────────────── -->
+      <div class="social-card social-card--image">
+        <div class="social-card-header">
+          <span class="social-badge social-badge--instagram">Instagram</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80"
+          alt="Chien en refuge attendant une famille"
+          class="social-card-img"
+          loading="lazy"
+        />
+        <div class="social-card-body">
+          <p class="social-card-caption">Un regard qui attend. Chaque jour en refuge est une journée de trop.</p>
+          <a href="#" class="social-card-link" target="_blank" rel="noopener">Voir la publication ↗</a>
+        </div>
+      </div>
+
+      <!-- ─── CARTE VIDÉO EMBARQUÉE (ex. TikTok / Reel) ───────────
+           Pour intégrer une vidéo TikTok ou Instagram Reel,
+           remplacez le src de l'iframe par l'URL d'embed officielle.
+      ──────────────────────────────────────────────────────────── -->
+      <div class="social-card social-card--video">
+        <div class="social-card-header">
+          <span class="social-badge social-badge--tiktok">TikTok</span>
+        </div>
+        <div class="social-video-wrapper">
+          <!-- Remplacer src par l'URL embed TikTok, ex :
+               https://www.tiktok.com/embed/v2/IDENTIFIANT_VIDEO -->
+          <iframe
+            src="about:blank"
+            data-src="https://www.tiktok.com/embed/v2/IDENTIFIANT"
+            class="social-iframe social-iframe--placeholder"
+            title="Vidéo TikTok"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <div class="social-placeholder-overlay">
+            <span class="social-placeholder-icon">▶</span>
+            <p>Remplacer <code>data-src</code> par l'URL d'embed</p>
+          </div>
+        </div>
+        <div class="social-card-body">
+          <p class="social-card-caption">Ajoutez ici la légende de votre vidéo TikTok.</p>
+          <a href="#" class="social-card-link" target="_blank" rel="noopener">Voir sur TikTok ↗</a>
+        </div>
+      </div>
+
+      <!-- ─── CARTE IMAGE 2 ───────────────────────────────────────── -->
+      <div class="social-card social-card--image">
+        <div class="social-card-header">
+          <span class="social-badge social-badge--instagram">Instagram</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80"
+          alt="Chiens courant ensemble"
+          class="social-card-img"
+          loading="lazy"
+        />
+        <div class="social-card-body">
+          <p class="social-card-caption">La liberté retrouvée. Ces deux-là ont été adoptés le même week-end.</p>
+          <a href="#" class="social-card-link" target="_blank" rel="noopener">Voir la publication ↗</a>
+        </div>
+      </div>
+
+      <!-- ─── CARTE VIDÉO LOCALE ────────────────────────────────────
+           Pour une vidéo hébergée localement :
+           placez le fichier dans /assets/videos/ et
+           remplacez le src ci-dessous.
+      ──────────────────────────────────────────────────────────── -->
+      <div class="social-card social-card--video">
+        <div class="social-card-header">
+          <span class="social-badge social-badge--video">Vidéo</span>
+        </div>
+        <div class="social-video-wrapper">
+          <video
+            class="social-card-video"
+            controls
+            preload="none"
+            poster="https://images.unsplash.com/photo-1601979031925-424e53b6caaa?w=600&q=80"
+          >
+            <!-- <source src="assets/videos/mon-video.mp4" type="video/mp4" /> -->
+          </video>
+          <div class="social-placeholder-overlay">
+            <span class="social-placeholder-icon">▶</span>
+            <p>Ajoutez une <code>&lt;source src="..."&gt;</code> dans la balise video</p>
+          </div>
+        </div>
+        <div class="social-card-body">
+          <p class="social-card-caption">Ajoutez ici la légende de votre vidéo.</p>
+        </div>
+      </div>
+
+      <!-- ─── CARTE IMAGE 3 ───────────────────────────────────────── -->
+      <div class="social-card social-card--image">
+        <div class="social-card-header">
+          <span class="social-badge social-badge--twitter">X / Twitter</span>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1583511655826-05700442976b?w=600&q=80"
+          alt="Chien golden retriever"
+          class="social-card-img"
+          loading="lazy"
+        />
+        <div class="social-card-body">
+          <p class="social-card-caption">+16,7 % en un an. Ces chiffres ne sont pas que des nombres.</p>
+          <a href="#" class="social-card-link" target="_blank" rel="noopener">Voir le post ↗</a>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 6 — ÉVOLUTION TEMPORELLE
   ══════════════════════════════════════════════ -->
   <section id="section-timeline">
     <div class="story-block">
@@ -338,6 +478,10 @@
           Entrez votre code postal ou votre ville pour trouver
           les refuges proches et les chiens disponibles à l'adoption.
         </p>
+        <p class="story-note">
+          ⚠️ Cette liste présente les principaux refuges des grandes villes suisses.
+          Il en existe bien d'autres, plus petits ou locaux, à travers tout le pays.
+        </p>
 
         <div class="search-box">
           <div class="search-input-wrapper">
@@ -363,7 +507,7 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       SECTION 8 — MÉTHODE & SOURCES
+       SECTION 9 — MÉTHODE & SOURCES
   ══════════════════════════════════════════════ -->
   <section id="section-method">
     <div class="section-intro fade-in-up">

@@ -256,15 +256,12 @@
     ]
   },
   "shelters": [
-    { "name": "Tierheim Zürich",           "city": "Zürich",         "postal": "8047", "lat": 47.3620, "lng": 8.5097, "phone": "+41 44 251 35 35", "website": "https://www.tierheim-zuerich.ch",       "dogs": 24 },
-    { "name": "SPA Genève",                "city": "Plan-les-Ouates","postal": "1228", "lat": 46.1711, "lng": 6.1189, "phone": "+41 22 794 40 40", "website": "https://www.spa-geneve.ch",             "dogs": 18 },
-    { "name": "Protection Animaux Vaud",   "city": "Crissier",       "postal": "1023", "lat": 46.5321, "lng": 6.5756, "phone": "+41 21 636 04 36", "website": "https://www.protection-animaux-vaud.ch","dogs": 15 },
-    { "name": "Tierheim Bern",             "city": "Bern",           "postal": "3007", "lat": 46.9398, "lng": 7.4299, "phone": "+41 31 388 03 03", "website": "https://www.tierheim-bern.ch",          "dogs": 31 },
-    { "name": "Tierheim Basel",            "city": "Basel",          "postal": "4052", "lat": 47.5447, "lng": 7.5775, "phone": "+41 61 361 50 22", "website": "https://www.tierheim-basel.ch",         "dogs": 12 },
-    { "name": "ARRA Valais",               "city": "Sion",           "postal": "1950", "lat": 46.2333, "lng": 7.3667, "phone": "+41 27 322 39 43", "website": "https://www.arra.ch",                   "dogs": 9  },
-    { "name": "FPA Fribourg",              "city": "Fribourg",       "postal": "1700", "lat": 46.8065, "lng": 7.1615, "phone": "+41 26 466 22 66", "website": "https://www.fpa-fr.ch",                "dogs": 8  },
-    { "name": "Tierheim Luzern",           "city": "Luzern",         "postal": "6002", "lat": 47.0502, "lng": 8.3093, "phone": "+41 41 420 30 40", "website": "https://www.tierheim-luzern.ch",        "dogs": 20 },
-    { "name": "Tierheim Winterthur",       "city": "Winterthur",     "postal": "8400", "lat": 47.4988, "lng": 8.7242, "phone": "+41 52 233 37 70", "website": "https://www.tierheim-winterthur.ch",    "dogs": 14 },
-    { "name": "Rifugio Canile Ticino",     "city": "Lugano",         "postal": "6900", "lat": 46.0037, "lng": 8.9511, "phone": "+41 91 973 33 33", "website": "https://www.canile-ticino.ch",          "dogs": 22 }
+    { "name": "SPA – Refuge Vailly",                  "city": "Bernex (Genève)",  "postal": "1233", "lat": 46.1745, "lng": 6.0775, "phone": "+41 22 757 13 23", "website": "https://sgpa.ch/",                        "hours": "Lun–Ven 14h–17h, Dim 24h/24" },
+    { "name": "Refuge de Darwyn",                     "city": "Genève",           "postal": "1219", "lat": 46.1950, "lng": 6.1220, "phone": "+41 78 666 86 49", "website": "https://refuge-de-darwyn.ch/",            "hours": "Tous les jours 8h–17h" },
+    { "name": "Center & Refuge SVPA",                 "city": "Lausanne",         "postal": "1007", "lat": 46.5100, "lng": 6.6300, "phone": "+41 21 784 80 00", "website": "https://www.svpa.ch/",                    "hours": "Lun–Sam" },
+    { "name": "Zürich Animal Shelter",                "city": "Zürich",           "postal": "8045", "lat": 47.3685, "lng": 8.5195, "phone": "+41 44 442 14 00", "website": "https://www.zuerchertierschutz.ch/",      "hours": "Lun–Jeu matin et après-midi" },
+    { "name": "Tierheim Rosel",                       "city": "Biel/Bienne",      "postal": "2560", "lat": 47.1370, "lng": 7.2390, "phone": "+41 32 341 85 85", "website": "http://www.tierschutzbiel.ch/",           "hours": "Lun–Ven 14h–17h, Sam–Dim matin" },
+    { "name": "Stiftung TBB Schweiz",                 "city": "Bâle",             "postal": "4053", "lat": 47.5450, "lng": 7.6350, "phone": "+41 61 378 78 78", "website": "https://www.tbb.ch/",                     "hours": "Lun–Sam 8h–12h, 13h30–16h45" },
+    { "name": "Protection Suisse des Animaux PSA",    "city": "Bâle",             "postal": "4008", "lat": 47.5480, "lng": 7.5960, "phone": "+41 61 365 99 99", "website": "https://www.protection-animaux.com/",     "hours": "Lun–Ven 9h–12h, 14h–17h" }
   ]
 }

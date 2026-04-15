@@ -216,6 +216,65 @@ section:first-of-type { border-top: none; }
 .europe-legend-item { display: flex; align-items: center; gap: 0.4rem; }
 .europe-legend-swatch { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
 
+/* Panneau d'info Europe (clic sur un pays) */
+.europe-info-panel {
+  display: none;
+  margin-top: 1rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(232,160,32,0.35);
+  border-radius: 10px;
+  padding: 1rem 1.1rem 1rem 1.2rem;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45);
+  animation: infoSlideIn 0.2s var(--ease);
+}
+.europe-info-panel.visible { display: block; }
+
+@keyframes infoSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.europe-info-close {
+  position: absolute; top: 0.7rem; right: 0.8rem;
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-size: 0.85rem; line-height: 1;
+  padding: 0.2rem 0.4rem; border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.europe-info-close:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+.europe-info-country {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--accent); margin-bottom: 0.65rem;
+  padding-right: 1.5rem;
+}
+
+.europe-info-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 1rem; padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.europe-info-row:last-of-type { border-bottom: none; }
+
+.europe-info-label { font-size: 0.78rem; color: var(--muted); }
+.europe-info-value {
+  font-family: var(--font-mono); font-size: 0.9rem;
+  font-weight: 500; color: var(--text); white-space: nowrap;
+}
+
+.europe-info-note {
+  font-size: 0.75rem; color: var(--muted); font-style: italic;
+  margin-top: 0.6rem; padding-top: 0.5rem;
+  border-top: 1px solid var(--border); line-height: 1.5;
+}
+
+.europe-info-source {
+  font-size: 0.68rem; color: rgba(122,117,108,0.6);
+  font-family: var(--font-mono); margin-top: 0.5rem;
+}
+
 /* ════════════════════════════════════════════
    SWISS STATS GRID
 ════════════════════════════════════════════ */
@@ -309,8 +368,9 @@ section:first-of-type { border-top: none; }
 .shelter-card:hover { border-color: rgba(232,160,32,0.35); background: var(--accent-soft); }
 .shelter-card.selected { border-color: var(--accent); background: var(--accent-soft); }
 .shelter-name { font-weight: 600; font-size: 0.87rem; margin-bottom: 0.25rem; }
-.shelter-info { font-size: 0.77rem; color: var(--muted); }
-.shelter-dogs { display: inline-block; margin-top: 0.4rem; font-size: 0.72rem; font-weight: 500; color: var(--accent-3); background: rgba(108,158,108,0.12); padding: 0.15rem 0.5rem; border-radius: 4px; }
+.shelter-info { font-size: 0.77rem; color: var(--muted); margin-bottom: 0.1rem; }
+.shelter-link { display: inline-block; margin-top: 0.45rem; font-size: 0.72rem; font-family: var(--font-mono); color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+.shelter-link:hover { opacity: 0.7; }
 
 #shelter-map-container {
   height: 480px; background: var(--bg-card);
@@ -420,6 +480,209 @@ footer {
 .grid line { stroke: var(--border); stroke-opacity: 0.4; }
 
 /* ════════════════════════════════════════════
+   CARTE MONDE — légende + panneau d'info
+════════════════════════════════════════════ */
+.world-legend {
+  display: flex; gap: 0.8rem; margin-top: 0.75rem;
+  flex-wrap: wrap; font-size: 0.78rem; color: var(--muted);
+}
+.world-legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.world-legend-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+.world-info-panel {
+  display: none;
+  margin-top: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45);
+  animation: infoSlideIn 0.2s var(--ease);
+}
+.world-info-panel.visible { display: block; }
+
+.world-info-continent {
+  font-size: 0.65rem; font-family: var(--font-mono);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 0.3rem;
+}
+.world-info-country {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-weight: 700; color: var(--text); margin-bottom: 0.6rem;
+}
+.world-info-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 1rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border);
+}
+.world-info-label { font-size: 0.78rem; color: var(--muted); }
+.world-info-value { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text); }
+.world-info-note  { font-size: 0.72rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+.world-info-source { font-size: 0.68rem; color: rgba(122,117,108,0.6); font-family: var(--font-mono); margin-top: 0.45rem; }
+
+/* ════════════════════════════════════════════
+   SECTION RÉSEAUX SOCIAUX
+════════════════════════════════════════════ */
+#section-social { background: var(--bg-section); }
+
+.social-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ── Carte de base ── */
+.social-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.social-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+/* ── En-tête badge ── */
+.social-card-header {
+  padding: 0.75rem 1rem 0;
+}
+.social-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.social-badge--instagram { background: rgba(225,48,108,0.15); color: #e1306c; border: 1px solid rgba(225,48,108,0.3); }
+.social-badge--tiktok    { background: rgba(105,201,208,0.12); color: #69c9d0; border: 1px solid rgba(105,201,208,0.3); }
+.social-badge--twitter   { background: rgba(29,161,242,0.12);  color: #1da1f2; border: 1px solid rgba(29,161,242,0.3); }
+.social-badge--video     { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(232,160,32,0.3); }
+
+/* ── Image ── */
+.social-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  margin-top: 0.75rem;
+}
+
+/* ── Wrapper vidéo ── */
+.social-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #0a0a0a;
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+.social-card--video .social-video-wrapper { aspect-ratio: 16 / 9; }
+
+.social-card-video,
+.social-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Overlay placeholder (quand pas encore de src réel) */
+.social-placeholder-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(10,10,10,0.85);
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 1rem;
+  pointer-events: none;
+}
+.social-placeholder-overlay code {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: rgba(232,160,32,0.1);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+/* Cacher l'overlay si la vidéo a un src réel */
+.social-card-video:not([src=""]) ~ .social-placeholder-overlay,
+.social-iframe:not(.social-iframe--placeholder) ~ .social-placeholder-overlay { display: none; }
+
+.social-placeholder-icon {
+  font-size: 2rem;
+  color: var(--border);
+  line-height: 1;
+}
+
+/* ── Corps texte ── */
+.social-card-body {
+  padding: 0.9rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+.social-card-caption {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.social-card-link {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  margin-top: auto;
+  transition: opacity 0.2s;
+}
+.social-card-link:hover { opacity: 0.7; }
+
+/* ── Carte "Ajouter" ── */
+.social-card--add {
+  min-height: 220px;
+  border-style: dashed;
+  border-color: rgba(237,233,224,0.15);
+  background: transparent;
+  cursor: default;
+}
+.social-add-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+}
+.social-add-icon {
+  font-size: 2rem;
+  line-height: 1;
+  color: rgba(237,233,224,0.2);
+}
+.social-add-inner p { font-size: 0.875rem; }
+.social-add-hint { font-size: 0.7rem; font-family: var(--font-mono); color: rgba(237,233,224,0.2); }
+
+/* ════════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════════ */
 @media (max-width: 960px) {
@@ -429,9 +692,11 @@ footer {
   .dots-layout { grid-template-columns: 1fr; }
   .nav-links { display: none; }
   #shelter-map-container { height: 320px; }
+  .social-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
   .swiss-stats-grid, .sources-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; align-items: flex-start; }
   section { padding: 70px 0; }
+  .social-grid { grid-template-columns: 1fr; }
 }

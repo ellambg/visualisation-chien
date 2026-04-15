@@ -6,56 +6,107 @@
 function initWorldMap(data) {
   const el = document.getElementById('world-map');
   if (!el) return;
-  const W = el.clientWidth, H = el.clientHeight || 420;
+  const W = el.clientWidth, H = el.clientHeight || 440;
 
   const svg = d3.select('#world-map').append('svg').attr('width', W).attr('height', H);
-  const proj = d3.geoNaturalEarth1().scale(W/6.3).translate([W/2, H/1.95]);
+  const proj = d3.geoNaturalEarth1().scale(W / 6.3).translate([W / 2, H / 1.95]);
   const path = d3.geoPath().projection(proj);
 
   svg.append('rect').attr('width', W).attr('height', H).attr('fill', '#0c0c0c');
-
-  // Graticule
   svg.append('path').datum(d3.geoGraticule()())
     .attr('d', path).attr('fill', 'none')
     .attr('stroke', 'rgba(255,255,255,0.03)').attr('stroke-width', 0.5);
 
+  const continentColors = {
+    'Asie':          '#d45a2a',
+    'Amér. du Nord': '#6c9e6c',
+    'Amér. du Sud':  '#6c9e6c',
+    'Afrique':       '#c49a3e',
+    'Europe':        '#e8a020',
+    'Océanie':       '#6c9e9e',
+  };
+
+  // Pays les plus touchés par continent (estimation chiens errants / abandonnés)
+  const spots = [
+    { country: 'Inde',       continent: 'Asie',          coord: [80,  22],   estimate: 35000000, label: '35M',     dx:  34, dy:  -4, anchor: 'start', source: 'WHO / AWBI 2023' },
+    { country: 'Chine',      continent: 'Asie',          coord: [104, 34],   estimate: 27000000, label: '27M',     dx:  30, dy:  -4, anchor: 'start', source: 'CNAH 2022' },
+    { country: 'Brésil',     continent: 'Amér. du Sud',  coord: [-52, -12],  estimate: 30000000, label: '30M',     dx:  32, dy:  -4, anchor: 'start', source: 'Instituto Pet Brasil 2019' },
+    { country: 'Mexique',    continent: 'Amér. du Nord', coord: [-102, 23],  estimate: 20000000, label: '20M',     dx: -28, dy:  -4, anchor: 'end',   source: 'INEGI / UNAM 2021' },
+    { country: 'États-Unis', continent: 'Amér. du Nord', coord: [-99,  40],  estimate: 3100000,  label: '3,1M/an', dx: -14, dy: -22, anchor: 'end',   source: 'ASPCA 2023', note: 'flux annuel entrant en refuge' },
+    { country: 'Éthiopie',   continent: 'Afrique',       coord: [40,  10],   estimate: 7500000,  label: '7,5M',    dx:  18, dy:  -4, anchor: 'start', source: 'WHO estimate 2023' },
+    { country: 'Nigéria',    continent: 'Afrique',       coord: [8,    9],   estimate: 7000000,  label: '7M',      dx: -18, dy:  -4, anchor: 'end',   source: 'WSPA / FOUR PAWS 2022' },
+    { country: 'Turquie',    continent: 'Europe',        coord: [35,  39],   estimate: 4000000,  label: '4M',      dx:  16, dy: -18, anchor: 'start', source: 'Min. Agriculture Turquie 2024' },
+    { country: 'Australie',  continent: 'Océanie',       coord: [134, -26],  estimate: 200000,   label: '200k/an', dx:  12, dy:  -4, anchor: 'start', source: 'RSPCA Australia 2023', note: 'flux annuel entrant en refuge' },
+    { country: 'Suisse',     continent: 'Europe',        coord: [8.2, 46.8], estimate: 1009,     label: '1 009',   dx:  10, dy: -12, anchor: 'start', highlight: true, source: 'PSA/STS 2024' },
+  ];
+
   fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
     .then(r => r.json()).then(world => {
       const countries = topojson.feature(world, world.objects.countries);
-      svg.selectAll('.c').data(countries.features).enter().append('path')
-        .attr('d', path).attr('fill', '#1c1c1c')
-        .attr('stroke', 'rgba(255,255,255,0.06)').attr('stroke-width', 0.4);
+      svg.selectAll('.wc').data(countries.features).enter().append('path')
+        .attr('class', 'wc').attr('d', path)
+        .attr('fill', '#1c1c1c').attr('stroke', 'rgba(255,255,255,0.06)').attr('stroke-width', 0.4);
 
-      // Points représentatifs
-      const spots = [
-        { label: '62M — Inde',    coord: [80, 22],  size: 18 },
-        { label: '4M — Turquie',  coord: [35, 39],  size: 11 },
-        { label: '550k — Roumanie',coord: [25, 46], size: 7  },
-        { label: '100k — France', coord: [2, 47],   size: 4  },
-        { label: '1009 — Suisse', coord: [8.2,46.8],size: 2, highlight: true }
-      ];
+      const infoEl = document.getElementById('world-info');
 
       spots.forEach(s => {
         const [cx, cy] = proj(s.coord);
-        if (!cx || !cy) return;
-        const g = svg.append('g').attr('transform', `translate(${cx},${cy})`);
+        if (cx == null || isNaN(cx)) return;
+        const color = s.highlight ? '#e8a020' : (continentColors[s.continent] || '#888');
+        const r = s.highlight ? 4 : Math.max(4, Math.sqrt(s.estimate / 1000000) * 5);
 
+        const g = svg.append('g')
+          .attr('transform', `translate(${cx},${cy})`)
+          .style('cursor', 'pointer');
+
+        // Anneau pulsant Suisse
         if (s.highlight) {
-          g.append('circle').attr('r', 10).attr('fill', 'none')
-            .attr('stroke', '#e8a020').attr('stroke-width', 1.5).attr('opacity', 0.5)
-            .append('animate').attr('attributeName', 'r').attr('from', 6).attr('to', 14)
-            .attr('dur', '2s').attr('repeatCount', 'indefinite');
+          g.append('circle').attr('r', 12).attr('fill', 'none')
+            .attr('stroke', '#e8a020').attr('stroke-width', 1.5).attr('opacity', 0.4)
+            .append('animate').attr('attributeName', 'r')
+            .attr('from', 6).attr('to', 16).attr('dur', '2s').attr('repeatCount', 'indefinite');
         }
 
-        g.append('circle').attr('r', s.size).attr('fill', s.highlight ? '#e8a020' : 'rgba(212,90,42,0.6)')
-          .attr('opacity', s.highlight ? 1 : 0.55);
+        const circle = g.append('circle')
+          .attr('r', r)
+          .attr('fill', color).attr('opacity', s.highlight ? 1 : 0.55)
+          .attr('stroke', color).attr('stroke-width', 0.8);
 
-        if (s.highlight) {
-          g.append('text').attr('x', 12).attr('y', 4)
-            .attr('fill', '#e8a020').attr('font-size', '11px')
-            .attr('font-family', 'DM Sans, sans-serif').attr('font-weight', '600')
-            .text('Suisse — 1 009');
-        }
+        // Étiquette : chiffre + pays
+        const lg = g.append('g').attr('transform', `translate(${s.dx},${s.dy})`);
+        lg.append('text')
+          .attr('text-anchor', s.anchor)
+          .attr('fill', color)
+          .attr('font-size', s.highlight ? '10px' : '9.5px')
+          .attr('font-family', 'JetBrains Mono, monospace').attr('font-weight', '600')
+          .text(s.label);
+        lg.append('text')
+          .attr('text-anchor', s.anchor).attr('dy', '11')
+          .attr('fill', 'rgba(237,233,224,0.65)')
+          .attr('font-size', '8px').attr('font-family', 'DM Sans, sans-serif')
+          .text(s.country);
+
+        // Hover
+        g.on('mouseover', () => circle.attr('opacity', 0.9))
+         .on('mouseleave', () => circle.attr('opacity', s.highlight ? 1 : 0.55));
+
+        // Clic → panneau d'info
+        g.on('click', () => {
+          if (!infoEl) return;
+          infoEl.innerHTML = `
+            <div class="world-info-continent" style="color:${color}">${s.continent}</div>
+            <div class="world-info-country">${s.country}</div>
+            <div class="world-info-row">
+              <span class="world-info-label">Chiens errants / abandonnés</span>
+              <span class="world-info-value">${s.estimate.toLocaleString('fr-CH')}</span>
+            </div>
+            ${s.note ? `<div class="world-info-note">ⓘ ${s.note}</div>` : ''}
+            <div class="world-info-source">Source : ${s.source}</div>
+          `;
+          infoEl.classList.add('visible');
+          infoEl.querySelector('.world-info-close-area')
+            ?.addEventListener('click', () => infoEl.classList.remove('visible'), { once: true });
+        });
       });
 
       // Badge 200M
@@ -68,6 +119,25 @@ function initWorldMap(data) {
       bg.append('text').attr('x', 12).attr('y', 39)
         .attr('fill', '#7a756c').attr('font-size', '10px').attr('font-family', 'DM Sans, sans-serif')
         .text('chiens errants dans le monde (OMS)');
+
+      // Légende continents
+      const legendEl = document.getElementById('world-legend');
+      if (legendEl) {
+        const continents = [
+          { label: 'Asie',      color: '#d45a2a' },
+          { label: 'Amériques', color: '#6c9e6c' },
+          { label: 'Afrique',   color: '#c49a3e' },
+          { label: 'Europe',    color: '#e8a020' },
+          { label: 'Océanie',   color: '#6c9e9e' },
+        ];
+        legendEl.innerHTML = continents.map(c => `
+          <div class="world-legend-item">
+            <div class="world-legend-dot" style="background:${c.color}"></div>
+            <span>${c.label}</span>
+          </div>
+        `).join('');
+      }
+
     }).catch(() => {});
 }
 
@@ -104,7 +174,9 @@ function initEuropeMap(data) {
     .then(r => r.json()).then(world => {
       const countries = topojson.feature(world, world.objects.countries);
 
-      svg.selectAll('.ec').data(countries.features).enter().append('path')
+      let selectedPath = null;
+
+      const paths = svg.selectAll('.ec').data(countries.features).enter().append('path')
         .attr('class', 'ec').attr('d', path)
         .attr('fill', d => {
           const code = isoMap[String(d.id).padStart(3,'0')];
@@ -118,26 +190,60 @@ function initEuropeMap(data) {
         })
         .on('mouseover', function(event, d) {
           const code = isoMap[String(d.id).padStart(3,'0')];
-          const cd = byCode[code];
-          if (!cd) return;
-          d3.select(this).attr('stroke', '#e8a020').attr('stroke-width', 1.5);
-          tooltip.classed('visible', true)
-            .style('left', (event.offsetX + 14) + 'px')
-            .style('top',  (event.offsetY - 20) + 'px')
-            .html(`
-              <div class="tooltip-title">${cd.country}</div>
-              <div class="tooltip-value">📊 ${cd.dogs_per_100k} / 100k hab.</div>
-              <div class="tooltip-value">🐕 ${cd.total_estimate.toLocaleString('fr-CH')} estimés</div>
-              ${cd.note ? `<div class="tooltip-note">${cd.note}</div>` : ''}
-              <div class="tooltip-note">Source : ${cd.source}</div>
-            `);
-        })
-        .on('mousemove', function(event) {
-          tooltip.style('left', (event.offsetX + 14) + 'px').style('top', (event.offsetY - 20) + 'px');
+          if (!byCode[code]) return;
+          if (this !== selectedPath) {
+            d3.select(this).attr('stroke', 'rgba(232,160,32,0.6)').attr('stroke-width', 1.2);
+          }
         })
         .on('mouseleave', function() {
-          d3.select(this).attr('stroke', 'rgba(255,255,255,0.08)').attr('stroke-width', 0.5);
-          tooltip.classed('visible', false);
+          if (this !== selectedPath) {
+            d3.select(this).attr('stroke', 'rgba(255,255,255,0.08)').attr('stroke-width', 0.5);
+          }
+        })
+        .on('click', function(event, d) {
+          const code = isoMap[String(d.id).padStart(3,'0')];
+          const cd = byCode[code];
+          if (!cd) return;
+
+          // Désélectionner l'ancien pays
+          if (selectedPath) {
+            d3.select(selectedPath)
+              .attr('stroke', 'rgba(255,255,255,0.08)').attr('stroke-width', 0.5);
+          }
+
+          if (selectedPath === this) {
+            // Deuxième clic sur le même pays → fermer
+            selectedPath = null;
+            document.getElementById('europe-info').classList.remove('visible');
+            return;
+          }
+
+          selectedPath = this;
+          d3.select(this).attr('stroke', '#e8a020').attr('stroke-width', 2);
+
+          // Afficher le panneau d'info
+          const panel = document.getElementById('europe-info');
+          panel.innerHTML = `
+            <button class="europe-info-close" onclick="
+              document.getElementById('europe-info').classList.remove('visible');
+              document.querySelectorAll('.ec').forEach(p => {
+                p.setAttribute('stroke','rgba(255,255,255,0.08)');
+                p.setAttribute('stroke-width','0.5');
+              });
+            ">✕</button>
+            <div class="europe-info-country">${cd.country}</div>
+            <div class="europe-info-row">
+              <span class="europe-info-label">Chiens / 100 000 hab.</span>
+              <span class="europe-info-value">${cd.dogs_per_100k}</span>
+            </div>
+            <div class="europe-info-row">
+              <span class="europe-info-label">Total estimé</span>
+              <span class="europe-info-value">${cd.total_estimate.toLocaleString('fr-CH')}</span>
+            </div>
+            ${cd.note ? `<div class="europe-info-note">${cd.note}</div>` : ''}
+            <div class="europe-info-source">Source : ${cd.source}</div>
+          `;
+          panel.classList.add('visible');
         });
 
       // Légende
@@ -197,12 +303,12 @@ function initShelterMap(shelters) {
     });
     const m = L.marker([s.lat, s.lng], { icon }).addTo(map);
     m.bindPopup(`
-      <div style="font-family:'DM Sans',sans-serif;min-width:190px">
+      <div style="font-family:'DM Sans',sans-serif;min-width:200px">
         <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px">${s.name}</div>
-        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:2px">📍 ${s.city} (${s.postal})</div>
-        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:6px">📞 ${s.phone}</div>
-        <div style="display:inline-block;background:rgba(108,158,108,0.15);color:#6c9e6c;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600">🐾 ${s.dogs} chiens disponibles</div>
-        <div style="margin-top:8px"><a href="${s.website}" target="_blank" style="color:#e8a020;font-size:0.78rem;text-decoration:none">Visiter le refuge →</a></div>
+        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:2px">📍 ${s.city}</div>
+        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:2px">🕐 ${s.hours}</div>
+        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:8px">📞 ${s.phone}</div>
+        <a href="${s.website}" target="_blank" style="color:#e8a020;font-size:0.78rem;text-decoration:none">Visiter le refuge →</a>
       </div>
     `);
     markers[s.postal] = { marker: m, shelter: s };
