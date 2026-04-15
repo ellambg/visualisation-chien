@@ -572,8 +572,9 @@ footer {
 /* ── Image ── */
 .social-card-img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: 280px;
+  object-fit: contain;
+  background: #0a0a0a;
   display: block;
   margin-top: 0.75rem;
 }
@@ -582,12 +583,11 @@ footer {
 .social-video-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
+  height: 280px;
   background: #0a0a0a;
   margin-top: 0.75rem;
   overflow: hidden;
 }
-.social-card--video .social-video-wrapper { aspect-ratio: 16 / 9; }
 
 .social-card-video,
 .social-iframe {
@@ -595,6 +595,7 @@ footer {
   height: 100%;
   border: none;
   display: block;
+  object-fit: contain;
 }
 
 /* Overlay placeholder (quand pas encore de src réel) */
