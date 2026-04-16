@@ -2,7 +2,7 @@
  * charts.js — Visualisations : dots animation, timeline, comparaison
  */
 
-// ── DOT ANIMATION (1009 points = 1009 chiens) ─────────────────────────────
+// ── DOT ANIMATION (1826 points = 1826 chiens) ─────────────────────────────
 class DotAnimation {
   constructor(canvasId, data) {
     this.canvas = document.getElementById(canvasId);
@@ -30,9 +30,9 @@ class DotAnimation {
   buildDots() {
     // 1009 chiens : ~79% abandonnés, ~17% trouvés, ~4% saisis
     const cats = [
-      { key: 'abandon', count: 796, color: '#e8a020' },
-      { key: 'found',   count: 172, color: '#d45a2a' },
-      { key: 'seized',  count: 41,  color: '#6c9e6c'  }
+      { key: 'abandon', count: 1443, color: '#e8a020' },
+      { key: 'found',   count: 310,  color: '#d45a2a' },
+      { key: 'seized',  count: 73,   color: '#6c9e6c'  }
     ];
     this.dots = [];
     cats.forEach(cat => {
@@ -105,7 +105,7 @@ class DotAnimation {
       const cats  = ['abandon', 'found', 'seized'];
       const bw    = (W - 40) / 3;
       const labels = { abandon: 'Abandonnés', found: 'Trouvés', seized: 'Saisis' };
-      const counts = { abandon: 796, found: 172, seized: 41 };
+      const counts = { abandon: 1443, found: 310, seized: 73 };
       const colors = { abandon: '#e8a020', found: '#d45a2a', seized: '#6c9e6c' };
 
       cats.forEach((cat, ci) => {
@@ -204,67 +204,66 @@ function initTimeline(data) {
   }
 }
 
-// ── GRAPHIQUE DE COMPARAISON (horizontal bar) ─────────────────────────────
+// ── GRAPHIQUE DONUT — surcharge des refuges ────────────────────────────────
 function initCompareChart(data) {
   const container = document.getElementById('compare-chart');
   if (!container || typeof d3 === 'undefined') return;
 
-  // Pays à afficher (flow seulement pour éviter confusion)
-  const countries = [
-    { name: 'Pays-Bas',   val: 0,   type: 'flow',  note: '~0 — quasi-éliminé' },
-    { name: 'Suisse',     val: 11,  type: 'flow',  note: '11 / 100k',  highlight: true },
-    { name: 'Allemagne',  val: 120, type: 'flow',  note: '120 / 100k' },
-    { name: 'France',     val: 148, type: 'flow',  note: '148 / 100k' },
-    { name: 'Italie',     val: 83,  type: 'flow',  note: '83 / 100k' },
-    { name: 'Irlande',    val: 131, type: 'flow',  note: '131 / 100k' },
-    { name: 'UK',         val: 54,  type: 'flow',  note: '54 / 100k' },
-    { name: 'Belgique',   val: 520, type: 'flow',  note: '520 / 100k' },
-    { name: 'Espagne',    val: 370, type: 'flow',  note: '370 / 100k' }
-  ].sort((a, b) => a.val - b.val);
-
-  const margin = { top: 10, right: 120, bottom: 30, left: 90 };
-  const W = (container.parentElement.clientWidth || 900) - margin.left - margin.right;
-  const H = countries.length * 34;
+  const reasons = data.switzerland.intake_reasons;
+  const size = 300;
+  const radius = size / 2;
+  const innerRadius = radius * 0.58;
 
   const svg = d3.select('#compare-chart')
-    .attr('viewBox', `0 0 ${W + margin.left + margin.right} ${H + margin.top + margin.bottom}`)
-    .style('padding', '1.5rem 0')
-    .append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    .attr('viewBox', `0 0 ${size} ${size}`)
+    .attr('width', size).attr('height', size)
+    .append('g').attr('transform', `translate(${radius},${radius})`);
 
-  const x = d3.scaleLinear().domain([0, 560]).range([0, W]);
-  const y = d3.scaleBand().domain(countries.map(d => d.name)).range([0, H]).padding(0.35);
+  const pie = d3.pie().value(d => d.count).sort(null).padAngle(0.03);
+  const arc = d3.arc().innerRadius(innerRadius).outerRadius(radius - 8);
+  const arcHover = d3.arc().innerRadius(innerRadius).outerRadius(radius - 2);
 
-  // Barres
-  svg.selectAll('.cbar').data(countries).enter().append('rect')
-    .attr('y', d => y(d.name))
-    .attr('height', y.bandwidth())
-    .attr('x', 0)
-    .attr('width', 0)
-    .attr('rx', 3)
-    .attr('fill', d => d.highlight ? '#e8a020' : 'rgba(237,233,224,0.12)')
-    .transition().duration(800).delay((d,i) => i*60).ease(d3.easeCubicOut)
-    .attr('width', d => d.val === 0 ? 4 : x(d.val));
+  const slices = svg.selectAll('.arc')
+    .data(pie(reasons)).enter().append('g').attr('class', 'arc');
 
-  // Valeurs
-  svg.selectAll('.cval').data(countries).enter().append('text')
-    .attr('x', d => (d.val === 0 ? 4 : x(d.val)) + 8)
-    .attr('y', d => y(d.name) + y.bandwidth()/2 + 4)
-    .attr('fill', d => d.highlight ? '#e8a020' : '#7a756c')
-    .attr('font-size', '11px').attr('font-family', 'DM Sans, sans-serif')
-    .text(d => d.note);
+  slices.append('path')
+    .attr('fill', d => d.data.color)
+    .attr('opacity', 0.88)
+    .attr('stroke', '#0c0c0c').attr('stroke-width', 2)
+    .on('mouseover', function() { d3.select(this).transition().duration(150).attr('d', arcHover); })
+    .on('mouseleave', function() { d3.select(this).transition().duration(150).attr('d', arc); })
+    .transition().duration(900).delay((d, i) => i * 180)
+    .attrTween('d', function(d) {
+      const interp = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+      return t => arc(interp(t));
+    });
 
-  // Labels pays
-  svg.selectAll('.clbl').data(countries).enter().append('text')
-    .attr('x', -8).attr('y', d => y(d.name) + y.bandwidth()/2 + 4)
-    .attr('text-anchor', 'end')
-    .attr('fill', d => d.highlight ? '#e8a020' : '#7a756c')
-    .attr('font-size', '12px').attr('font-family', 'DM Sans, sans-serif')
-    .attr('font-weight', d => d.highlight ? '600' : '400')
-    .text(d => d.name);
+  // Chiffre central
+  svg.append('text').attr('text-anchor', 'middle').attr('dy', '-0.5em')
+    .attr('fill', '#ede9e0')
+    .attr('font-size', '26px')
+    .attr('font-family', 'Playfair Display, serif').attr('font-weight', '700')
+    .text('32 079');
 
-  // Axe X
-  svg.append('g').attr('class', 'axis').attr('transform', `translate(0,${H})`)
-    .call(d3.axisBottom(x).ticks(5).tickFormat(d => d + '/100k'));
+  svg.append('text').attr('text-anchor', 'middle').attr('dy', '1.1em')
+    .attr('fill', '#7a756c').attr('font-size', '9.5px')
+    .attr('font-family', 'DM Sans, sans-serif').attr('letter-spacing', '0.06em')
+    .text('animaux accueillis');
+
+  // Légende
+  const legendEl = document.getElementById('donut-legend');
+  if (legendEl) {
+    legendEl.innerHTML = reasons.map(r => `
+      <div class="donut-legend-item">
+        <div class="donut-legend-dot" style="background:${r.color}"></div>
+        <div class="donut-legend-text">
+          <span class="donut-legend-pct" style="color:${r.color}">${r.percentage}%</span>
+          <span class="donut-legend-label"> — ${r.reason}</span>
+          <div class="donut-legend-count">${r.count.toLocaleString('fr-CH')} animaux</div>
+        </div>
+      </div>
+    `).join('');
+  }
 }
 
 window.ChartsModule = { DotAnimation, initTimeline, initCompareChart };

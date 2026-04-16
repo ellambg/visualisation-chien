@@ -166,9 +166,9 @@
         "code": "CH",
         "lat": 46.8, "lng": 8.2,
         "type": "flow",
-        "dogs_per_100k": 11,
-        "total_estimate": 1009,
-        "note": "1 009 chiens abandonnés en 2024 (+16,7% vs 2023). Parmi les meilleures statistiques d'Europe.",
+        "dogs_per_100k": 20,
+        "total_estimate": 1826,
+        "note": "1 826 chiens recueillis en 2024 (+111% vs 2023). Hausse alarmante liée aux achats impulsifs et aux coûts vétérinaires.",
         "source": "PSA / STS 2024",
         "color_intensity": 0.08,
         "highlight": true
@@ -193,11 +193,18 @@
     "total_abandoned": 25403,
     "total_found": 5449,
     "total_seized": 1234,
-    "dogs_abandoned_2024": 1009,
+    "dogs_abandoned_2024": 1826,
     "dogs_abandoned_2023": 865,
-    "change_pct": 16.7,
-    "dogs_per_100k": 11,
-    "narrative_hook": "1 chien toutes les 8,7 heures. C'est le rythme auquel des chiens sont abandonnés en Suisse.",
+    "total_animals_change_2023": 572,
+    "change_pct": 111,
+    "dogs_per_100k": 20,
+    "narrative_hook": "1 chien toutes les 4,8 heures. C'est le rythme auquel des chiens sont recueillis en Suisse.",
+    "causes": [
+      "Achats impulsifs — acquisition sans réflexion à long terme",
+      "Coûts sous-estimés — frais vétérinaires et nourriture élevés",
+      "Lassitude et problèmes de comportement — difficultés de gestion"
+    ],
+    "animals_note": "Les poissons et les chats restent les animaux les plus abandonnés, suivis des chiens et des rongeurs.",
     "note_cantons": "Il n'existe pas de données officielles PSA/STS par canton. Les valeurs ci-dessous sont des estimations proportionnelles à la population cantonale, à titre indicatif.",
     "cantons": [
       { "name": "Zurich",         "code": "ZH", "population_k": 1553, "dogs_estimate": 208, "lat": 47.3769, "lng": 8.5417 },
@@ -238,7 +245,7 @@
       { "year": 2021, "abandoned": 890,  "label": "Retour à la normale" },
       { "year": 2022, "abandoned": 940,  "label": "Crise du coût de la vie" },
       { "year": 2023, "abandoned": 865,  "label": "" },
-      { "year": 2024, "abandoned": 1009, "label": "+16,7 % en un an" }
+      { "year": 2024, "abandoned": 1826, "label": "+111 % en un an" }
     ]
   },
   "comparisons": {

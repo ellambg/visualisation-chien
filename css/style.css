@@ -141,6 +141,36 @@ em { font-style: italic; color: var(--accent); }
 @keyframes arrowBounce { 0%,100% { transform: rotate(45deg) translate(0,0); } 50% { transform: rotate(45deg) translate(3px,3px); } }
 
 /* ════════════════════════════════════════════
+   INTRO VIDEO
+════════════════════════════════════════════ */
+#section-intro-video {
+  display: flex; justify-content: center; align-items: center;
+  padding: 100px 2rem;
+  border-top: 1px solid var(--border);
+}
+.intro-video-inner {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1.5rem; max-width: 260px; width: 100%; text-align: center;
+}
+.intro-video-title {
+  font-family: var(--font-display); font-size: 2.8rem; font-weight: 700;
+  color: var(--text); margin: 0;
+}
+#section-intro-video .section-eyebrow {
+  font-size: 1rem; letter-spacing: 0.15em;
+}
+.intro-video-wrapper {
+  position: relative; width: 100%; padding-top: 177.78%; /* ratio 9:16 */
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.intro-video-wrapper iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ════════════════════════════════════════════
    STORY BLOCKS (layout principal)
 ════════════════════════════════════════════ */
 section {
@@ -329,16 +359,37 @@ section:first-of-type { border-top: none; }
 }
 .chart-wrapper svg { width: 100%; overflow: visible; }
 
-.compare-chart-wrapper {
-  max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+/* Donut surcharge refuges */
+.donut-wrapper {
+  display: flex; justify-content: center; align-items: center;
+  padding: 1rem 0;
+}
+.donut-wrapper svg { overflow: visible; }
+
+.donut-legend {
+  display: flex; flex-direction: column; gap: 0.9rem;
+  margin-top: 1.25rem;
+}
+.donut-legend-item { display: flex; align-items: flex-start; gap: 0.7rem; }
+.donut-legend-dot   { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+.donut-legend-pct   { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 600; }
+.donut-legend-label { font-size: 0.85rem; color: var(--text); }
+.donut-legend-count { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
+
+/* Stats row sous le texte */
+.compare-stats-row {
+  display: flex; gap: 1.2rem; margin-top: 1.75rem; flex-wrap: wrap;
+}
+.compare-stat {
+  flex: 1; min-width: 100px;
   background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 8px; padding: 0.8rem 1rem;
 }
-.compare-chart-wrapper svg { width: 100%; overflow: visible; }
-.chart-note {
-  max-width: var(--max-w); margin: 1rem auto 0; padding: 0 2rem;
-  font-size: 0.78rem; color: var(--muted);
+.compare-stat-num {
+  font-family: var(--font-display); font-size: 1.5rem;
+  font-weight: 700; color: var(--accent); line-height: 1.1;
 }
+.compare-stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
 
 .timeline-annotations { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1.5rem; }
 
@@ -382,27 +433,39 @@ section:first-of-type { border-top: none; }
    SOURCES / METHOD
 ════════════════════════════════════════════ */
 .sources-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-  max-width: var(--max-w); margin: 0 auto 2.5rem; padding: 0 2rem;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem;
+  max-width: var(--max-w); margin: 0 auto 2rem; padding: 0 2rem;
 }
 .source-card {
   background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 10px; padding: 1.4rem; transition: all 0.25s ease;
+  border-radius: 7px; padding: 0.7rem 0.9rem; transition: all 0.25s ease;
 }
 .source-card:hover { border-color: rgba(232,160,32,0.25); }
-.source-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
-.source-name { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.4rem; }
-.source-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+.source-icon { font-size: 0.95rem; margin-bottom: 0.3rem; }
+.source-name { font-weight: 600; font-size: 0.72rem; margin-bottom: 0.25rem; }
+.source-desc { font-size: 0.67rem; color: var(--muted); line-height: 1.45; }
 .source-type {
-  display: inline-block; margin-top: 0.75rem; font-family: var(--font-mono);
-  font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.15rem 0.5rem; border-radius: 3px;
+  display: inline-block; font-family: var(--font-mono);
+  font-size: 0.55rem; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.1rem 0.35rem; border-radius: 3px;
 }
 .source-type.psa    { background: rgba(108,158,108,0.15); color: var(--accent-3); }
 .source-type.ong    { background: rgba(212,90,42,0.1);   color: var(--accent-2); }
 .source-type.intl   { background: rgba(232,160,32,0.12); color: var(--accent);   }
 .source-type.media  { background: rgba(255,255,255,0.06); color: var(--muted);   }
 .source-type.opendata { background: rgba(90,127,160,0.15); color: #5a7fa0; }
+
+.source-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem;
+}
+.source-footer .source-type { margin-top: 0; }
+.source-link {
+  font-size: 0.72rem; color: var(--accent); text-decoration: none;
+  font-family: var(--font-mono); letter-spacing: 0.04em;
+  transition: opacity 0.2s;
+}
+.source-link:hover { opacity: 0.7; }
 
 .method-note {
   max-width: 700px; margin: 0 auto; padding: 1.5rem 2rem;
@@ -478,6 +541,26 @@ footer {
 .axis text { fill: var(--muted); font-family: var(--font-body); font-size: 11px; }
 .axis path, .axis line { stroke: var(--border); }
 .grid line { stroke: var(--border); stroke-opacity: 0.4; }
+
+/* ════════════════════════════════════════════
+   CAUSES D'ABANDON
+════════════════════════════════════════════ */
+.causes-block {
+  max-width: var(--max-w); margin: 2.5rem auto 0; padding: 0 2rem;
+}
+.causes-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 0.5rem;
+}
+.cause-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.25rem 1.2rem;
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.cause-icon  { font-size: 1.5rem; }
+.cause-title { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.cause-desc  { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+@media (max-width: 600px) { .causes-grid { grid-template-columns: 1fr; } }
 
 /* ════════════════════════════════════════════
    CARTE MONDE — légende + panneau d'info

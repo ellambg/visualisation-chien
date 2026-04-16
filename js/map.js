@@ -37,7 +37,8 @@ function initWorldMap(data) {
     { country: 'Nigéria',    continent: 'Afrique',       coord: [8,    9],   estimate: 7000000,  label: '7M',      dx: -18, dy:  -4, anchor: 'end',   source: 'WSPA / FOUR PAWS 2022' },
     { country: 'Turquie',    continent: 'Europe',        coord: [35,  39],   estimate: 4000000,  label: '4M',      dx:  16, dy: -18, anchor: 'start', source: 'Min. Agriculture Turquie 2024' },
     { country: 'Australie',  continent: 'Océanie',       coord: [134, -26],  estimate: 200000,   label: '200k/an', dx:  12, dy:  -4, anchor: 'start', source: 'RSPCA Australia 2023', note: 'flux annuel entrant en refuge' },
-    { country: 'Suisse',     continent: 'Europe',        coord: [8.2, 46.8], estimate: 1009,     label: '1 009',   dx:  10, dy: -12, anchor: 'start', highlight: true, source: 'PSA/STS 2024' },
+    { country: 'Suisse',     continent: 'Europe',        coord: [8.2, 46.8], estimate: 1826,     label: '1 826',   dx:  10, dy: -12, anchor: 'start', highlight: true, source: 'PSA/STS 2024' },
+    { country: 'Dubaï', continent: 'Asie',         coord: [55.3, 25.2], estimate: 2000,    label: 'Dubaï', dx: 12, dy: -8, anchor: 'start', source: 'ONG locales (Dubai Shelter, SNIFF)', note: 'Cas particulier lié aux conflits régionaux : des expatriés fuient précipitamment et laissent leurs animaux. Chiffre estimé, pas de registre officiel.' },
   ];
 
   fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
@@ -72,18 +73,13 @@ function initWorldMap(data) {
           .attr('fill', color).attr('opacity', s.highlight ? 1 : 0.55)
           .attr('stroke', color).attr('stroke-width', 0.8);
 
-        // Étiquette : chiffre + pays
+        // Étiquette : nom du pays uniquement
         const lg = g.append('g').attr('transform', `translate(${s.dx},${s.dy})`);
         lg.append('text')
           .attr('text-anchor', s.anchor)
           .attr('fill', color)
-          .attr('font-size', s.highlight ? '10px' : '9.5px')
-          .attr('font-family', 'JetBrains Mono, monospace').attr('font-weight', '600')
-          .text(s.label);
-        lg.append('text')
-          .attr('text-anchor', s.anchor).attr('dy', '11')
-          .attr('fill', 'rgba(237,233,224,0.65)')
-          .attr('font-size', '8px').attr('font-family', 'DM Sans, sans-serif')
+          .attr('font-size', s.highlight ? '10px' : '9px')
+          .attr('font-family', 'DM Sans, sans-serif').attr('font-weight', '500')
           .text(s.country);
 
         // Hover
