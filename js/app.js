@@ -35,6 +35,8 @@ async function init() {
   // UI de base d'abord
   setupNavbar();
   setupProgress();
+  setupHeroCta();
+  setupSectionButtons();
   setupScrollAnimations();
   setupSmoothScroll();
   setupDotControls();
@@ -345,6 +347,27 @@ window.selectShelter = function(postal) {
 /* ─────────────────────────────────────────────────────────────
    UI
 ───────────────────────────────────────────────────────────── */
+function setupHeroCta() {
+  document.getElementById('hero-cta')?.addEventListener('click', () => {
+    const next = document.getElementById('section-intro-video') || document.getElementById('section-world');
+    next?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+function setupSectionButtons() {
+  const sections = Array.from(document.querySelectorAll('section'));
+  sections.forEach((section, i) => {
+    if (i === sections.length - 1) return; // pas de bouton sur la dernière
+    if (section.id === 'hero') return; // déjà un bouton dans le hero
+    const next = sections[i + 1];
+    const btn = document.createElement('button');
+    btn.className = 'section-next-btn';
+    btn.innerHTML = '<div class="section-next-arrow"></div>';
+    btn.addEventListener('click', () => next.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    section.appendChild(btn);
+  });
+}
+
 function setupNavbar() {
   window.addEventListener('scroll', () => {
     document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY > 60);
@@ -354,7 +377,6 @@ function setupNavbar() {
 function setupProgress() {
   const bar = document.getElementById('progress-bar');
   if (!bar) return;
-
   window.addEventListener('scroll', () => {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
