@@ -30,9 +30,9 @@ class DotAnimation {
   buildDots() {
     // 1009 chiens : ~79% abandonnés, ~17% trouvés, ~4% saisis
     const cats = [
-      { key: 'abandon', count: 1443, color: '#e8a020' },
-      { key: 'found',   count: 310,  color: '#d45a2a' },
-      { key: 'seized',  count: 73,   color: '#6c9e6c'  }
+      { key: 'abandon', count: 1443, color: '#c49a3e' },
+      { key: 'found',   count: 310,  color: '#6699cc' },
+      { key: 'seized',  count: 73,   color: '#7a8a3a'  }
     ];
     this.dots = [];
     cats.forEach(cat => {
@@ -106,16 +106,16 @@ class DotAnimation {
       const bw    = (W - 40) / 3;
       const labels = { abandon: 'Abandonnés', found: 'Trouvés', seized: 'Saisis' };
       const counts = { abandon: 1443, found: 310, seized: 73 };
-      const colors = { abandon: '#e8a020', found: '#d45a2a', seized: '#6c9e6c' };
+      const colors = { abandon: '#c49a3e', found: '#6699cc', seized: '#7a8a3a' };
 
       cats.forEach((cat, ci) => {
         const cx = 20 + ci * bw + bw/2;
-        ctx.font = `700 22px 'Playfair Display', Georgia, serif`;
+        ctx.font = `700 22px 'Encode Sans', sans-serif`;
         ctx.fillStyle = colors[cat];
         ctx.textAlign = 'center';
         ctx.fillText(counts[cat], cx, 28);
-        ctx.font = `500 12px 'DM Sans', sans-serif`;
-        ctx.fillStyle = '#7a756c';
+        ctx.font = `500 12px 'Encode Sans', sans-serif`;
+        ctx.fillStyle = '#888888';
         ctx.fillText(labels[cat], cx, H - 6);
       });
     }
@@ -151,15 +151,15 @@ function initTimeline(data) {
   const defs = svg.append('defs');
   const grad = defs.append('linearGradient').attr('id', 'tl-grad')
     .attr('gradientUnits', 'userSpaceOnUse').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', H);
-  grad.append('stop').attr('offset', '0%').attr('stop-color', 'rgba(232,160,32,0.25)');
-  grad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(232,160,32,0)');
+  grad.append('stop').attr('offset', '0%').attr('stop-color', 'rgba(196,154,62,0.25)');
+  grad.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(196,154,62,0)');
 
   const area = d3.area().x(d => x(d.year)).y0(H).y1(d => y(d.abandoned)).curve(d3.curveMonotoneX);
   svg.append('path').datum(annual).attr('fill', 'url(#tl-grad)').attr('d', area);
 
   const line = d3.line().x(d => x(d.year)).y(d => y(d.abandoned)).curve(d3.curveMonotoneX);
   const path = svg.append('path').datum(annual)
-    .attr('fill', 'none').attr('stroke', '#e8a020').attr('stroke-width', 2.5).attr('d', line);
+    .attr('fill', 'none').attr('stroke', '#c49a3e').attr('stroke-width', 2.5).attr('d', line);
 
   const len = path.node().getTotalLength();
   path.attr('stroke-dasharray', len).attr('stroke-dashoffset', len)
@@ -168,15 +168,15 @@ function initTimeline(data) {
   // Points + labels
   svg.selectAll('.pt').data(annual).enter().append('circle')
     .attr('cx', d => x(d.year)).attr('cy', d => y(d.abandoned)).attr('r', 5)
-    .attr('fill', d => d.year === 2024 ? '#e8a020' : '#0c0c0c')
-    .attr('stroke', '#e8a020').attr('stroke-width', 2);
+    .attr('fill', d => d.year === 2024 ? '#c49a3e' : '#0c0c0c')
+    .attr('stroke', '#c49a3e').attr('stroke-width', 2);
 
   svg.selectAll('.lbl').data(annual).enter().append('text')
     .attr('x', d => x(d.year)).attr('y', d => y(d.abandoned) - 12)
-    .attr('text-anchor', 'middle').attr('fill', d => d.year === 2024 ? '#ede9e0' : '#7a756c')
+    .attr('text-anchor', 'middle').attr('fill', d => d.year === 2024 ? '#ede9e0' : '#888888')
     .attr('font-size', d => d.year === 2024 ? '13px' : '11px')
     .attr('font-weight', d => d.year === 2024 ? '700' : '400')
-    .attr('font-family', 'DM Sans, sans-serif')
+    .attr('font-family', 'Encode Sans, sans-serif')
     .text(d => d.abandoned);
 
   // Annotation labels d'événements
@@ -184,7 +184,7 @@ function initTimeline(data) {
     const cx = x(d.year);
     svg.append('line').attr('x1', cx).attr('x2', cx)
       .attr('y1', y(d.abandoned) + 8).attr('y2', H + 4)
-      .attr('stroke', '#7a756c').attr('stroke-width', 1).attr('stroke-dasharray', '3,3');
+      .attr('stroke', '#888888').attr('stroke-width', 1).attr('stroke-dasharray', '3,3');
   });
 
   // Axes
@@ -242,12 +242,12 @@ function initCompareChart(data) {
   svg.append('text').attr('text-anchor', 'middle').attr('dy', '-0.5em')
     .attr('fill', '#ede9e0')
     .attr('font-size', '26px')
-    .attr('font-family', 'Playfair Display, serif').attr('font-weight', '700')
+    .attr('font-family', 'Encode Sans, sans-serif').attr('font-weight', '700')
     .text('32 079');
 
   svg.append('text').attr('text-anchor', 'middle').attr('dy', '1.1em')
-    .attr('fill', '#7a756c').attr('font-size', '9.5px')
-    .attr('font-family', 'DM Sans, sans-serif').attr('letter-spacing', '0.06em')
+    .attr('fill', '#888888').attr('font-size', '9.5px')
+    .attr('font-family', 'Encode Sans, sans-serif').attr('letter-spacing', '0.06em')
     .text('animaux accueillis');
 
   // Légende

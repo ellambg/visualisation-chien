@@ -235,9 +235,9 @@
       { "name": "Glaris",         "code": "GL", "population_k": 40,   "dogs_estimate": 5,   "lat": 47.0403, "lng": 9.0682 }
     ],
     "intake_reasons": [
-      { "reason": "Abandon volontaire", "count": 25403, "percentage": 79, "color": "#e8a020" },
-      { "reason": "Animal trouvé",      "count": 5449,  "percentage": 17, "color": "#d45a2a" },
-      { "reason": "Saisi / maltraitance", "count": 1234, "percentage": 4, "color": "#6c9e6c" }
+      { "reason": "Abandon volontaire", "count": 25403, "percentage": 79, "color": "#c49a3e" },
+      { "reason": "Animal trouvé",      "count": 5449,  "percentage": 17, "color": "#6699cc" },
+      { "reason": "Saisi / maltraitance", "count": 1234, "percentage": 4, "color": "#7a8a3a" }
     ],
     "annual_dogs": [
       { "year": 2019, "abandoned": 780,  "label": "Avant COVID" },

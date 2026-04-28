@@ -8,8 +8,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -27,12 +27,11 @@
   <nav id="navbar">
     <div class="nav-logo">L'abandon invisible</div>
     <ul class="nav-links">
-      <li><a href="#section-world">Monde</a></li>
-      <li><a href="#section-europe">Europe</a></li>
-      <li><a href="#section-switzerland">Suisse</a></li>
+      <li><a href="#section-storymap">Carte</a></li>
       <li><a href="#section-dots">1 826 chiens</a></li>
       <li><a href="#section-social">Réseaux</a></li>
-      <li><a href="#section-shelters">Refuges</a></li>
+      <li><a href="#section-compare">Analyse</a></li>
+      <li><a href="#section-shelters-map">Refuges</a></li>
       <li><a href="#section-method">Sources</a></li>
     </ul>
   </nav>
@@ -58,8 +57,6 @@
       <span>Appuyez pour explorer</span>
       <div class="scroll-arrow"></div>
     </button>
-
-
   </section>
 
   <!-- ══════════════════════════════════════════════
@@ -82,162 +79,44 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       SECTION 1 — LE MONDE
+       STORYMAP 1A — Monde · Europe
   ══════════════════════════════════════════════ -->
-  <section id="section-world">
-    <div class="story-block">
-      <div class="story-text fade-in-up">
-        <p class="section-eyebrow">À l'échelle mondiale</p>
-        <h2>200 millions.<br>Le chiffre qu'on<br>préfère ignorer.</h2>
-        <div class="divider"></div>
-        <p class="story-body">
-          L'Organisation mondiale de la santé estime à <strong>200 millions</strong>
-          le nombre de chiens errants dans le monde.
-          D'autres rapports parlent de <strong>360 millions d'animaux</strong>
-          de compagnie sans foyer — chiens et chats confondus.
-        </p>
-        <p class="story-body">
-          En <strong>Asie</strong>, l'Inde recense jusqu'à <strong>35 millions</strong> de chiens errants,
-          la Chine <strong>27 millions</strong>. En <strong>Amérique du Sud</strong>, le Brésil en compte
-          <strong>30 millions</strong>, le Mexique <strong>20 millions</strong>. En <strong>Afrique</strong>,
-          l'Éthiopie et le Nigéria dépassent chacun les <strong>7 millions</strong>.
-          Même les pays riches ne sont pas épargnés : les États-Unis voient
-          <strong>3,1 millions d'animaux</strong> entrer en refuge chaque année.
-        </p>
-        <p class="story-body">
-          <strong>Dubaï</strong> est un cas particulier du moment : les conflits qui secouent la région
-          depuis 2023 poussent des expatriés à fuir précipitamment, laissant leurs animaux derrière eux.
-        </p>
-        <div class="stat-pill">
-          <span class="stat-pill-number">200M</span>
-          <span class="stat-pill-label">chiens errants estimés dans le monde</span>
-        </div>
-        <p class="story-note">Cette carte ne recense pas tous les pays — elle met en avant les chiffres les plus frappants de chaque continent à titre de représentation.</p>
-        <p class="story-source">Source : OMS / FOUR PAWS / ASPCA / Instituto Pet Brasil / AWBI / ONG locales Dubaï</p>
+  <section id="section-storymap-world">
+
+    <div id="storymap-world-map-wrapper">
+      <div id="storymap-world-map"></div>
+
+      <div id="story-card-world">
+        <p class="card-eyebrow"></p>
+        <h2 class="card-title"></h2>
+        <div class="card-body"></div>
+        <p class="card-source"></p>
       </div>
-      <div class="story-visual fade-in">
-        <div class="map-wrapper">
-          <div id="world-map"></div>
-        </div>
-        <p class="map-hint">Cliquez sur une bulle pour les détails</p>
-        <div class="world-legend" id="world-legend"></div>
-        <div class="world-info-panel" id="world-info"></div>
-      </div>
+
+      <div class="storymap-section-label" id="storymap-world-label"></div>
+
+      <nav class="storymap-nav" id="storymap-nav" aria-label="Navigation carte">
+        <button class="storymap-nav-dot active" data-section="world"  title="Monde"></button>
+        <button class="storymap-nav-dot"         data-section="europe" title="Europe"></button>
+      </nav>
     </div>
+
+    <div id="storymap-world-scroll">
+      <div class="story-step" data-chapter="world-overview"></div>
+      <div class="story-step" data-chapter="world-asia"></div>
+      <div class="story-step" data-chapter="world-americas"></div>
+      <div class="story-step" data-chapter="world-africa"></div>
+      <div class="story-step" data-chapter="world-dubai"></div>
+      <div class="story-step" data-chapter="europe-overview"></div>
+      <div class="story-step" data-chapter="europe-east"></div>
+      <div class="story-step" data-chapter="europe-west"></div>
+      <div class="story-step" data-chapter="europe-netherlands"></div>
+    </div>
+
   </section>
 
   <!-- ══════════════════════════════════════════════
-       SECTION 2 — EUROPE : LE GRAND ÉCART
-  ══════════════════════════════════════════════ -->
-  <section id="section-europe">
-    <div class="story-block story-block--reverse">
-      <div class="story-text fade-in-up">
-        <p class="section-eyebrow">Focus Europe</p>
-        <h2>Un continent,<br>deux réalités.</h2>
-        <div class="divider"></div>
-        <p class="story-body">
-          En Europe, on ne parle pas du même problème selon les pays.
-          À l'Ouest : des <strong>flux annuels d'abandons</strong> gérés par des refuges.
-          À l'Est et au Sud : des <strong>populations entières de chiens errants</strong>,
-          héritées de décennies de non-gestion.
-        </p>
-        <p class="story-body">
-          La Roumanie ? Entre 500 000 et 600 000 chiens errants — conséquence directe
-          des démolitions forcées du régime Ceaușescu dans les années 1980.
-          La Grèce ? 3 millions de chiens et chats errants selon une étude MDPI de décembre 2024.
-          La Turquie ? 4 millions, et une loi de capture adoptée en urgence en juillet 2024.
-        </p>
-        <p class="story-body">
-          À l'opposé, les <strong>Pays-Bas</strong> ont quasiment éliminé les chiens errants
-          grâce à des décennies de politique cohérente : microchip obligatoire,
-          prise en charge immédiate, refuges structurés.
-        </p>
-        <p class="story-body europe-highlight">
-          La Suisse : <strong>11 chiens abandonnés pour 100 000 habitants</strong>.
-          Parmi les meilleurs chiffres d'Europe de l'Ouest.
-          Mais une tendance qui s'aggrave.
-        </p>
-        <p class="story-source">Source : Dogs Trust, SPA, Fundación Affinity, ICNF, FOUR PAWS, PSA/STS 2024</p>
-      </div>
-      <div class="story-visual fade-in">
-        <div class="map-wrapper" style="position:relative">
-          <div id="europe-map"></div>
-        </div>
-        <p class="map-hint">Cliquez sur un pays pour ses données</p>
-        <div class="europe-legend" id="europe-legend"></div>
-        <div class="europe-info-panel" id="europe-info"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════
-       SECTION 3 — ZOOM SUISSE
-  ══════════════════════════════════════════════ -->
-  <section id="section-switzerland">
-    <div class="section-intro fade-in-up">
-      <p class="section-eyebrow">Chez nous</p>
-      <h2>La Suisse, de plus près.</h2>
-      <div class="divider"></div>
-      <p class="story-body" style="max-width:600px;margin:0 auto">
-        La Protection Suisse des Animaux (PSA/STS) a recueilli
-        <strong>32 079 animaux</strong> en 2024 dans ses 66 sections affiliées.
-        Parmi eux, <strong>1 826 chiens</strong> recueillis —
-        contre 865 l'année précédente, soit une hausse de <strong>+111 %</strong>.
-      </p>
-    </div>
-
-    <div class="swiss-stats-grid fade-in-up">
-      <div class="swiss-stat-card">
-        <div class="swiss-stat-number counter" data-target="32079">0</div>
-        <div class="swiss-stat-label">animaux recueillis en 2024</div>
-        <div class="swiss-stat-source">PSA / STS 2024</div>
-      </div>
-      <div class="swiss-stat-card swiss-stat-card--accent">
-        <div class="swiss-stat-number counter" data-target="1826">0</div>
-        <div class="swiss-stat-label">chiens recueillis en 2024</div>
-        <div class="swiss-stat-source">PSA / STS 2024</div>
-      </div>
-      <div class="swiss-stat-card swiss-stat-card--warning">
-        <div class="swiss-stat-number">+111 %</div>
-        <div class="swiss-stat-label">par rapport à 2023 (865 chiens)</div>
-        <div class="swiss-stat-source">PSA / STS 2024</div>
-      </div>
-      <div class="swiss-stat-card">
-        <div class="swiss-stat-number">~20</div>
-        <div class="swiss-stat-label">chiens recueillis pour 100 000 habitants</div>
-        <div class="swiss-stat-source">Estimation proportionnelle</div>
-      </div>
-    </div>
-
-    <div class="story-block fade-in">
-      <div class="story-text">
-        <p class="section-eyebrow">Par canton</p>
-        <h3>Où sont ces chiens ?</h3>
-        <p class="story-body">
-          Il n'existe pas de statistiques officielles PSA/STS par canton.
-          La carte ci-contre représente une <strong>estimation proportionnelle
-          à la population</strong> de chaque canton — à interpréter avec prudence.
-        </p>
-        <p class="story-body">
-          Zurich, Berne et Vaud concentrent naturellement les plus grands volumes,
-          en lien avec leur densité de population.
-        </p>
-        <p class="story-note">
-          Ces données sont des estimations. Pour une analyse territoriale précise,
-          la piste officielle est la base de données Identitas (registre Amicus).
-        </p>
-      </div>
-      <div class="story-visual">
-        <div class="map-wrapper">
-          <div id="switzerland-map"></div>
-        </div>
-        <p class="map-hint">Cliquez sur un cercle pour voir le canton</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════
-       SECTION 4 — 1 009 POINTS
+       SECTION — 1 826 POINTS
   ══════════════════════════════════════════════ -->
   <section id="section-dots">
     <div class="section-intro fade-in-up">
@@ -255,21 +134,21 @@
       <div class="dots-sidebar fade-in-up">
         <div class="dots-legend">
           <div class="dots-legend-item">
-            <div class="dots-legend-dot" style="background:#e8a020"></div>
+            <div class="dots-legend-dot" style="background:#c49a3e"></div>
             <div>
               <strong>Abandonnés volontairement</strong><br>
               <span class="text-muted">Remis directement en refuge</span>
             </div>
           </div>
           <div class="dots-legend-item">
-            <div class="dots-legend-dot" style="background:#d45a2a"></div>
+            <div class="dots-legend-dot" style="background:#6699cc"></div>
             <div>
               <strong>Trouvés errants</strong><br>
               <span class="text-muted">Sans propriétaire identifié</span>
             </div>
           </div>
           <div class="dots-legend-item">
-            <div class="dots-legend-dot" style="background:#6c9e6c"></div>
+            <div class="dots-legend-dot" style="background:#7a8a3a"></div>
             <div>
               <strong>Saisis</strong><br>
               <span class="text-muted">Maltraitance ou confiscation</span>
@@ -282,25 +161,51 @@
         </div>
         <div class="dots-counter-display">
           <div class="dots-counter-item">
-            <span class="dots-counter-num" style="color:#e8a020">~1443</span>
+            <span class="dots-counter-num" style="color:#c49a3e">~1443</span>
             <span class="dots-counter-label">abandonnés</span>
           </div>
           <div class="dots-counter-item">
-            <span class="dots-counter-num" style="color:#d45a2a">~310</span>
+            <span class="dots-counter-num" style="color:#6699cc">~310</span>
             <span class="dots-counter-label">trouvés</span>
           </div>
           <div class="dots-counter-item">
-            <span class="dots-counter-num" style="color:#6c9e6c">~73</span>
+            <span class="dots-counter-num" style="color:#7a8a3a">~73</span>
             <span class="dots-counter-label">saisis</span>
           </div>
         </div>
       </div>
       <canvas id="dot-canvas"></canvas>
     </div>
+    <p class="story-source"><a href="https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/" target="_blank" rel="noopener">Source : PSA / STS 2024</a></p>
   </section>
 
   <!-- ══════════════════════════════════════════════
-       SECTION 5 — RÉSEAUX SOCIAUX
+       STORYMAP 1B — Suisse
+  ══════════════════════════════════════════════ -->
+  <section id="section-storymap-swiss">
+
+    <div id="storymap-swiss-map-wrapper">
+      <div id="storymap-swiss-map"></div>
+
+      <div id="story-card-swiss">
+        <p class="card-eyebrow"></p>
+        <h2 class="card-title"></h2>
+        <div class="card-body"></div>
+        <p class="card-source"></p>
+      </div>
+
+      <div class="storymap-section-label" id="storymap-swiss-label"></div>
+    </div>
+
+    <div id="storymap-swiss-scroll">
+      <div class="story-step" data-chapter="switzerland-overview"></div>
+      <div class="story-step" data-chapter="switzerland-jump"></div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION — RÉSEAUX SOCIAUX
   ══════════════════════════════════════════════ -->
   <section id="section-social">
     <div class="section-intro fade-in-up">
@@ -314,70 +219,59 @@
     </div>
 
     <div class="social-grid fade-in-up">
-
-      <div class="social-card social-card--image">
-        <img
-          src="assets/images/image1.jpg"
-          alt="Capture réseaux sociaux 1"
-          class="social-card-img"
-          loading="lazy"
-        />
+      <a class="social-card social-card--image" href="https://x.com/ByRakeshSimha/status/2031005355296330193" target="_blank" rel="noopener">
+        <div style="position:relative">
+          <img src="assets/images/image1.jpg" alt="Capture réseaux sociaux 1" class="social-card-img" loading="lazy" />
+          <div class="social-card-link-hint">Voir sur X ↗</div>
+        </div>
         <div class="social-card-body"></div>
-      </div>
-
-      <div class="social-card social-card--video">
+      </a>
+      <a class="social-card social-card--video" href="https://x.com/dodo/status/2000702415264211398" target="_blank" rel="noopener">
         <div class="social-video-wrapper">
           <video class="social-card-video" autoplay muted loop playsinline preload="auto">
             <source src="assets/videos/20260415-1224-27.2450299.mp4" type="video/mp4" />
           </video>
+          <div class="social-card-link-hint">Voir sur X ↗</div>
         </div>
         <div class="social-card-body"></div>
-      </div>
-
-      <div class="social-card social-card--image">
-        <img
-          src="assets/images/image2.jpg"
-          alt="Capture réseaux sociaux 2"
-          class="social-card-img"
-          loading="lazy"
-        />
+      </a>
+      <a class="social-card social-card--image" href="https://x.com/ABC7/status/2039705190119453124" target="_blank" rel="noopener">
+        <div style="position:relative">
+          <img src="assets/images/image2.jpg" alt="Capture réseaux sociaux 2" class="social-card-img" loading="lazy" />
+          <div class="social-card-link-hint">Voir sur X ↗</div>
+        </div>
         <div class="social-card-body"></div>
-      </div>
-
-      <div class="social-card social-card--video">
+      </a>
+      <a class="social-card social-card--video" href="https://x.com/tirajnews/status/2049028341769154738" target="_blank" rel="noopener">
         <div class="social-video-wrapper">
           <video class="social-card-video" autoplay muted loop playsinline preload="auto">
-            <source src="assets/videos/Enregistrement%202026-04-15%20143610.mp4" type="video/mp4" />
+            <source src="assets/videos/Enregistrement%202026-04-28%20094729.mp4" type="video/mp4" />
           </video>
+          <div class="social-card-link-hint">Voir sur X ↗</div>
         </div>
         <div class="social-card-body"></div>
-      </div>
-
-      <div class="social-card social-card--image">
-        <img
-          src="assets/images/image3.jpg"
-          alt="Capture réseaux sociaux 3"
-          class="social-card-img"
-          loading="lazy"
-        />
+      </a>
+      <a class="social-card social-card--image" href="https://x.com/AdoptionsUk/status/1900268024063553539" target="_blank" rel="noopener">
+        <div style="position:relative">
+          <img src="assets/images/image3.jpg" alt="Capture réseaux sociaux 3" class="social-card-img" loading="lazy" />
+          <div class="social-card-link-hint">Voir sur X ↗</div>
+        </div>
         <div class="social-card-body"></div>
-      </div>
-
-      <div class="social-card social-card--video">
+      </a>
+      <a class="social-card social-card--video" href="https://x.com/dodo/status/2000702415264211398" target="_blank" rel="noopener">
         <div class="social-video-wrapper">
           <video class="social-card-video" autoplay muted loop playsinline preload="auto">
             <source src="assets/videos/Enregistrement%202026-04-15%20143941.mp4" type="video/mp4" />
           </video>
+          <div class="social-card-link-hint">Voir sur X ↗</div>
         </div>
         <div class="social-card-body"></div>
-      </div>
-
+      </a>
     </div>
   </section>
 
-
   <!-- ══════════════════════════════════════════════
-       SECTION 6 — MISE EN PERSPECTIVE
+       SECTION — MISE EN PERSPECTIVE (donut)
   ══════════════════════════════════════════════ -->
   <section id="section-compare">
     <div class="story-block story-block--reverse">
@@ -410,7 +304,7 @@
             <div class="compare-stat-label">animaux par refuge en moyenne</div>
           </div>
         </div>
-        <p class="story-source">Source : PSA / STS 2024</p>
+        <p class="story-source"><a href="https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/" target="_blank" rel="noopener">Source : PSA / STS 2024</a></p>
       </div>
       <div class="story-visual fade-in">
         <div class="donut-wrapper">
@@ -422,53 +316,38 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       SECTION 7 — TROUVER UN REFUGE
+       STORYMAP 2 — Refuges en Suisse
   ══════════════════════════════════════════════ -->
-  <section id="section-shelters">
-    <div class="story-block">
-      <div class="story-text fade-in-up">
-        <p class="section-eyebrow">Agir localement</p>
-        <h2>Il y a peut-être<br>un chien qui attend<br>près de chez vous.</h2>
-        <div class="divider"></div>
-        <p class="story-body">
-          Ces 1 826 chiens ne sont pas une abstraction.
-          Ils sont dans des refuges, partout en Suisse, avec un nom, un passé,
-          et besoin d'une famille.
-        </p>
-        <p class="story-body">
-          Entrez votre code postal ou votre ville pour trouver
-          les refuges proches et les chiens disponibles à l'adoption.
-        </p>
-        <p class="story-note">
-          Cette liste présente les principaux refuges des grandes villes suisses.
-          Il en existe bien d'autres, plus petits ou locaux, à travers tout le pays.
-        </p>
+  <section id="section-shelters-map">
 
-        <div class="search-box">
-          <div class="search-input-wrapper">
-            <span class="search-icon">📮</span>
-            <input
-              type="text"
-              id="postal-input"
-              class="search-input"
-              placeholder="Code postal ou ville (ex: 1000, Bern…)"
-              maxlength="30"
-              autocomplete="off"
-            />
-          </div>
-          <div id="shelter-results"></div>
-        </div>
+    <div id="shelter-map-wrapper">
+      <div id="shelter-storymap-map"></div>
+
+      <div id="shelter-story-card">
+        <p class="card-eyebrow"></p>
+        <h2 class="card-title"></h2>
+        <div class="card-body"></div>
+        <p class="card-source"></p>
       </div>
-      <div class="story-visual fade-in">
-        <div id="shelter-map-container">
-          <div id="shelter-map"></div>
-        </div>
-      </div>
+
+      <div class="storymap-section-label" id="shelter-section-label"></div>
     </div>
+
+    <div id="shelter-storymap-scroll">
+      <div class="story-step" data-chapter="shelters-overview"></div>
+      <div class="story-step" data-chapter="shelter-0"></div>
+      <div class="story-step" data-chapter="shelter-1"></div>
+      <div class="story-step" data-chapter="shelter-2"></div>
+      <div class="story-step" data-chapter="shelter-3"></div>
+      <div class="story-step" data-chapter="shelter-4"></div>
+      <div class="story-step" data-chapter="shelter-5"></div>
+      <div class="story-step" data-chapter="shelter-6"></div>
+    </div>
+
   </section>
 
   <!-- ══════════════════════════════════════════════
-       SECTION 9 — MÉTHODE & SOURCES
+       SECTION — MÉTHODE & SOURCES
   ══════════════════════════════════════════════ -->
   <section id="section-method">
     <div class="section-intro fade-in-up">
@@ -515,9 +394,8 @@
 
   <!-- SCRIPTS -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/map.js"></script>
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="js/storymap.js"></script>
   <script src="js/charts.js"></script>
   <script src="js/app.js"></script>
 </body>

@@ -6,8 +6,9 @@
 const App = {
   data: null,
   dotAnim: null,
-  shelterMap: null,
-  shelterMarkers: {}
+  storymapWorld: null,
+  storymapSwiss: null,
+  storymapShelters: null
 };
 
 let scrollObs = null;
@@ -44,36 +45,57 @@ async function init() {
 
   // Puis les modules dépendants des données
   if (App.data) {
-    initMaps();
+    initStorymap();
     initCharts();
     buildSources();
-    buildShelterSearch();
   } else {
     console.warn('Aucune donnée chargée : certaines sections resteront vides.');
   }
 }
 
 /* ─────────────────────────────────────────────────────────────
-   MAPS
+   STORYMAP
 ───────────────────────────────────────────────────────────── */
-function initMaps() {
-  if (typeof window.MapModule === 'undefined') {
-    console.warn('MapModule non chargé.');
+function initStorymap() {
+  if (typeof window.StorymapModule === 'undefined') {
+    console.warn('StorymapModule non charge.');
     return;
   }
-
   try {
-    window.MapModule.initWorldMap(App.data);
-    window.MapModule.initEuropeMap(App.data);
-    window.MapModule.initSwitzerlandMap(App.data);
+    const { StoryMap, buildWorldEuropeChapters, buildSwissChapters, buildShelterChapters } = window.StorymapModule;
 
-    const shelterResult = window.MapModule.initShelterMap(App.data.shelters);
-    if (shelterResult) {
-      App.shelterMap = shelterResult.map;
-      App.shelterMarkers = shelterResult.markers || {};
-    }
+    // Storymap 1A : Monde + Europe
+    App.storymapWorld = new StoryMap(App.data, {
+      mapId:          'storymap-world-map',
+      cardId:         'story-card-world',
+      labelId:        'storymap-world-label',
+      navSelector:    '#storymap-nav .storymap-nav-dot',
+      scrollSelector: '#storymap-world-scroll .story-step',
+      chapters:       buildWorldEuropeChapters()
+    });
+
+    // Storymap 1B : Suisse
+    App.storymapSwiss = new StoryMap(App.data, {
+      mapId:          'storymap-swiss-map',
+      cardId:         'story-card-swiss',
+      labelId:        'storymap-swiss-label',
+      navSelector:    null,
+      scrollSelector: '#storymap-swiss-scroll .story-step',
+      chapters:       buildSwissChapters()
+    });
+
+    // Storymap 2 : Refuges
+    App.storymapShelters = new StoryMap(App.data, {
+      mapId:          'shelter-storymap-map',
+      cardId:         'shelter-story-card',
+      labelId:        'shelter-section-label',
+      navSelector:    null,
+      scrollSelector: '#shelter-storymap-scroll .story-step',
+      chapters:       buildShelterChapters(App.data.shelters)
+    });
+
   } catch (error) {
-    console.error('Erreur pendant l’initialisation des cartes :', error);
+    console.error('Erreur storymap :', error);
   }
 }
 
@@ -91,7 +113,7 @@ function initCharts() {
     window.ChartsModule.initCompareChart(App.data);
     App.dotAnim = new window.ChartsModule.DotAnimation('dot-canvas', App.data);
   } catch (error) {
-    console.error('Erreur pendant l’initialisation des graphiques :', error);
+    console.error('Erreur graphiques :', error);
   }
 }
 
@@ -245,111 +267,11 @@ function buildSources() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SHELTER SEARCH
-───────────────────────────────────────────────────────────── */
-function buildShelterSearch() {
-  const input = document.getElementById('postal-input');
-  const list = document.getElementById('shelter-results');
-
-  if (!input || !list || !App.data || !Array.isArray(App.data.shelters)) return;
-
-  renderShelters(App.data.shelters.slice(0, 5), list);
-
-  let debounceTimer = null;
-
-  input.addEventListener('input', () => {
-    clearTimeout(debounceTimer);
-
-    debounceTimer = setTimeout(() => {
-      const query = input.value.trim().toLowerCase();
-
-      if (query.length < 2) {
-        renderShelters(App.data.shelters.slice(0, 5), list);
-        return;
-      }
-
-      const found = App.data.shelters.filter(shelter =>
-        shelter.postal.startsWith(query) ||
-        shelter.city.toLowerCase().includes(query) ||
-        shelter.name.toLowerCase().includes(query)
-      );
-
-      renderShelters(found.length ? found : App.data.shelters.slice(0, 3), list);
-
-      if (found.length > 0 && App.shelterMap) {
-        const lats = found.map(shelter => shelter.lat);
-        const lngs = found.map(shelter => shelter.lng);
-
-        try {
-          App.shelterMap.fitBounds(
-            [
-              [Math.min(...lats) - 0.1, Math.min(...lngs) - 0.1],
-              [Math.max(...lats) + 0.1, Math.max(...lngs) + 0.1]
-            ],
-            { padding: [20, 20] }
-          );
-        } catch (error) {
-          console.warn('Impossible de zoomer sur les refuges trouvés :', error);
-        }
-      }
-    }, 320);
-  });
-}
-
-function renderShelters(shelters, container) {
-  if (!container) return;
-
-  if (!shelters.length) {
-    container.innerHTML = `
-      <p class="text-muted" style="font-size:0.85rem;padding:0.5rem 0">
-        Aucun refuge trouvé.
-      </p>
-    `;
-    return;
-  }
-
-  container.innerHTML = shelters.map(shelter => `
-    <div class="shelter-card" data-postal="${shelter.postal}">
-      <div class="shelter-name">🐾 ${shelter.name}</div>
-      <div class="shelter-info">📍 ${shelter.city} · ${shelter.phone}</div>
-      <div class="shelter-info">🕐 ${shelter.hours}</div>
-      <a href="${shelter.website}" target="_blank" rel="noopener" class="shelter-link" onclick="event.stopPropagation()">Visiter le refuge ↗</a>
-    </div>
-  `).join('');
-
-  container.querySelectorAll('.shelter-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const postal = card.dataset.postal;
-      selectShelter(postal);
-    });
-  });
-}
-
-window.selectShelter = function(postal) {
-  document.querySelectorAll('.shelter-card').forEach(card => {
-    card.classList.remove('selected');
-  });
-
-  const selectedCard = document.querySelector(`.shelter-card[data-postal="${postal}"]`);
-  if (selectedCard) {
-    selectedCard.classList.add('selected');
-  }
-
-  const markerData = App.shelterMarkers[postal];
-  if (markerData && App.shelterMap) {
-    App.shelterMap.setView([markerData.shelter.lat, markerData.shelter.lng], 13, {
-      animate: true
-    });
-    markerData.marker.openPopup();
-  }
-};
-
-/* ─────────────────────────────────────────────────────────────
    UI
 ───────────────────────────────────────────────────────────── */
 function setupHeroCta() {
   document.getElementById('hero-cta')?.addEventListener('click', () => {
-    const next = document.getElementById('section-intro-video') || document.getElementById('section-world');
+    const next = document.getElementById('section-intro-video') || document.getElementById('section-storymap');
     next?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
