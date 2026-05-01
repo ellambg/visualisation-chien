@@ -233,9 +233,10 @@ em { font-style: italic; color: var(--accent); }
 #story-card-swiss,
 #story-card {
   position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%) translateY(14px);
+  bottom: 1%;
+  right: 3%;
+  left: auto;
+  transform: translateY(14px);
   z-index: 10;
   background: rgba(12, 12, 12, 0.88);
   backdrop-filter: blur(20px);
@@ -253,7 +254,7 @@ em { font-style: italic; color: var(--accent); }
 #story-card-swiss.card-visible,
 #story-card.card-visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .card-eyebrow {
@@ -383,6 +384,111 @@ em { font-style: italic; color: var(--accent); }
 #shelter-story-card.card-visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Bouton toggle exploration */
+.shelter-explore-btn {
+  position: absolute;
+  top: 80px;
+  right: 1.5rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  background: rgba(12,12,12,0.88);
+  border: 1px solid rgba(196,154,62,0.35);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.shelter-explore-btn:hover {
+  background: rgba(196,154,62,0.12);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.shelter-explore-btn.is-explore {
+  background: rgba(196,154,62,0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Bloc d'explication modes dans la carte overview */
+.shelter-mode-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.shelter-mode-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.shelter-mode-option strong { color: var(--text); }
+.shelter-mode-icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  margin-top: 0.1rem;
+  opacity: 0.7;
+}
+
+/* Texte "refuge non listé" */
+.shelter-not-found {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  z-index: 20;
+  font-size: 0.72rem;
+  color: var(--muted);
+  pointer-events: auto;
+  text-align: right;
+  background: rgba(12,12,12,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(237,233,224,0.1);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+}
+.shelter-not-found a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.shelter-not-found a:hover { opacity: 0.7; }
+
+/* Popups MapLibre */
+.maplibregl-popup-content {
+  background: rgba(12, 12, 12, 0.92) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(237, 233, 224, 0.12) !important;
+  border-radius: 10px !important;
+  padding: 0.9rem 1.1rem !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+  color: var(--text);
+}
+.maplibregl-popup-tip {
+  border-top-color: rgba(12, 12, 12, 0.92) !important;
+}
+.maplibregl-popup-close-button {
+  color: var(--muted) !important;
+  font-size: 1.1rem !important;
+  padding: 0.3rem 0.5rem !important;
+}
+.maplibregl-popup-close-button:hover {
+  color: var(--text) !important;
+  background: transparent !important;
 }
 
 /* Contenu de la carte refuge */

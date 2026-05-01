@@ -91,6 +91,7 @@ function initStorymap() {
       labelId:        'shelter-section-label',
       navSelector:    null,
       scrollSelector: '#shelter-storymap-scroll .story-step',
+      exploreBtnId:   'shelter-explore-btn',
       chapters:       buildShelterChapters(App.data.shelters)
     });
 
