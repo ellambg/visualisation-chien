@@ -1,7 +1,9 @@
 /**
  * app.js — Orchestrateur principal
  */
-'use strict';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { StoryMap, buildWorldEuropeChapters, buildSwissChapters, buildShelterChapters } from './storymap.js';
+import { DotAnimation, initTimeline, initCompareChart } from './charts.js';
 
 const App = {
   data: null,
@@ -57,13 +59,7 @@ async function init() {
    STORYMAP
 ───────────────────────────────────────────────────────────── */
 function initStorymap() {
-  if (typeof window.StorymapModule === 'undefined') {
-    console.warn('StorymapModule non charge.');
-    return;
-  }
   try {
-    const { StoryMap, buildWorldEuropeChapters, buildSwissChapters, buildShelterChapters } = window.StorymapModule;
-
     // Storymap 1A : Monde + Europe
     App.storymapWorld = new StoryMap(App.data, {
       mapId:          'storymap-world-map',
@@ -84,15 +80,15 @@ function initStorymap() {
       chapters:       buildSwissChapters()
     });
 
-    // Storymap 2 : Refuges
+    // Storymap 2 : Refuges (exploration libre uniquement)
     App.storymapShelters = new StoryMap(App.data, {
-      mapId:          'shelter-storymap-map',
-      cardId:         'shelter-story-card',
-      labelId:        'shelter-section-label',
-      navSelector:    null,
-      scrollSelector: '#shelter-storymap-scroll .story-step',
-      exploreBtnId:   'shelter-explore-btn',
-      chapters:       buildShelterChapters(App.data.shelters)
+      mapId:           'shelter-storymap-map',
+      cardId:          null,
+      labelId:         'shelter-section-label',
+      navSelector:     null,
+      scrollSelector:  null,
+      explorationOnly: true,
+      chapters:        buildShelterChapters(App.data.shelters)
     });
 
   } catch (error) {
@@ -104,15 +100,10 @@ function initStorymap() {
    CHARTS
 ───────────────────────────────────────────────────────────── */
 function initCharts() {
-  if (typeof window.ChartsModule === 'undefined') {
-    console.warn('ChartsModule non chargé.');
-    return;
-  }
-
   try {
-    window.ChartsModule.initTimeline(App.data);
-    window.ChartsModule.initCompareChart(App.data);
-    App.dotAnim = new window.ChartsModule.DotAnimation('dot-canvas', App.data);
+    initTimeline(App.data);
+    initCompareChart(App.data);
+    App.dotAnim = new DotAnimation('dot-canvas', App.data);
   } catch (error) {
     console.error('Erreur graphiques :', error);
   }
@@ -280,8 +271,8 @@ function setupHeroCta() {
 function setupSectionButtons() {
   const sections = Array.from(document.querySelectorAll('section'));
   sections.forEach((section, i) => {
-    if (i === sections.length - 1) return; // pas de bouton sur la dernière
-    if (section.id === 'hero') return; // déjà un bouton dans le hero
+    if (i === sections.length - 1) return;
+    if (section.id === 'hero') return;
     const next = sections[i + 1];
     const btn = document.createElement('button');
     btn.className = 'section-next-btn';
@@ -330,10 +321,7 @@ function setupSmoothScroll() {
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         event.preventDefault();
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });

@@ -5,7 +5,9 @@
       "Bash(python3 -c ' *)",
       "Bash(node -e \"const fs=require\\('fs'\\);const l=fs.readFileSync\\('c:/Users/carla/OneDrive/Documents/GitHub/visualisation-chien/js/app.js','utf8'\\).split\\('\\\\n'\\)[65];console.log\\(JSON.stringify\\(l\\)\\);for\\(let i=0;i<l.length;i++\\)console.log\\(i,l.charCodeAt\\(i\\),l[i]\\);\")",
       "Bash(node -e ' *)",
-      "Bash(node --input-type=module)"
+      "Bash(node --input-type=module)",
+      "Bash(powershell -Command \"Get-Content 'c:\\\\Users\\\\carla\\\\Downloads\\\\swissBOUNDARIES3D_1_5_wgs84 \\(1\\).geojson' -TotalCount 5\")",
+      "Bash(powershell -Command \"Get-Content 'c:\\\\Users\\\\carla\\\\Downloads\\\\swissBOUNDARIES3D_1_5_wgs84 \\(1\\).geojson' | Select-String -Pattern 'ICC|NAME|type.*Feature' | Select-Object -First 10\")"
     ]
   }
 }

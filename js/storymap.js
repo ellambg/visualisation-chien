@@ -2,6 +2,7 @@
  * storymap.js — Scrollytelling MapLibre GL JS
  * Deux instances : carte monde/europe/suisse + carte refuges
  */
+import maplibregl from 'maplibre-gl';
 
 // ── DONNEES CHAPITRES ──────────────────────────────────────────────────────
 
@@ -248,8 +249,23 @@ class StoryMap {
       if (needsWorld)    this.addWorldLayer();
       if (needsShelters) this.addShelterLayer();
       this.addSwissBorderLayer();
-      this.setupScroll();
-      this.goToChapter(this.chapters[0]);
+
+      if (this.opts.explorationOnly) {
+        this.explorationMode = true;
+        this.map.dragPan.enable();
+        this.map.touchZoomRotate.enable();
+        const cam = this.chapters[0]?.camera;
+        if (cam) this.map.jumpTo({ center: cam.center, zoom: cam.zoom, pitch: cam.pitch || 0, bearing: cam.bearing || 0 });
+        // Afficher le contour suisse directement
+        if (this.map.getLayer('swiss-border-line')) {
+          this.map.setLayoutProperty('swiss-border-fill', 'visibility', 'visible');
+          this.map.setLayoutProperty('swiss-border-glow', 'visibility', 'visible');
+          this.map.setLayoutProperty('swiss-border-line', 'visibility', 'visible');
+        }
+      } else {
+        this.setupScroll();
+        this.goToChapter(this.chapters[0]);
+      }
     });
 
     // Clics nav dots
@@ -586,43 +602,24 @@ class StoryMap {
   }
 
   addSwissBorderLayer() {
-    const swissCoords = [
-      [5.96, 46.13],
-      [6.50, 46.14],
-      [6.84, 46.38],
-      [7.00, 45.93],
-      [7.56, 45.89],
-      [8.13, 45.86],
-      [8.46, 46.00],
-      [8.95, 45.83],
-      [9.23, 46.25],
-      [9.52, 46.17],
-      [10.07, 46.21],
-      [10.49, 46.86],
-      [9.52, 47.07],
-      [9.63, 47.35],
-      [9.54, 47.55],
-      [9.20, 47.66],
-      [8.74, 47.70],
-      [8.57, 47.81],
-      [8.10, 47.76],
-      [7.59, 47.58],
-      [7.22, 47.50],
-      [6.86, 47.44],
-      [6.45, 46.89],
-      [6.16, 46.52],
-      [5.96, 46.13]
-    ];
-
     this.map.addSource('swiss-border', {
       type: 'geojson',
-      data: {
-        type: 'Feature',
-        geometry: { type: 'Polygon', coordinates: [swissCoords] },
-        properties: {}
+      data: 'data/swiss-borders.geojson'
+    });
+
+    // Légère teinte dorée sur le territoire suisse
+    this.map.addLayer({
+      id: 'swiss-border-fill',
+      type: 'fill',
+      source: 'swiss-border',
+      layout: { visibility: 'none' },
+      paint: {
+        'fill-color': '#c49a3e',
+        'fill-opacity': 0.05
       }
     });
 
+    // Halo extérieur (glow)
     this.map.addLayer({
       id: 'swiss-border-glow',
       type: 'line',
@@ -630,12 +627,13 @@ class StoryMap {
       layout: { 'line-join': 'round', 'line-cap': 'round', visibility: 'none' },
       paint: {
         'line-color': '#c49a3e',
-        'line-width': 12,
-        'line-blur': 8,
-        'line-opacity': 0.35
+        'line-width': 10,
+        'line-blur':  7,
+        'line-opacity': 0.3
       }
     });
 
+    // Contours cantonaux nets
     this.map.addLayer({
       id: 'swiss-border-line',
       type: 'line',
@@ -643,8 +641,8 @@ class StoryMap {
       layout: { 'line-join': 'round', 'line-cap': 'round', visibility: 'none' },
       paint: {
         'line-color': '#c49a3e',
-        'line-width': 2,
-        'line-opacity': 0.9
+        'line-width': 1,
+        'line-opacity': 0.65
       }
     });
   }
@@ -672,7 +670,8 @@ class StoryMap {
 
     // Contour Suisse
     if (this.map.getLayer('swiss-border-line')) {
-      const showSwiss = chapter.section === 'switzerland';
+      const showSwiss = chapter.section === 'switzerland' || chapter.section === 'shelters';
+      this.map.setLayoutProperty('swiss-border-fill', 'visibility', showSwiss ? 'visible' : 'none');
       this.map.setLayoutProperty('swiss-border-glow', 'visibility', showSwiss ? 'visible' : 'none');
       this.map.setLayoutProperty('swiss-border-line', 'visibility', showSwiss ? 'visible' : 'none');
     }
@@ -724,6 +723,7 @@ class StoryMap {
   }
 
   setupScroll() {
+    if (this.opts.explorationOnly) return;
     this.explorationMode = false;
     const steps = document.querySelectorAll(this.opts.scrollSelector);
     this._scrollContainer = steps[0]?.parentElement || null;
@@ -803,4 +803,4 @@ class StoryMap {
   }
 }
 
-window.StorymapModule = { StoryMap, buildWorldEuropeChapters, buildSwissChapters, buildShelterChapters };
+export { StoryMap, buildWorldEuropeChapters, buildSwissChapters, buildShelterChapters };

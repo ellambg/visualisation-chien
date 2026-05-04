@@ -1,6 +1,7 @@
 /**
  * charts.js — Visualisations : dots animation, timeline, comparaison
  */
+import * as d3 from 'd3';
 
 // ── DOT ANIMATION (1826 points = 1826 chiens) ─────────────────────────────
 class DotAnimation {
@@ -266,4 +267,4 @@ function initCompareChart(data) {
   }
 }
 
-window.ChartsModule = { DotAnimation, initTimeline, initCompareChart };
+export { DotAnimation, initTimeline, initCompareChart };

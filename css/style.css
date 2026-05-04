@@ -231,6 +231,7 @@ em { font-style: italic; color: var(--accent); }
 /* Carte flottante */
 #story-card-world,
 #story-card-swiss,
+#story-card-shelter,
 #story-card {
   position: absolute;
   bottom: 1%;
@@ -252,6 +253,7 @@ em { font-style: italic; color: var(--accent); }
 }
 #story-card-world.card-visible,
 #story-card-swiss.card-visible,
+#story-card-shelter.card-visible,
 #story-card.card-visible {
   opacity: 1;
   transform: translateY(0);
@@ -444,29 +446,19 @@ em { font-style: italic; color: var(--accent); }
   opacity: 0.7;
 }
 
-/* Texte "refuge non listé" */
-.shelter-not-found {
-  position: absolute;
-  bottom: 1rem;
-  right: 1.5rem;
-  z-index: 20;
-  font-size: 0.72rem;
-  color: var(--muted);
-  pointer-events: auto;
-  text-align: right;
-  background: rgba(12,12,12,0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(237,233,224,0.1);
-  border-radius: 8px;
-  padding: 0.45rem 0.85rem;
+/* Lien "refuge non listé" dans la card */
+#story-card-shelter .card-source {
+  opacity: 1;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(237,233,224,0.1);
+  padding-top: 0.75rem;
 }
-.shelter-not-found a {
+#story-card-shelter .card-source a {
   color: var(--accent);
   text-decoration: none;
   transition: opacity 0.2s;
 }
-.shelter-not-found a:hover { opacity: 0.7; }
+#story-card-shelter .card-source a:hover { opacity: 0.7; }
 
 /* Popups MapLibre */
 .maplibregl-popup-content {

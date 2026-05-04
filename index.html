@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -79,38 +78,55 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       STORYMAP 1A — Monde · Europe
+       CARTE MONDE + EUROPE
   ══════════════════════════════════════════════ -->
   <section id="section-storymap-world">
 
-    <div id="storymap-world-map-wrapper">
-      <div id="storymap-world-map"></div>
-
-      <div id="story-card-world">
-        <p class="card-eyebrow"></p>
-        <h2 class="card-title"></h2>
-        <div class="card-body"></div>
-        <p class="card-source"></p>
-      </div>
-
-      <div class="storymap-section-label" id="storymap-world-label"></div>
-
-      <nav class="storymap-nav" id="storymap-nav" aria-label="Navigation carte">
-        <button class="storymap-nav-dot active" data-section="world"  title="Monde"></button>
-        <button class="storymap-nav-dot"         data-section="europe" title="Europe"></button>
-      </nav>
+    <div class="section-intro fade-in-up">
+      <p class="section-eyebrow">Contexte mondial</p>
+      <h2>~200 millions de chiens errants</h2>
+      <div class="divider"></div>
+      <p class="story-body" style="max-width:640px;margin:0 auto">
+        L'OMS estime à <strong>200 millions</strong> le nombre de chiens errants dans le monde.
+        Cliquez sur un pays pour afficher les données.
+      </p>
     </div>
 
-    <div id="storymap-world-scroll">
-      <div class="story-step" data-chapter="world-overview"></div>
-      <div class="story-step" data-chapter="world-asia"></div>
-      <div class="story-step" data-chapter="world-americas"></div>
-      <div class="story-step" data-chapter="world-africa"></div>
-      <div class="story-step" data-chapter="world-dubai"></div>
-      <div class="story-step" data-chapter="europe-overview"></div>
-      <div class="story-step" data-chapter="europe-east"></div>
-      <div class="story-step" data-chapter="europe-west"></div>
-      <div class="story-step" data-chapter="europe-netherlands"></div>
+    <div id="storymap-world-map-wrapper">
+      <div id="storymap-world-map"></div>
+    </div>
+
+    <div class="world-stats-row fade-in-up">
+      <div class="world-stat">
+        <div class="world-stat-region" style="color:#6699cc">Asie</div>
+        <div class="world-stat-num">62 M</div>
+        <div class="world-stat-detail">Inde 35M · Chine 27M</div>
+      </div>
+      <div class="world-stat">
+        <div class="world-stat-region" style="color:#7a8a3a">Amériques</div>
+        <div class="world-stat-num">53 M</div>
+        <div class="world-stat-detail">Brésil 30M · Mexique 20M · USA 3,1M/an</div>
+      </div>
+      <div class="world-stat">
+        <div class="world-stat-region" style="color:#c49a3e">Afrique</div>
+        <div class="world-stat-num">14 M</div>
+        <div class="world-stat-detail">Éthiopie 7M · Nigeria 7M</div>
+      </div>
+      <div class="world-stat">
+        <div class="world-stat-region" style="color:#c49a3e">Europe Est</div>
+        <div class="world-stat-num">7,5 M</div>
+        <div class="world-stat-detail">Turquie 4M · Grèce 3M · Roumanie 500k</div>
+      </div>
+      <div class="world-stat">
+        <div class="world-stat-region" style="color:#c49a3e">Europe Ouest</div>
+        <div class="world-stat-num">~373 k</div>
+        <div class="world-stat-detail">France 100k · Espagne 173k · Belgique 60k</div>
+      </div>
+      <div class="world-stat world-stat--ch">
+        <div class="world-stat-region">🇨🇭 Suisse</div>
+        <div class="world-stat-num">1 826</div>
+        <div class="world-stat-detail">chiens en refuge · +111% en un an</div>
+      </div>
     </div>
 
   </section>
@@ -180,26 +196,47 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       STORYMAP 1B — Suisse
+       CARTE SUISSE
   ══════════════════════════════════════════════ -->
   <section id="section-storymap-swiss">
 
-    <div id="storymap-swiss-map-wrapper">
-      <div id="storymap-swiss-map"></div>
-
-      <div id="story-card-swiss">
-        <p class="card-eyebrow"></p>
-        <h2 class="card-title"></h2>
-        <div class="card-body"></div>
-        <p class="card-source"></p>
+    <div class="swiss-layout">
+      <div class="swiss-layout-map">
+        <div id="storymap-swiss-map-wrapper">
+          <div id="storymap-swiss-map"></div>
+        </div>
       </div>
-
-      <div class="storymap-section-label" id="storymap-swiss-label"></div>
-    </div>
-
-    <div id="storymap-swiss-scroll">
-      <div class="story-step" data-chapter="switzerland-overview"></div>
-      <div class="story-step" data-chapter="switzerland-jump"></div>
+      <div class="swiss-layout-info fade-in-up">
+        <p class="section-eyebrow">Chez nous</p>
+        <h2>La Suisse en 2024</h2>
+        <div class="divider"></div>
+        <div class="swiss-big-stats">
+          <div class="swiss-big-stat">
+            <div class="swiss-big-num"><span class="counter" data-target="1826">0</span></div>
+            <div class="swiss-big-label">chiens recueillis</div>
+          </div>
+          <div class="swiss-big-stat">
+            <div class="swiss-big-num" style="color:var(--accent-2)">+111%</div>
+            <div class="swiss-big-label">en un an</div>
+          </div>
+          <div class="swiss-big-stat">
+            <div class="swiss-big-num">32 079</div>
+            <div class="swiss-big-label">animaux accueillis</div>
+          </div>
+        </div>
+        <p class="story-body">
+          La Protection Suisse des Animaux (PSA/STS) a recueilli <strong>32 079 animaux</strong>
+          en 2024 dans ses 66 sections affiliées. Parmi eux, <strong>1 826 chiens</strong>
+          — contre 865 l'année précédente.
+        </p>
+        <p class="story-body">
+          Achats impulsifs, coûts vétérinaires sous-estimés, lassitude :
+          la Suisse n'est plus à l'abri de la crise.
+        </p>
+        <p class="story-source">
+          <a href="https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/" target="_blank" rel="noopener">Source : PSA / STS 2024 — RTS 2025</a>
+        </p>
+      </div>
     </div>
 
   </section>
@@ -320,37 +357,31 @@
   ══════════════════════════════════════════════ -->
   <section id="section-shelters-map">
 
-    <div id="shelter-map-wrapper">
-      <div id="shelter-storymap-map"></div>
-
-      <div id="shelter-story-card">
-        <p class="card-eyebrow"></p>
-        <h2 class="card-title"></h2>
-        <div class="card-body"></div>
-        <p class="card-source"></p>
-      </div>
-
-      <div class="storymap-section-label" id="shelter-section-label"></div>
-
-      <button class="shelter-explore-btn" id="shelter-explore-btn">
-        <span>Explorer la carte</span>
-      </button>
-
-      <p class="shelter-not-found">
-        Votre refuge n'apparaît pas sur la carte ?
-        <a href="mailto:contact@abandon-invisible.ch">Contactez-nous</a>
+    <div class="section-intro fade-in-up">
+      <p class="section-eyebrow">Agir localement</p>
+      <h2>Les refuges<br>en Suisse</h2>
+      <div class="divider"></div>
+      <p class="story-body" style="max-width:580px;margin:0 auto">
+        Ces 1 826 chiens ne sont pas une abstraction. Ils sont dans des refuges,
+        partout en Suisse. Cliquez sur une épingle pour voir les informations du refuge.
       </p>
     </div>
 
-    <div id="shelter-storymap-scroll">
-      <div class="story-step" data-chapter="shelters-overview"></div>
-      <div class="story-step" data-chapter="shelter-0"></div>
-      <div class="story-step" data-chapter="shelter-1"></div>
-      <div class="story-step" data-chapter="shelter-2"></div>
-      <div class="story-step" data-chapter="shelter-3"></div>
-      <div class="story-step" data-chapter="shelter-4"></div>
-      <div class="story-step" data-chapter="shelter-5"></div>
-      <div class="story-step" data-chapter="shelter-6"></div>
+    <div id="shelter-map-wrapper">
+      <div id="shelter-storymap-map"></div>
+      <div class="storymap-section-label" id="shelter-section-label"></div>
+
+      <div id="story-card-shelter" class="card-visible">
+        <p class="card-eyebrow">Agir localement</p>
+        <h2 class="card-title">Les refuges en Suisse</h2>
+        <div class="card-body">
+          Cliquez sur une épingle pour afficher les informations du refuge.
+        </div>
+        <p class="card-source">
+          Votre refuge n'apparaît pas sur la carte ?
+          <a href="mailto:contact@abandon-invisible.ch">Contactez-nous</a>
+        </p>
+      </div>
     </div>
 
   </section>
@@ -402,10 +433,6 @@
   </footer>
 
   <!-- SCRIPTS -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-  <script src="js/storymap.js"></script>
-  <script src="js/charts.js"></script>
-  <script src="js/app.js"></script>
+  <script type="module" src="/js/app.js"></script>
 </body>
 </html>

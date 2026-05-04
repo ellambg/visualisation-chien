@@ -1,0 +1,34 @@
+# ── Node ──────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── Vite ──────────────────────────────────────────
+dist/
+dist-ssr/
+.vite/
+*.local
+
+# ── Env ───────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Données lourdes ───────────────────────────────
+# Frontières suisses officielles (10 MB) — à télécharger séparément
+public/data/swiss-borders.geojson
+
+# ── OS ────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Éditeurs ──────────────────────────────────────
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
