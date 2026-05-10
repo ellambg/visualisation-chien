@@ -119,7 +119,6 @@ function buildSources() {
 
   const sources = [
     {
-      icon: '🏛️',
       name: 'PSA / STS',
       desc: 'Protection Suisse des Animaux, statistiques officielles 2024 des 66 sections affiliées. Seule source fiable sur les abandons en Suisse.',
       type: 'psa',
@@ -127,7 +126,6 @@ function buildSources() {
       url: 'https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/'
     },
     {
-      icon: '🇦🇪',
       name: 'Marie France : Dubaï, animaux abandonnés',
       desc: 'Des expatriés fuient Dubaï en laissant leurs animaux derrière eux. Les vétérinaires sont appelés pour des euthanasies faute de refuges suffisants pour accueillir ces animaux.',
       type: 'media',
@@ -135,7 +133,6 @@ function buildSources() {
       url: 'https://www.mariefrance.fr/actualite/societe/a-dubai-des-expatries-abandonnent-leurs-animaux-derriere-eux-les-veterinaires-appeles-pour-des-euthanasies-1252201.html'
     },
     {
-      icon: '🇦🇪',
       name: '20 minutes : Expats fuient Dubaï et abandonnent leurs animaux',
       desc: 'Face aux conflits au Moyen-Orient, des expatriés quittent Dubaï précipitamment en abandonnant leurs animaux de compagnie, surchargeant les refuges locaux.',
       type: 'media',
@@ -143,7 +140,69 @@ function buildSources() {
       url: 'https://www.20min.ch/fr/story/conflit-au-moyen-orient-des-expats-fuient-dubai-et-abandonnent-leurs-animaux-de-compagnie-103522696'
     },
     {
-      icon: '🌍',
+      name: 'SPCA South Africa',
+      desc: 'Plus de 200 000 animaux (chiens et chats) pris en charge chaque année dans les refuges SPCA d\'Afrique du Sud. Estimation prudente : plusieurs dizaines de milliers de chiens abandonnés ou saisis par an. Seul réseau de refuges documenté à cette échelle sur le continent africain.',
+      type: 'intl',
+      typeLabel: 'Afrique du Sud',
+      url: 'https://capespca.co.za/'
+    },
+    {
+      name: 'Asiae : abandons d\'animaux en Corée du Sud',
+      desc: '~100 000–110 000 animaux abandonnés/an (majorité chiens) et ~70 000 chiens errants estimés. Principales causes : problèmes comportementaux (47,8 %), coûts sous-estimés (36,3 %), changements de situation (26,5 %).',
+      type: 'intl',
+      typeLabel: 'Corée du Sud',
+      url: 'https://www.asiae.co.kr/en/article/2025100808355193561'
+    },
+    {
+      name: 'Ministère de l\'Environnement japonais — statistiques chiens et chats',
+      desc: '~17 000 chiens pris en charge par les autorités japonaises par an, dont une partie abandonnée directement. Estimations actuelles : 10 000–20 000 chiens errants sur le territoire.',
+      type: 'opendata',
+      typeLabel: 'Japon',
+      url: 'https://www.env.go.jp/nature/dobutsu/aigo/2_data/statistics/dog-cat.html'
+    },
+    {
+      name: 'Chien.com — chiens errants dans le monde',
+      desc: 'Estimation de 10 000 à 20 000 chiens errants au Japon selon les données actuelles. Contexte comparatif international sur les populations de chiens sans foyer.',
+      type: 'intl',
+      typeLabel: 'Japon',
+      url: 'https://www.chien.com/monde/les-chiens-errants-21229.php'
+    },
+    {
+      name: 'CNA : abandons d\'animaux à Singapour (2023)',
+      desc: '285 cas d\'abandon recensés en 2023 à Singapour selon le rapport annuel de la SPCA. Malgré un faible chiffre absolu, les autorités alertent sur une hausse des signalements.',
+      type: 'intl',
+      typeLabel: 'Singapour',
+      url: 'https://www.channelnewsasia.com/singapore/animal-cruelty-abandonment-cases-2023-spca-report-4087421'
+    },
+    {
+      name: 'EnviroLiteracy — statistiques abandons animaux',
+      desc: '~6,5 millions d\'animaux entrent en refuge aux États-Unis chaque année (chiens inclus). Données compilées par l\'Environmental Literacy Council.',
+      type: 'intl',
+      typeLabel: 'États-Unis',
+      url: 'https://enviroliteracy.org/what-are-the-statistics-on-pet-abandonment/'
+    },
+    {
+      name: 'ZipDo — statistiques abandons animaux (causes)',
+      desc: 'Données sur les causes d\'abandon aux États-Unis : coûts vétérinaires, problèmes comportementaux, changements de vie.',
+      type: 'intl',
+      typeLabel: 'États-Unis',
+      url: 'https://zipdo.co/animal-abandonment-statistics/'
+    },
+    {
+      name: 'Gitnux — abandons animaux au Canada',
+      desc: '~63 000 chiens et 104 000 chats abandonnés ou errants en refuge au Canada en 2022.',
+      type: 'intl',
+      typeLabel: 'Canada',
+      url: 'https://gitnux.org/animal-abandonment-statistics/'
+    },
+    {
+      name: 'Reddit / dataisbeautiful — chiens errants en Amérique latine',
+      desc: '~15 à 18 millions de chiens errants au Mexique, majoritairement liés à l\'abandon. Visualisation comparative des populations canines en Amérique latine.',
+      type: 'intl',
+      typeLabel: 'Mexique',
+      url: 'https://www.reddit.com/r/dataisbeautiful/comments/vej5mi/oc_latin_americans_are_teamdog_in_fact_they_love/'
+    },
+    {
       name: 'FOUR PAWS, rapport annuel 2023',
       desc: 'Estimation de 200 millions de chiens errants dans le monde. Rapport annuel de l\'ONG internationale FOUR PAWS, référence pour les chiffres globaux.',
       type: 'ong',
@@ -151,15 +210,27 @@ function buildSources() {
       url: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
     },
     {
-      icon: '🐕',
-      name: 'Fundación Affinity',
-      desc: 'Étude annuelle sur les abandons et adoptions en Espagne (2024). ~288 000 animaux recueillis en 2023, en baisse grâce à la nouvelle loi de bien-être animal.',
+      name: 'Fundación Affinity — abandons en Espagne',
+      desc: '~100 000 à 140 000 animaux abandonnés/an en Espagne. Étude annuelle sur les abandons et adoptions, l\'Espagne étant l\'un des pays les plus touchés d\'Europe de l\'Ouest.',
       type: 'intl',
       typeLabel: 'Espagne',
-      url: 'https://www.fundacion-affinity.org/fr/sensibilisation/il-ne-le-ferait-jamais-etude-sur-labandon-et-ladoption-2024'
+      url: 'https://www.fundacion-affinity.org/en/dogs-cats-and-people/yearly-study'
     },
     {
-      icon: '📰',
+      name: 'La Presse.it — chiens abandonnés en Italie (2023)',
+      desc: '~85 000 chiens abandonnés en Italie en 2023 selon les données compilées par la Lega Nazionale per la Difesa del Cane.',
+      type: 'intl',
+      typeLabel: 'Italie',
+      url: 'https://www.lapresse.it/ambiente/2024/08/09/animali-85mila-cani-abbandonati-in-italia-nel-2023-86/'
+    },
+    {
+      name: 'Deutscher Tierschutzbund — refuges en Allemagne',
+      desc: '~80 000 à 100 000 chiens entrant en refuge chaque année en Allemagne. Pas de statistique nationale directe sur les abandons — données issues du réseau de refuges affiliés.',
+      type: 'intl',
+      typeLabel: 'Allemagne',
+      url: 'https://www.tierschutzbund.de/en/'
+    },
+    {
       name: 'Euro Weekly (Espagne 2024)',
       desc: 'Analyse de la situation espagnole post-loi de bien-être animal (2023). Contexte sur la baisse des abandons et les défis persistants pour les refuges.',
       type: 'intl',
@@ -167,7 +238,13 @@ function buildSources() {
       url: 'https://euroweeklynews.com/2024/08/01/are-pets-a-pain-in-spain/'
     },
     {
-      icon: '📊',
+      name: 'SPA — Société Protectrice des Animaux (France)',
+      desc: '~100 000 abandons d\'animaux par an en France (chiens et chats). La SPA est la principale organisation de protection animale en France avec un réseau de refuges sur tout le territoire.',
+      type: 'intl',
+      typeLabel: 'France',
+      url: 'https://www.la-spa.fr'
+    },
+    {
       name: 'FACCO, abandons en France',
       desc: 'Chambre Syndicale des fabricants d\'aliments pour animaux. Données de référence sur les abandons en France : ~100 000 animaux/an, dont une majorité en été.',
       type: 'intl',
@@ -175,7 +252,6 @@ function buildSources() {
       url: 'https://www.facco.fr/abandon/'
     },
     {
-      icon: '📺',
       name: '30 Millions d\'Amis',
       desc: '~100 000 abandons d\'animaux par an en France. Reportages et données de terrain sur les refuges SPA et associations de protection animale françaises.',
       type: 'media',
@@ -183,7 +259,6 @@ function buildSources() {
       url: 'https://www.30millionsdamis.fr/actualites/categorie/97-sauvetage/'
     },
     {
-      icon: '📊',
       name: 'Dogs Trust (Royaume-Uni)',
       desc: '36 965 chiens pris en charge en 2023-2024. La plus grande organisation de protection canine du Royaume-Uni publie une enquête annuelle sur les chiens errants.',
       type: 'intl',
@@ -191,7 +266,6 @@ function buildSources() {
       url: 'https://www.dogstrust.org.uk/about-us/what-we-do/research/stray-dogs-survey-research'
     },
     {
-      icon: '🐾',
       name: 'Dogs Trust (Irlande)',
       desc: '7 041 chiens pris en charge en 2024 en Irlande. Alerte sur la hausse des euthanasies dans les fourrières irlandaises faute de places en refuge.',
       type: 'intl',
@@ -199,15 +273,6 @@ function buildSources() {
       url: 'https://www.dogstrust.ie/what-we-do/stories/dogs-trust-concerned-at-increase-in-dogs-being-euthanised-in-pounds'
     },
     {
-      icon: '🗺️',
-      name: 'ICNF (Portugal)',
-      desc: 'Premier recensement national au Portugal (2023) : 101 015 chiens errants + 830 541 chats errants. Un des taux d\'animaux errants les plus élevés d\'Europe.',
-      type: 'opendata',
-      typeLabel: 'Portugal',
-      url: 'https://www.theportugalnews.com/fr/nouvelles/2024-05-06/le-recensement-national-revele-pres-dun-million-danimaux-errants/393847'
-    },
-    {
-      icon: '🌍',
       name: 'ESDAW, chiens errants en Europe',
       desc: 'European Society of Dog and Animal Welfare. Données sur les millions de chiens errants en Europe de l\'Est et les politiques nationales de gestion des populations.',
       type: 'intl',
@@ -215,7 +280,6 @@ function buildSources() {
       url: 'https://www.esdaw-eu.eu/the-stray-dogs-in-europe.html'
     },
     {
-      icon: '🗺️',
       name: 'Abandons par pays en Europe',
       desc: 'Synthèse comparative des taux d\'abandon dans les pays européens. Comparaison des législations et des chiffres de refuges à l\'échelle du continent.',
       type: 'intl',
@@ -223,7 +287,6 @@ function buildSources() {
       url: 'https://www.beatricesconseilscanins.fr/blog/les-pays-au-plus-taux-d-abandon-d-animaux-en-europe.html'
     },
     {
-      icon: '🌐',
       name: 'OpenStreetMap',
       desc: 'Données cartographiques libres pour la localisation des refuges et la géolocalisation des cantons suisses.',
       type: 'opendata',
@@ -231,7 +294,6 @@ function buildSources() {
       url: 'https://www.openstreetmap.org'
     },
     {
-      icon: '📰',
       name: '24 heures : Augmentation des abandons',
       desc: 'Article sur la hausse des abandons d\'animaux domestiques en Suisse en 2024. Achats impulsifs et coûts sous-estimés cités comme causes principales.',
       type: 'media',
@@ -239,7 +301,6 @@ function buildSources() {
       url: 'https://www.24heures.ch/suisse-augmentation-de-labandon-des-animaux-domestiques-962347553315'
     },
     {
-      icon: '📻',
       name: 'RTS : Hausse alarmante des abandons',
       desc: 'Reportage RTS sur les 25 000 cas d\'abandons en Suisse en 2024 et la saturation des refuges affiliés PSA/STS.',
       type: 'media',
@@ -247,7 +308,6 @@ function buildSources() {
       url: 'https://www.rts.ch/info/suisse/2025/article/hausse-alarmante-des-abandons-d-animaux-en-suisse-25-000-cas-en-2024-29036370.html'
     },
     {
-      icon: '📰',
       name: '24 heures : 32 000 animaux en refuges',
       desc: 'Article détaillant les 32 079 animaux recueillis en 2024 dans les refuges suisses, avec chiffres par espèce et analyse des causes.',
       type: 'media',
@@ -257,15 +317,14 @@ function buildSources() {
   ];
 
   el.innerHTML = sources.map(source => `
-    <div class="source-card fade-in-up">
-      <div class="source-icon">${source.icon}</div>
+    <a ${source.url ? `href="${source.url}" target="_blank" rel="noopener"` : ''} class="source-card fade-in-up" style="text-decoration:none;display:block;cursor:${source.url ? 'pointer' : 'default'};color:inherit">
       <div class="source-name">${source.name}</div>
       <div class="source-desc">${source.desc}</div>
       <div class="source-footer">
         <span class="source-type ${source.type}">${source.typeLabel}</span>
-        ${source.url ? `<a href="${source.url}" target="_blank" rel="noopener" class="source-link">Lire l'article ↗</a>` : ''}
+        ${source.url ? `<span class="source-link">Lire l'article ↗</span>` : ''}
       </div>
-    </div>
+    </a>
   `).join('');
 
   if (scrollObs) {
@@ -412,6 +471,7 @@ function setupLateralNav() {
   const items = [
     { label: 'Carte',    target: '#section-storymap-world' },
     { label: '1 826',    target: '#section-dots' },
+    { label: 'Suisse',   target: '#section-storymap-swiss' },
     { label: 'Réseaux',  target: '#section-social' },
     { label: 'Analyse',  target: '#section-compare' },
     { label: 'Refuges',  target: '#section-shelters-map' },

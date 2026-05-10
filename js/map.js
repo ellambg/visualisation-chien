@@ -276,7 +276,7 @@ function initSwitzerlandMap(data) {
     circle.bindPopup(`
       <div style="font-family:'DM Sans',sans-serif;min-width:170px">
         <div style="font-weight:700;color:#e8a020;margin-bottom:6px">${canton.name} (${canton.code})</div>
-        <div style="font-size:0.8rem;color:#7a756c;margin-bottom:2px">🐕 Estimation : <strong style="color:#ede9e0">~${canton.dogs_estimate} chiens</strong></div>
+        <div style="font-size:0.8rem;color:#7a756c;margin-bottom:2px">Estimation : <strong style="color:#ede9e0">~${canton.dogs_estimate} chiens</strong></div>
         <div style="font-size:0.72rem;color:#7a756c;margin-top:6px;font-style:italic">Estimation proportionnelle à la population. Aucune donnée officielle par canton.</div>
       </div>
     `);
@@ -301,9 +301,9 @@ function initShelterMap(shelters) {
     m.bindPopup(`
       <div style="font-family:'DM Sans',sans-serif;min-width:200px">
         <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px">${s.name}</div>
-        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:2px">📍 ${s.city}</div>
-        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:2px">🕐 ${s.hours}</div>
-        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:8px">📞 ${s.phone}</div>
+        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:2px">${s.city}</div>
+        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:2px">${s.hours}</div>
+        <div style="font-size:0.78rem;color:#7a756c;margin-bottom:8px">${s.phone}</div>
         <a href="${s.website}" target="_blank" style="color:#e8a020;font-size:0.78rem;text-decoration:none">Visiter le refuge →</a>
       </div>
     `);

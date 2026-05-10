@@ -7,7 +7,19 @@
       "Bash(node -e ' *)",
       "Bash(node --input-type=module)",
       "Bash(powershell -Command \"Get-Content 'c:\\\\Users\\\\carla\\\\Downloads\\\\swissBOUNDARIES3D_1_5_wgs84 \\(1\\).geojson' -TotalCount 5\")",
-      "Bash(powershell -Command \"Get-Content 'c:\\\\Users\\\\carla\\\\Downloads\\\\swissBOUNDARIES3D_1_5_wgs84 \\(1\\).geojson' | Select-String -Pattern 'ICC|NAME|type.*Feature' | Select-Object -First 10\")"
+      "Bash(powershell -Command \"Get-Content 'c:\\\\Users\\\\carla\\\\Downloads\\\\swissBOUNDARIES3D_1_5_wgs84 \\(1\\).geojson' | Select-String -Pattern 'ICC|NAME|type.*Feature' | Select-Object -First 10\")",
+      "WebFetch(domain:observablehq.com)",
+      "WebFetch(domain:noemiromano.ch)",
+      "WebSearch",
+      "WebFetch(domain:www.asiae.co.kr)",
+      "WebFetch(domain:www.esdaw-eu.eu)",
+      "WebFetch(domain:www.dogstrust.org.uk)",
+      "WebFetch(domain:www.dogstrust.ie)",
+      "WebFetch(domain:www.theportugalnews.com)",
+      "WebFetch(domain:www.fundacion-affinity.org)",
+      "WebFetch(domain:euroweeklynews.com)",
+      "WebFetch(domain:www.facco.fr)",
+      "WebFetch(domain:www.beatricesconseilscanins.fr)"
     ]
   }
 }

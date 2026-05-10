@@ -26,12 +26,15 @@ function buildWorldEuropeChapters() {
       section: 'world',
       activeZone: 'asia',
       label: 'À l\'échelle mondiale',
-      camera: { center: [95, 28], zoom: 3, pitch: 20, bearing: 0, duration: 2500 },
+      camera: { center: [103, 30], zoom: 2.8, pitch: 20, bearing: 0, duration: 2500 },
       card: {
         eyebrow: 'Asie',
-        title: 'Inde & Chine : 62 millions',
-        body: 'L\'<strong>Inde</strong> recense jusqu\'à <strong>35 millions</strong> de chiens errants, la <strong>Chine</strong> <strong>27 millions</strong>. Ces chiffres représentent plus du tiers du total mondial.',
-        source: 'WHO / AWBI 2023 / CNAH 2022',
+        title: 'Corée du Sud, Japon, Singapour',
+        body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Abandonnés / recueillis / an</span><br><strong>~105 000</strong> Corée du Sud · <strong>17 000</strong> Japon · <strong>285</strong> Singapour</div>'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Chiens errants</span><br><strong>70 000</strong> Corée du Sud · <strong>10 000–20 000</strong> Japon</div>'
+          + '</div>',
+        source: 'WHO / AWBI · Asiae.co.kr · env.go.jp · CNA 2023',
         sourceUrl: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
       }
     },
@@ -40,12 +43,16 @@ function buildWorldEuropeChapters() {
       section: 'world',
       activeZone: 'americas',
       label: 'À l\'échelle mondiale',
-      camera: { center: [-75, 5], zoom: 2.5, pitch: 20, bearing: 0, duration: 2500 },
+      camera: { center: [-82, 18], zoom: 2.1, pitch: 20, bearing: 0, duration: 2500 },
       card: {
         eyebrow: 'Amériques',
-        title: 'Brésil, Mexique, États-Unis',
-        body: 'Le <strong>Brésil</strong> compte <strong>30 millions</strong> de chiens errants, le <strong>Mexique</strong> <strong>20 millions</strong>. Même les États-Unis voient <strong>3,1 millions d\'animaux</strong> entrer en refuge chaque année.',
-        source: 'Instituto Pet Brasil / INEGI / ASPCA 2023',
+        title: 'Brésil, Mexique, États-Unis, Canada',
+        body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Abandonnés / recueillis / an</span><br><strong>6,5M</strong> États-Unis · <strong>63 000</strong> Canada</div>'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Chiens errants</span><br><strong>30M</strong> Brésil · <strong>15–18M</strong> Mexique</div>'
+          + '<div style="font-size:0.75rem;color:#888;border-top:1px solid rgba(237,233,224,0.08);padding-top:0.5rem">En Amérique du Sud, le problème est avant tout celui des <em>chiens errants</em>. Aucune statistique fiable sur les abandons en refuge n\'existe à l\'échelle nationale.</div>'
+          + '</div>',
+        source: 'EnviroLiteracy / Gitnux / Reddit · FOUR PAWS 2023',
         sourceUrl: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
       }
     },
@@ -54,13 +61,16 @@ function buildWorldEuropeChapters() {
       section: 'world',
       activeZone: 'africa',
       label: 'À l\'échelle mondiale',
-      camera: { center: [22, 8], zoom: 3.2, pitch: 20, bearing: 0, duration: 2500 },
+      camera: { center: [22, -5], zoom: 2.8, pitch: 20, bearing: 0, duration: 2500 },
       card: {
         eyebrow: 'Afrique',
-        title: 'Éthiopie & Nigeria : 14 millions',
-        body: 'L\'<strong>Éthiopie</strong> et le <strong>Nigeria</strong> dépassent chacun les <strong>7 millions</strong> de chiens errants. Un problème de santé publique majeur, étroitement lié à la rage.',
-        source: 'WHO estimate 2023 / WSPA / FOUR PAWS 2022',
-        sourceUrl: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
+        title: 'Afrique du Sud',
+        body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Chiens recueillis / an (estimation)</span><br><strong>~50 000</strong> chiens abandonnés ou saisis</div>'
+          + '<div style="font-size:0.75rem;color:#888;border-top:1px solid rgba(237,233,224,0.08);padding-top:0.5rem">Seule l\'Afrique du Sud dispose de données documentées via son réseau SPCA (plus de 200 000 animaux — chiens et chats — recueillis chaque année). Pour le reste du continent, il n\'existe pas de statistiques fiables sur les abandons — le problème est avant tout celui des <em>chiens errants</em>, lié à la rage et à la santé publique.</div>'
+          + '</div>',
+        source: 'WHO 2023 / WSPA / FOUR PAWS 2022 / SPCA South Africa',
+        sourceUrl: 'https://capespca.co.za/'
       }
     },
     {
@@ -73,8 +83,8 @@ function buildWorldEuropeChapters() {
         eyebrow: 'Cas particulier',
         title: 'Dubaï : la fuite des expatriés',
         body: 'Les conflits qui secouent la région depuis 2023 poussent des expatriés à fuir précipitamment, <strong>laissant leurs animaux derrière eux</strong>. Chiffre estimé (aucun registre officiel).',
-        source: 'Marie France / ONG locales (Dubai Shelter, SNIFF) 2024',
-        sourceUrl: 'https://www.mariefrance.fr/actualite/societe/a-dubai-des-expatries-abandonnent-leurs-animaux-derriere-eux-les-veterinaires-appeles-pour-des-euthanasies-1252201.html'
+        source: '20 minutes / ONG locales (Dubai Shelter, SNIFF) 2024',
+        sourceUrl: 'https://www.20min.ch/fr/story/conflit-au-moyen-orient-des-expats-fuient-dubai-et-abandonnent-leurs-animaux-de-compagnie-103522696'
       }
     },
 
@@ -99,8 +109,10 @@ function buildWorldEuropeChapters() {
       camera: { center: [28, 43], zoom: 4.5, pitch: 20, bearing: 0, duration: 2000 },
       card: {
         eyebrow: 'Europe de l\'Est',
-        title: 'Turquie, Grèce, Roumanie',
-        body: 'La <strong>Turquie</strong> : 4 millions de chiens errants, loi de capture adoptée en 2024. La <strong>Grèce</strong> : 3 millions. La <strong>Roumanie</strong> : 500 000-600 000 (héritage du régime Ceaușescu).',
+        title: 'Pas de données fiables',
+        body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
+          + '<div style="font-size:0.8rem;color:#888">En Europe de l\'Est, bien que la présence de chiens errants soit importante, il n\'existe pas de données nationales fiables permettant de mesurer précisément le nombre de chiens abandonnés chaque année. Les informations disponibles concernent principalement les populations de chiens errants et les actions de stérilisation mises en place par des ONG.</div>'
+          + '</div>',
         source: 'Gouvernement turc / MDPI 2024 / PETA UK',
         sourceUrl: 'https://www.esdaw-eu.eu/the-stray-dogs-in-europe.html'
       }
@@ -110,25 +122,31 @@ function buildWorldEuropeChapters() {
       section: 'europe',
       activeZone: 'europe-west',
       label: 'Focus Europe',
-      camera: { center: [-1, 46], zoom: 3.8, pitch: 20, bearing: 0, duration: 2000 },
+      camera: { center: [5, 45], zoom: 4.2, pitch: 20, bearing: 0, duration: 2000 },
       card: {
         eyebrow: 'Europe de l\'Ouest',
-        title: 'France, Espagne, Royaume-Uni',
-        body: 'La <strong>France</strong> : ~100 000 abandons/an. L\'<strong>Espagne</strong> : 173 000 chiens recueillis en 2023, en baisse grâce à la loi de bien-être animal. Le <strong>Royaume-Uni</strong> et l\'<strong>Irlande</strong> documentent précisément leurs flux via les Dogs Trust.',
-        source: 'SPA / Fundación Affinity / Dogs Trust 2024',
-        sourceUrl: 'https://www.fundacion-affinity.org/fr/sensibilisation/il-ne-le-ferait-jamais-etude-sur-labandon-et-ladoption-2024'
+        title: 'France, Espagne, Italie, Allemagne',
+        body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Abandonnés / an</span><br><strong>100 000</strong> France · <strong>100–140 000</strong> Espagne · <strong>~85 000</strong> Italie</div>'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">En refuge / an</span><br><strong>80–100 000</strong> Allemagne</div>'
+          + '</div>',
+        source: 'SPA / Fundación Affinity / Lega Nazionale / Deutscher Tierschutzbund / Dogs Trust',
+        sourceUrl: 'https://www.fundacion-affinity.org/en/dogs-cats-and-people/yearly-study'
       }
     },
     {
       id: 'europe-uk',
       section: 'europe',
-      activeZone: 'europe-west',
+      activeZone: 'europe-uk',
       label: 'Focus Europe',
       camera: { center: [-4, 54], zoom: 5.5, pitch: 25, bearing: 0, duration: 2000 },
       card: {
         eyebrow: 'Îles britanniques',
         title: 'Royaume-Uni & Irlande',
-        body: 'Le <strong>Royaume-Uni</strong> : 36 965 chiens pris en charge en 2023-2024 par le seul Dogs Trust. L\'<strong>Irlande</strong> : 7 041 chiens en 2024, avec une hausse préoccupante des euthanasies dans les fourrières faute de places.',
+        body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Chiens errants</span><br><strong>36 965</strong> Royaume-Uni (autorités locales 2023-2024)</div>'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">En fourrière / an</span><br><strong>7 041</strong> Irlande — hausse des euthanasies faute de places.</div>'
+          + '</div>',
         source: 'Dogs Trust UK 2024 / Dogs Trust Ireland 2024',
         sourceUrl: 'https://www.dogstrust.org.uk/about-us/what-we-do/research/stray-dogs-survey-research'
       }
@@ -192,7 +210,7 @@ function buildShelterChapters(shelters) {
       title: 'Les refuges en Suisse',
       body: 'Ces 1 826 chiens ne sont pas une abstraction. Ils sont dans des refuges, partout en Suisse, avec un nom, un passé, et besoin d\'une famille.'
         + '<div class="shelter-mode-hint">'
-        + '<div class="shelter-mode-option"><span class="shelter-mode-icon">🗺️</span><div><strong>Explorer la carte</strong><br>Cliquez sur le bouton en haut à droite pour naviguer librement et cliquer directement sur le refuge de votre choix.</div></div>'
+        + '<div class="shelter-mode-option"><span class="shelter-mode-icon">→</span><div><strong>Explorer la carte</strong><br>Cliquez sur le bouton en haut à droite pour naviguer librement et cliquer directement sur le refuge de votre choix.</div></div>'
         + '<div class="shelter-mode-option"><span class="shelter-mode-icon">↓</span><div><strong>Mode guidé</strong><br>Continuez à scroller pour découvrir chaque refuge un par un à travers la Suisse.</div></div>'
         + '</div>',
     }
@@ -213,9 +231,9 @@ function buildShelterChapters(shelters) {
       eyebrow: 'Refuge : ' + s.city,
       title: s.name,
       body: '<div class="shelter-detail">'
-        + '<span>📍 ' + s.city + '</span>'
-        + '<span>🕐 ' + s.hours + '</span>'
-        + '<span>📞 ' + s.phone + '</span>'
+        + '<span>' + s.city + '</span>'
+        + '<span>' + s.hours + '</span>'
+        + '<span>' + s.phone + '</span>'
         + '<a href="' + s.website + '" target="_blank" rel="noopener">Visiter le refuge</a>'
         + '</div>',
     },
@@ -302,23 +320,23 @@ class StoryMap {
 
   addWorldLayer() {
     const spots = [
-      { country: 'Inde',        coord: [80,    22],   estimate: 35000000, color: '#B2A5F3', zone: 'asia' },
-      { country: 'Chine',       coord: [104,   34],   estimate: 27000000, color: '#B2A5F3', zone: 'asia' },
-      { country: 'Brésil',      coord: [-52,  -12],   estimate: 30000000, color: '#FF9A47', zone: 'americas' },
-      { country: 'Mexique',     coord: [-102,  23],   estimate: 20000000, color: '#FF9A47', zone: 'americas' },
-      { country: 'États-Unis',  coord: [-99,   40],   estimate: 3100000,  color: '#FF9A47', zone: 'americas' },
-      { country: 'Éthiopie',    coord: [40,    10],   estimate: 7000000,  color: '#FF667A', zone: 'africa' },
-      { country: 'Nigeria',     coord: [8,      9],   estimate: 7000000,  color: '#FF667A', zone: 'africa' },
-      { country: 'Turquie',     coord: [35,    39],   estimate: 4000000,  color: '#4EACF9', zone: 'europe-east' },
-      { country: 'Grèce',       coord: [22,    39],   estimate: 3000000,  color: '#4EACF9', zone: 'europe-east' },
-      { country: 'Roumanie',    coord: [25,    46],   estimate: 500000,   color: '#4EACF9', zone: 'europe-east' },
-      { country: 'Espagne',     coord: [-3.7,  40.4], estimate: 173000,   color: '#c49a3e', zone: 'europe-west' },
-      { country: 'France',      coord: [2.2,   46.2], estimate: 100000,   color: '#c49a3e', zone: 'europe-west' },
-      { country: 'Royaume-Uni', coord: [-2.0,  53.0], estimate: 36965,    color: '#c49a3e', zone: 'europe-west' },
-      { country: 'Irlande',     coord: [-7.7,  53.4], estimate: 7041,     color: '#c49a3e', zone: 'europe-west' },
-      { country: 'Pays-Bas',    coord: [5.3,   52.4], estimate: 500,      color: '#029C70', zone: 'europe-west', noData: true },
-      { country: 'Suisse',      coord: [8.2,  46.8],  estimate: 1826,     color: '#c49a3e', zone: 'switzerland' },
-      { country: 'Dubaï',       coord: [55.3, 25.2],  estimate: 1000,     color: '#FF9A47', zone: 'dubai', noData: true },
+      { country: 'Corée du Sud', coord: [127.7, 35.9], estimate: 105000,  strayEstimate: 70000, color: '#B2A5F3', zone: 'asia', dataType: 'abandoned' },
+      { country: 'Japon',        coord: [138.0, 36.5], estimate: 17000,   strayEstimate: 15000, color: '#B2A5F3', zone: 'asia', dataType: 'shelter' },
+      { country: 'Singapour',    coord: [103.8,  1.35],estimate: 285,     color: '#B2A5F3', zone: 'asia',  dataType: 'abandoned' },
+      { country: 'Brésil',      coord: [-52,  -12],   estimate: 30000000, color: '#FF9A47', zone: 'americas', dataType: 'stray' },
+      { country: 'Mexique',     coord: [-102,  23],   estimate: 16500000, color: '#FF9A47', zone: 'americas', dataType: 'stray' },
+      { country: 'États-Unis',  coord: [-99,   40],   estimate: 6500000,  color: '#FF9A47', zone: 'americas', dataType: 'shelter' },
+      { country: 'Canada',      coord: [-96,   56],   estimate: 63000,    color: '#FF9A47', zone: 'americas', dataType: 'shelter' },
+      { country: 'Afrique du Sud', coord: [25, -29], estimate: 50000,    color: '#FF667A', zone: 'africa',       dataType: 'shelter' },
+      { country: 'Espagne',     coord: [-3.7,  40.4], estimate: 120000,   color: '#c49a3e', zone: 'europe-west',  dataType: 'abandoned' },
+      { country: 'France',      coord: [2.2,   46.2], estimate: 100000,   color: '#c49a3e', zone: 'europe-west',  dataType: 'abandoned' },
+      { country: 'Italie',      coord: [12.5,  42.5], estimate: 85000,    color: '#c49a3e', zone: 'europe-west',  dataType: 'abandoned' },
+      { country: 'Allemagne',   coord: [10.0,  51.2], estimate: 90000,    color: '#c49a3e', zone: 'europe-west',  dataType: 'shelter' },
+      { country: 'Royaume-Uni', coord: [-2.0,  53.0], estimate: 36965,    color: '#c49a3e', zone: 'europe-uk',  dataType: 'stray' },
+      { country: 'Irlande',     coord: [-7.7,  53.4], estimate: 7041,     color: '#c49a3e', zone: 'europe-uk',  dataType: 'shelter' },
+      { country: 'Pays-Bas',    coord: [5.3,   52.4], estimate: 500,      color: '#029C70', zone: 'europe-west',  noData: true },
+      { country: 'Suisse',      coord: [8.2,  46.8],  estimate: 1826,     color: '#c49a3e', zone: 'switzerland',  dataType: 'shelter' },
+      { country: 'Dubaï',       coord: [55.3, 25.2],  estimate: 1000,     color: '#FF9A47', zone: 'dubai',        noData: true },
     ];
 
     this.map.addSource('world-spots', {
@@ -329,7 +347,7 @@ class StoryMap {
         features: spots.map(s => ({
           type: 'Feature',
           geometry: { type: 'Point', coordinates: s.coord },
-          properties: { country: s.country, estimate: s.estimate, color: s.color, zone: s.zone, noData: s.noData || false }
+          properties: { country: s.country, estimate: s.estimate, strayEstimate: s.strayEstimate || 0, dataType: s.dataType || 'stray', color: s.color, zone: s.zone, noData: s.noData || false }
         }))
       }
     });
@@ -512,25 +530,32 @@ class StoryMap {
 
     this.map.on('click', 'world-circles', (e) => {
       if (!e.features.length) return;
-      const { country, estimate, color, noData } = e.features[0].properties;
+      const { country, estimate, strayEstimate, color, noData, dataType } = e.features[0].properties;
       const coords = e.features[0].geometry.coordinates.slice();
 
       let content;
       if (noData) {
+        const isDubai = country === 'Dubaï';
         content = '<div style="font-family:\'Encode Sans\',sans-serif;padding:0.2rem 0">'
           + '<div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:' + color + ';margin-bottom:0.5rem">' + country + '</div>'
-          + '<div style="font-size:0.8rem;color:#888;font-style:italic">Image à venir</div>'
+          + (isDubai
+            ? '<img src="assets/images/dubai.jpg" alt="Chien abandonné à Dubaï" style="width:100%;border-radius:6px;margin-bottom:0.5rem;display:block" />'
+            + '<div style="font-size:0.78rem;color:#888">Chien abandonné suite à la fuite d\'expatriés</div>'
+            : '')
           + '</div>';
       } else {
         const formatted = Number(estimate).toLocaleString('fr-CH');
+        const typeLabel = dataType === 'shelter'   ? 'chiens recueillis en refuge / an'
+                        : dataType === 'abandoned' ? 'abandons annuels estimés'
+                        :                            'chiens errants estimés';
         content = '<div style="font-family:\'Encode Sans\',sans-serif;padding:0.2rem 0">'
           + '<div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:' + color + ';margin-bottom:0.3rem">' + country + '</div>'
           + '<div style="font-size:1.1rem;font-weight:700;color:#ede9e0">~' + formatted + '</div>'
-          + '<div style="font-size:0.72rem;color:#888;margin-top:0.2rem">chiens errants estimés</div>'
+          + '<div style="font-size:0.72rem;color:#888;margin-top:0.2rem">' + typeLabel + '</div>'
           + '</div>';
       }
 
-      new maplibregl.Popup({ closeButton: true, maxWidth: '220px' })
+      new maplibregl.Popup({ closeButton: true, maxWidth: noData && country === 'Dubaï' ? '240px' : '220px' })
         .setLngLat(coords)
         .setHTML(content)
         .addTo(this.map);
@@ -601,8 +626,8 @@ class StoryMap {
       const content = '<div style="font-family:\'Encode Sans\',sans-serif;padding:0.2rem 0">'
         + '<div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#B2A5F3;margin-bottom:0.5rem">' + city + '</div>'
         + '<div style="font-size:1rem;font-weight:700;color:#ede9e0;margin-bottom:0.6rem">' + name + '</div>'
-        + (hours   ? '<div style="font-size:0.78rem;color:#888;margin-bottom:0.25rem">🕐 ' + hours + '</div>' : '')
-        + (phone   ? '<div style="font-size:0.78rem;color:#888;margin-bottom:0.25rem">📞 ' + phone + '</div>' : '')
+        + (hours   ? '<div style="font-size:0.78rem;color:#888;margin-bottom:0.25rem">' + hours + '</div>' : '')
+        + (phone   ? '<div style="font-size:0.78rem;color:#888;margin-bottom:0.25rem">' + phone + '</div>' : '')
         + (website ? '<a href="' + website + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.4rem;font-size:0.75rem;color:#B2A5F3;text-decoration:none">Visiter le refuge ↗</a>' : '')
         + '</div>';
 
@@ -790,10 +815,8 @@ class StoryMap {
       el.querySelector('.card-title').textContent   = card.title;
       el.querySelector('.card-body').innerHTML      = card.body;
       const sourceEl = el.querySelector('.card-source');
-      if (card.source && card.sourceUrl) {
-        sourceEl.innerHTML = '<a href="' + card.sourceUrl + '" target="_blank" rel="noopener">Source : ' + card.source + '</a>';
-      } else if (card.source) {
-        sourceEl.textContent = 'Source : ' + card.source;
+      if (card.source || card.sourceUrl) {
+        sourceEl.textContent = 'Consulter les sources à la fin';
       } else {
         sourceEl.textContent = '';
       }
