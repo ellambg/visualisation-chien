@@ -8,9 +8,9 @@
   --bg-card:      #141414;
   --bg-section:   #101010;
   --accent:       #c49a3e;
-  --accent-2:     #6699cc;
-  --accent-3:     #7a8a3a;
-  --accent-4:     #cc9999;
+  --accent-2:     #B2A5F3;
+  --accent-3:     #029C70;
+  --accent-4:     #FF667A;
   --accent-soft:  rgba(196,154,62,0.12);
   --text:         #ede9e0;
   --muted:        #888888;
@@ -82,9 +82,40 @@ em { font-style: italic; color: var(--accent); }
   padding: 0.75rem 2rem;
 }
 .nav-logo { font-family: var(--font-display); font-size: 1.1rem; color: var(--accent); }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-.nav-links a:hover { color: var(--accent); }
+.lateral-nav {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+.lateral-nav button {
+  background: rgba(12,12,12,0.7);
+  border: 1px solid rgba(237,233,224,0.15);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+.lateral-nav button:hover {
+  color: var(--text);
+  border-color: rgba(237,233,224,0.35);
+}
+.lateral-nav button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0c0c0c;
+  font-weight: 600;
+}
 
 #progress-bar {
   position: fixed; top: 0; left: 0; height: 2px;
@@ -129,6 +160,16 @@ em { font-style: italic; color: var(--accent); }
   position: relative; z-index: 1;
 }
 .hero-subtitle strong { color: var(--text); }
+.hero-note {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeIn 1s 0.9s forwards;
+  margin-bottom: 2rem;
+}
+
 .hero-scroll-cta {
   position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -330,7 +371,7 @@ em { font-style: italic; color: var(--accent); }
 /* Carte refuges : hauteur fixe, plus sticky */
 #shelter-map-wrapper {
   position: relative;
-  height: 70vh;
+  height: 75vh;
   width: 100%;
   overflow: hidden;
   margin: 0 2rem;
@@ -341,7 +382,6 @@ em { font-style: italic; color: var(--accent); }
 /* Carte flottante */
 #story-card-world,
 #story-card-swiss,
-#story-card-shelter,
 #story-card {
   position: absolute;
   bottom: 1%;
@@ -541,6 +581,32 @@ em { font-style: italic; color: var(--accent); }
   opacity: 0.7;
 }
 
+/* Card refuges : haut droite */
+#story-card-shelter {
+  position: absolute;
+  top: 0px;
+  left: 1%;
+  bottom: auto;
+  right: auto;
+  transform: translateY(-14px);
+  z-index: 10;
+  background: rgba(12, 12, 12, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(237, 233, 224, 0.12);
+  border-radius: 16px;
+  padding: 1.1rem 1.4rem;
+  max-width: 320px;
+  width: calc(100% - 4rem);
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: auto;
+}
+#story-card-shelter.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Lien "refuge non listé" dans la card */
 #story-card-shelter .card-source {
   opacity: 1;
@@ -599,8 +665,15 @@ em { font-style: italic; color: var(--accent); }
 section {
   padding: 100px 0;
   border-top: 1px solid var(--border);
+  scroll-margin-top: 64px;
 }
 section:first-of-type { border-top: none; }
+
+/* La carte monde doit être fullscreen sans offset navbar */
+#hero,
+#section-storymap-world {
+  scroll-margin-top: 0;
+}
 
 .story-block {
   max-width: var(--max-w);

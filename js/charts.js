@@ -32,8 +32,8 @@ class DotAnimation {
     // 1009 chiens : ~79% abandonnés, ~17% trouvés, ~4% saisis
     const cats = [
       { key: 'abandon', count: 1443, color: '#c49a3e' },
-      { key: 'found',   count: 310,  color: '#6699cc' },
-      { key: 'seized',  count: 73,   color: '#7a8a3a'  }
+      { key: 'found',   count: 310,  color: '#B2A5F3' },
+      { key: 'seized',  count: 73,   color: '#FF667A'  }
     ];
     this.dots = [];
     cats.forEach(cat => {
@@ -107,7 +107,7 @@ class DotAnimation {
       const bw    = (W - 40) / 3;
       const labels = { abandon: 'Abandonnés', found: 'Trouvés', seized: 'Saisis' };
       const counts = { abandon: 1443, found: 310, seized: 73 };
-      const colors = { abandon: '#c49a3e', found: '#6699cc', seized: '#7a8a3a' };
+      const colors = { abandon: '#c49a3e', found: '#B2A5F3', seized: '#FF667A' };
 
       cats.forEach((cat, ci) => {
         const cx = 20 + ci * bw + bw/2;
@@ -224,20 +224,35 @@ function initCompareChart(data) {
   const arc = d3.arc().innerRadius(innerRadius).outerRadius(radius - 8);
   const arcHover = d3.arc().innerRadius(innerRadius).outerRadius(radius - 2);
 
-  const slices = svg.selectAll('.arc')
-    .data(pie(reasons)).enter().append('g').attr('class', 'arc');
+  const pieData = pie(reasons);
 
-  slices.append('path')
+  const slices = svg.selectAll('.arc')
+    .data(pieData).enter().append('g').attr('class', 'arc');
+
+  const paths = slices.append('path')
     .attr('fill', d => d.data.color)
     .attr('opacity', 0.88)
     .attr('stroke', '#0c0c0c').attr('stroke-width', 2)
+    .attr('d', arc({ startAngle: 0, endAngle: 0 }))
     .on('mouseover', function() { d3.select(this).transition().duration(150).attr('d', arcHover); })
-    .on('mouseleave', function() { d3.select(this).transition().duration(150).attr('d', arc); })
-    .transition().duration(900).delay((d, i) => i * 180)
-    .attrTween('d', function(d) {
-      const interp = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
-      return t => arc(interp(t));
-    });
+    .on('mouseleave', function() { d3.select(this).transition().duration(150).attr('d', arc); });
+
+  function playDonut() {
+    paths
+      .attr('d', arc({ startAngle: 0, endAngle: 0 }))
+      .transition().duration(900).delay((d, i) => i * 180)
+      .attrTween('d', function(d) {
+        const interp = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+        return t => arc(interp(t));
+      });
+  }
+
+  const section = document.getElementById('section-compare');
+  if (section) {
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) playDonut();
+    }, { threshold: 0.3 }).observe(section);
+  }
 
   // Chiffre central
   svg.append('text').attr('text-anchor', 'middle').attr('dy', '-0.5em')

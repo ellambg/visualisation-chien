@@ -44,6 +44,7 @@ async function init() {
   setupSmoothScroll();
   setupDotControls();
   setupCounters();
+  setupLateralNav();
 
   // Puis les modules dépendants des données
   if (App.data) {
@@ -124,6 +125,22 @@ function buildSources() {
       type: 'psa',
       typeLabel: 'Institutionnel CH',
       url: 'https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/'
+    },
+    {
+      icon: '🇦🇪',
+      name: 'Marie France : Dubaï, animaux abandonnés',
+      desc: 'Des expatriés fuient Dubaï en laissant leurs animaux derrière eux. Les vétérinaires sont appelés pour des euthanasies faute de refuges suffisants pour accueillir ces animaux.',
+      type: 'media',
+      typeLabel: 'International',
+      url: 'https://www.mariefrance.fr/actualite/societe/a-dubai-des-expatries-abandonnent-leurs-animaux-derriere-eux-les-veterinaires-appeles-pour-des-euthanasies-1252201.html'
+    },
+    {
+      icon: '🇦🇪',
+      name: '20 minutes : Expats fuient Dubaï et abandonnent leurs animaux',
+      desc: 'Face aux conflits au Moyen-Orient, des expatriés quittent Dubaï précipitamment en abandonnant leurs animaux de compagnie, surchargeant les refuges locaux.',
+      type: 'media',
+      typeLabel: 'International',
+      url: 'https://www.20min.ch/fr/story/conflit-au-moyen-orient-des-expats-fuient-dubai-et-abandonnent-leurs-animaux-de-compagnie-103522696'
     },
     {
       icon: '🌍',
@@ -388,6 +405,57 @@ function setupCounters() {
   });
 
   document.querySelectorAll('.counter').forEach(el => observer.observe(el));
+}
+
+
+function setupLateralNav() {
+  const items = [
+    { label: 'Carte',    target: '#section-storymap-world' },
+    { label: '1 826',    target: '#section-dots' },
+    { label: 'Réseaux',  target: '#section-social' },
+    { label: 'Analyse',  target: '#section-compare' },
+    { label: 'Refuges',  target: '#section-shelters-map' },
+    { label: 'Sources',  target: '#section-method' },
+  ];
+
+  const nav = document.createElement('nav');
+  nav.className = 'lateral-nav';
+  nav.setAttribute('aria-label', 'Navigation sections');
+
+  const buttons = items.map(item => {
+    const btn = document.createElement('button');
+    btn.textContent = item.label;
+    nav.appendChild(btn);
+    return btn;
+  });
+
+  document.body.appendChild(nav);
+
+  const sections = items.map(item => document.querySelector(item.target));
+
+  function updateActive() {
+    const probe = window.scrollY + window.innerHeight * 0.35;
+    let active = -1;
+    sections.forEach((section, i) => {
+      if (!section) return;
+      if (probe >= section.offsetTop && probe < section.offsetTop + section.offsetHeight) {
+        active = i;
+      }
+    });
+    buttons.forEach(b => b.classList.remove('active'));
+    if (active !== -1) buttons[active].classList.add('active');
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+
+  items.forEach((item, i) => {
+    const section = sections[i];
+    if (!section) return;
+    buttons[i].addEventListener('click', () => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

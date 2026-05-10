@@ -73,7 +73,8 @@ function buildWorldEuropeChapters() {
         eyebrow: 'Cas particulier',
         title: 'Dubaï : la fuite des expatriés',
         body: 'Les conflits qui secouent la région depuis 2023 poussent des expatriés à fuir précipitamment, <strong>laissant leurs animaux derrière eux</strong>. Chiffre estimé (aucun registre officiel).',
-        source: 'ONG locales (Dubai Shelter, SNIFF) 2024'
+        source: 'Marie France / ONG locales (Dubai Shelter, SNIFF) 2024',
+        sourceUrl: 'https://www.mariefrance.fr/actualite/societe/a-dubai-des-expatries-abandonnent-leurs-animaux-derriere-eux-les-veterinaires-appeles-pour-des-euthanasies-1252201.html'
       }
     },
 
@@ -109,13 +110,27 @@ function buildWorldEuropeChapters() {
       section: 'europe',
       activeZone: 'europe-west',
       label: 'Focus Europe',
-      camera: { center: [2, 45], zoom: 4.5, pitch: 20, bearing: 0, duration: 2000 },
+      camera: { center: [-1, 46], zoom: 3.8, pitch: 20, bearing: 0, duration: 2000 },
       card: {
         eyebrow: 'Europe de l\'Ouest',
-        title: 'France, Espagne, Belgique',
-        body: 'La <strong>France</strong> : ~100 000 abandons/an. L\'<strong>Espagne</strong> : 173 000 chiens recueillis en 2023. La <strong>Belgique</strong> qualifie 2023 d\'année noire avec 165 abandons par jour.',
-        source: 'SPA / Fundación Affinity / Bien-être Animal Wallonie',
+        title: 'France, Espagne, Royaume-Uni',
+        body: 'La <strong>France</strong> : ~100 000 abandons/an. L\'<strong>Espagne</strong> : 173 000 chiens recueillis en 2023, en baisse grâce à la loi de bien-être animal. Le <strong>Royaume-Uni</strong> et l\'<strong>Irlande</strong> documentent précisément leurs flux via les Dogs Trust.',
+        source: 'SPA / Fundación Affinity / Dogs Trust 2024',
         sourceUrl: 'https://www.fundacion-affinity.org/fr/sensibilisation/il-ne-le-ferait-jamais-etude-sur-labandon-et-ladoption-2024'
+      }
+    },
+    {
+      id: 'europe-uk',
+      section: 'europe',
+      activeZone: 'europe-west',
+      label: 'Focus Europe',
+      camera: { center: [-4, 54], zoom: 5.5, pitch: 25, bearing: 0, duration: 2000 },
+      card: {
+        eyebrow: 'Îles britanniques',
+        title: 'Royaume-Uni & Irlande',
+        body: 'Le <strong>Royaume-Uni</strong> : 36 965 chiens pris en charge en 2023-2024 par le seul Dogs Trust. L\'<strong>Irlande</strong> : 7 041 chiens en 2024, avec une hausse préoccupante des euthanasies dans les fourrières faute de places.',
+        source: 'Dogs Trust UK 2024 / Dogs Trust Ireland 2024',
+        sourceUrl: 'https://www.dogstrust.org.uk/about-us/what-we-do/research/stray-dogs-survey-research'
       }
     },
     {
@@ -171,7 +186,7 @@ function buildShelterChapters(shelters) {
     id: 'shelters-overview',
     section: 'shelters',
     label: 'Refuges en Suisse',
-    camera: { center: [8.2, 46.8], zoom: 7.5, pitch: 35, bearing: 0, duration: 2000 },
+    camera: { center: [8.2, 46.6], zoom: 7.0, pitch: 20, bearing: 0, duration: 2000 },
     card: {
       eyebrow: 'Agir localement',
       title: 'Les refuges en Suisse',
@@ -287,22 +302,23 @@ class StoryMap {
 
   addWorldLayer() {
     const spots = [
-      { country: 'Inde',       coord: [80,    22],   estimate: 35000000, color: '#6699cc', zone: 'asia' },
-      { country: 'Chine',      coord: [104,   34],   estimate: 27000000, color: '#6699cc', zone: 'asia' },
-      { country: 'Brésil',     coord: [-52,  -12],   estimate: 30000000, color: '#7a8a3a', zone: 'americas' },
-      { country: 'Mexique',    coord: [-102,  23],   estimate: 20000000, color: '#7a8a3a', zone: 'americas' },
-      { country: 'États-Unis', coord: [-99,   40],   estimate: 3100000,  color: '#7a8a3a', zone: 'americas' },
-      { country: 'Éthiopie',   coord: [40,    10],   estimate: 7000000,  color: '#c49a3e', zone: 'africa' },
-      { country: 'Nigeria',    coord: [8,      9],   estimate: 7000000,  color: '#c49a3e', zone: 'africa' },
-      { country: 'Turquie',    coord: [35,    39],   estimate: 4000000,  color: '#c49a3e', zone: 'europe-east' },
-      { country: 'Suisse',     coord: [8.2,  46.8],  estimate: 1826,     color: '#c49a3e', zone: 'switzerland' },
-      { country: 'Dubaï',      coord: [55.3, 25.2],  estimate: 1000,     color: '#6699cc', zone: 'dubai', noData: true },
-      { country: 'Grèce',      coord: [22,    39],   estimate: 3000000,  color: '#c49a3e', zone: 'europe-east' },
-      { country: 'Roumanie',   coord: [25,    46],   estimate: 500000,   color: '#c49a3e', zone: 'europe-east' },
-      { country: 'Espagne',    coord: [-3.7,  40.4], estimate: 173000,   color: '#c49a3e', zone: 'europe-west' },
-      { country: 'France',     coord: [2.2,   46.2], estimate: 100000,   color: '#c49a3e', zone: 'europe-west' },
-      { country: 'Belgique',   coord: [4.5,   50.8], estimate: 60000,    color: '#c49a3e', zone: 'europe-west' },
-      { country: 'Pays-Bas',   coord: [5.3,   52.4], estimate: 500,      color: '#7a8a3a', zone: 'europe-west', noData: true },
+      { country: 'Inde',        coord: [80,    22],   estimate: 35000000, color: '#B2A5F3', zone: 'asia' },
+      { country: 'Chine',       coord: [104,   34],   estimate: 27000000, color: '#B2A5F3', zone: 'asia' },
+      { country: 'Brésil',      coord: [-52,  -12],   estimate: 30000000, color: '#FF9A47', zone: 'americas' },
+      { country: 'Mexique',     coord: [-102,  23],   estimate: 20000000, color: '#FF9A47', zone: 'americas' },
+      { country: 'États-Unis',  coord: [-99,   40],   estimate: 3100000,  color: '#FF9A47', zone: 'americas' },
+      { country: 'Éthiopie',    coord: [40,    10],   estimate: 7000000,  color: '#FF667A', zone: 'africa' },
+      { country: 'Nigeria',     coord: [8,      9],   estimate: 7000000,  color: '#FF667A', zone: 'africa' },
+      { country: 'Turquie',     coord: [35,    39],   estimate: 4000000,  color: '#4EACF9', zone: 'europe-east' },
+      { country: 'Grèce',       coord: [22,    39],   estimate: 3000000,  color: '#4EACF9', zone: 'europe-east' },
+      { country: 'Roumanie',    coord: [25,    46],   estimate: 500000,   color: '#4EACF9', zone: 'europe-east' },
+      { country: 'Espagne',     coord: [-3.7,  40.4], estimate: 173000,   color: '#c49a3e', zone: 'europe-west' },
+      { country: 'France',      coord: [2.2,   46.2], estimate: 100000,   color: '#c49a3e', zone: 'europe-west' },
+      { country: 'Royaume-Uni', coord: [-2.0,  53.0], estimate: 36965,    color: '#c49a3e', zone: 'europe-west' },
+      { country: 'Irlande',     coord: [-7.7,  53.4], estimate: 7041,     color: '#c49a3e', zone: 'europe-west' },
+      { country: 'Pays-Bas',    coord: [5.3,   52.4], estimate: 500,      color: '#029C70', zone: 'europe-west', noData: true },
+      { country: 'Suisse',      coord: [8.2,  46.8],  estimate: 1826,     color: '#c49a3e', zone: 'switzerland' },
+      { country: 'Dubaï',       coord: [55.3, 25.2],  estimate: 1000,     color: '#FF9A47', zone: 'dubai', noData: true },
     ];
 
     this.map.addSource('world-spots', {
@@ -388,7 +404,7 @@ class StoryMap {
       layout: { 'visibility': 'none' },
       paint: {
         'circle-radius':       7,
-        'circle-color':        '#c49a3e',
+        'circle-color':        '#B2A5F3',
         'circle-opacity':      0,
         'circle-stroke-color': '#0c0c0c',
         'circle-stroke-width': 0
@@ -403,7 +419,7 @@ class StoryMap {
       paint: {
         'circle-radius':         28,
         'circle-color':          'transparent',
-        'circle-stroke-color':   '#c49a3e',
+        'circle-stroke-color':   '#B2A5F3',
         'circle-stroke-width':   2,
         'circle-stroke-opacity': 0.5
       }
@@ -451,7 +467,7 @@ class StoryMap {
     ctx.shadowBlur = 5;
     ctx.shadowOffsetY = 2;
 
-    ctx.fillStyle = '#c49a3e';
+    ctx.fillStyle = '#B2A5F3';
     ctx.beginPath();
     ctx.arc(cx, r + 1, r, 0, Math.PI * 2);
     ctx.fill();
@@ -583,11 +599,11 @@ class StoryMap {
       const coords = e.features[0].geometry.coordinates.slice();
 
       const content = '<div style="font-family:\'Encode Sans\',sans-serif;padding:0.2rem 0">'
-        + '<div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#c49a3e;margin-bottom:0.5rem">' + city + '</div>'
+        + '<div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#B2A5F3;margin-bottom:0.5rem">' + city + '</div>'
         + '<div style="font-size:1rem;font-weight:700;color:#ede9e0;margin-bottom:0.6rem">' + name + '</div>'
         + (hours   ? '<div style="font-size:0.78rem;color:#888;margin-bottom:0.25rem">🕐 ' + hours + '</div>' : '')
         + (phone   ? '<div style="font-size:0.78rem;color:#888;margin-bottom:0.25rem">📞 ' + phone + '</div>' : '')
-        + (website ? '<a href="' + website + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.4rem;font-size:0.75rem;color:#c49a3e;text-decoration:none">Visiter le refuge ↗</a>' : '')
+        + (website ? '<a href="' + website + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.4rem;font-size:0.75rem;color:#B2A5F3;text-decoration:none">Visiter le refuge ↗</a>' : '')
         + '</div>';
 
       new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })

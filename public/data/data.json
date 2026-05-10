@@ -236,8 +236,8 @@
     ],
     "intake_reasons": [
       { "reason": "Abandon volontaire", "count": 25403, "percentage": 79, "color": "#c49a3e" },
-      { "reason": "Animal trouvé",      "count": 5449,  "percentage": 17, "color": "#6699cc" },
-      { "reason": "Saisi / maltraitance", "count": 1234, "percentage": 4, "color": "#7a8a3a" }
+      { "reason": "Animal trouvé",      "count": 5449,  "percentage": 17, "color": "#B2A5F3" },
+      { "reason": "Saisi / maltraitance", "count": 1234, "percentage": 4, "color": "#FF667A" }
     ],
     "annual_dogs": [
       { "year": 2019, "abandoned": 780,  "label": "Avant COVID" },
