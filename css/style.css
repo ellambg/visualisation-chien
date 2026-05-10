@@ -190,43 +190,153 @@ em { font-style: italic; color: var(--accent); }
 }
 
 /* ════════════════════════════════════════════
-   STORYMAP (MapLibre scrollytelling)
+   STORYMAP (MapLibre)
 ════════════════════════════════════════════ */
-#section-storymap-world,
-#section-storymap-swiss,
-#section-storymap {
+#section-storymap-world {
   position: relative;
   padding: 0;
   border-top: none;
 }
+#section-storymap-swiss,
+#section-storymap {
+  position: relative;
+}
 
-#storymap-world-map-wrapper,
-#storymap-swiss-map-wrapper,
-#storymap-map-wrapper {
+/* Carte monde : scrollytelling sticky */
+#storymap-world-map-wrapper {
   position: sticky;
   top: 0;
   height: 100vh;
   width: 100%;
   overflow: hidden;
 }
-
-#storymap-world-map,
-#storymap-swiss-map,
-#storymap-map {
+#storymap-world-map {
   position: absolute;
   inset: 0;
 }
-
-#storymap-world-scroll,
-#storymap-swiss-scroll,
-#storymap-scroll {
+#storymap-world-scroll {
   position: relative;
   margin-top: -100vh;
   pointer-events: none;
   z-index: 2;
 }
-
 .story-step { height: 100vh; }
+
+/* Stats monde sous la carte */
+.world-stats-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem 1rem;
+}
+.world-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.world-stat:hover { border-color: rgba(196,154,62,0.3); }
+.world-stat--ch {
+  border-color: rgba(196,154,62,0.35);
+  background: linear-gradient(135deg, rgba(196,154,62,0.08), var(--bg-card));
+}
+.world-stat-region {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.world-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+.world-stat--ch .world-stat-num { color: var(--accent); }
+.world-stat-detail {
+  font-size: 0.64rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Carte suisse : layout côte-à-côte */
+#section-storymap-swiss {
+  padding: 0;
+}
+.swiss-layout {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  min-height: 80vh;
+}
+.swiss-layout-map {
+  position: relative;
+  min-height: 60vh;
+}
+#storymap-swiss-map-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+#storymap-swiss-map {
+  position: absolute;
+  inset: 0;
+}
+.swiss-layout-info {
+  padding: 4rem 3rem 4rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.swiss-big-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+.swiss-big-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 0.75rem;
+  text-align: center;
+}
+.swiss-big-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+.swiss-big-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Carte refuges : hauteur fixe, plus sticky */
+#shelter-map-wrapper {
+  position: relative;
+  height: 70vh;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 2rem;
+  width: calc(100% - 4rem);
+  border-radius: 12px;
+}
 
 /* Carte flottante */
 #story-card-world,
@@ -342,28 +452,13 @@ em { font-style: italic; color: var(--accent); }
   transform: scale(1.6);
 }
 
-/* ── Storymap Refuges (section independante) ── */
+/* ── Section Refuges ── */
 #section-shelters-map {
   position: relative;
-  padding: 0;
-  border-top: 1px solid var(--border);
-}
-#shelter-map-wrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
 }
 #shelter-storymap-map {
   position: absolute;
   inset: 0;
-}
-#shelter-storymap-scroll {
-  position: relative;
-  margin-top: -100vh;
-  pointer-events: none;
-  z-index: 2;
 }
 #shelter-story-card {
   position: absolute;
@@ -1127,10 +1222,19 @@ a.social-card:hover .social-card-link-hint { opacity: 1; }
   .nav-links { display: none; }
   #shelter-map-container { height: 320px; }
   .social-grid { grid-template-columns: repeat(2, 1fr); }
+  .world-stats-row { grid-template-columns: repeat(3, 1fr); }
+  .swiss-layout { grid-template-columns: 1fr; min-height: auto; }
+  .swiss-layout-map { min-height: 50vh; position: relative; }
+  #storymap-swiss-map-wrapper { position: relative; height: 50vh; }
+  .swiss-layout-info { padding: 2rem; }
+  #storymap-world-map-wrapper { margin: 0 1rem 1.5rem; }
+  #shelter-map-wrapper { margin: 0 1rem; width: calc(100% - 2rem); }
 }
 @media (max-width: 600px) {
   .swiss-stats-grid, .sources-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; align-items: flex-start; }
   section { padding: 70px 0; }
   .social-grid { grid-template-columns: 1fr; }
+  .world-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .swiss-big-stats { grid-template-columns: 1fr; }
 }

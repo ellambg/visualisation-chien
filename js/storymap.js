@@ -11,12 +11,12 @@ function buildWorldEuropeChapters() {
     {
       id: 'world-overview',
       section: 'world',
-      label: 'A l\'echelle mondiale',
+      label: 'À l\'échelle mondiale',
       camera: { center: [0, 20], zoom: 1.5, pitch: 0, bearing: 0, duration: 1500 },
       card: {
-        eyebrow: 'A l\'echelle mondiale',
+        eyebrow: 'À l\'échelle mondiale',
         title: '~200 millions de chiens errants',
-        body: 'L\'Organisation mondiale de la sante estime a <strong>200 millions</strong> le nombre de chiens errants dans le monde. D\'autres rapports parlent de <strong>360 millions d\'animaux</strong> de compagnie sans foyer.',
+        body: 'L\'Organisation mondiale de la santé estime à <strong>200 millions</strong> le nombre de chiens errants dans le monde. D\'autres rapports parlent de <strong>360 millions d\'animaux</strong> de compagnie sans foyer.',
         source: 'OMS / FOUR PAWS 2023',
         sourceUrl: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
       }
@@ -25,13 +25,13 @@ function buildWorldEuropeChapters() {
       id: 'world-asia',
       section: 'world',
       activeZone: 'asia',
-      label: 'A l\'echelle mondiale',
+      label: 'À l\'échelle mondiale',
       camera: { center: [95, 28], zoom: 3, pitch: 20, bearing: 0, duration: 2500 },
       card: {
         eyebrow: 'Asie',
         title: 'Inde & Chine : 62 millions',
-        body: 'L\'<strong>Inde</strong> recense jusqu\'a <strong>35 millions</strong> de chiens errants, la <strong>Chine</strong> <strong>27 millions</strong>. Ces chiffres representent plus du tiers du total mondial.',
-        source: 'WHO / AWBI 2023 — CNAH 2022',
+        body: 'L\'<strong>Inde</strong> recense jusqu\'à <strong>35 millions</strong> de chiens errants, la <strong>Chine</strong> <strong>27 millions</strong>. Ces chiffres représentent plus du tiers du total mondial.',
+        source: 'WHO / AWBI 2023 / CNAH 2022',
         sourceUrl: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
       }
     },
@@ -39,12 +39,12 @@ function buildWorldEuropeChapters() {
       id: 'world-americas',
       section: 'world',
       activeZone: 'americas',
-      label: 'A l\'echelle mondiale',
+      label: 'À l\'échelle mondiale',
       camera: { center: [-75, 5], zoom: 2.5, pitch: 20, bearing: 0, duration: 2500 },
       card: {
-        eyebrow: 'Ameriques',
-        title: 'Bresil, Mexique, Etats-Unis',
-        body: 'Le <strong>Bresil</strong> compte <strong>30 millions</strong> de chiens errants, le <strong>Mexique</strong> <strong>20 millions</strong>. Meme les Etats-Unis voient <strong>3,1 millions d\'animaux</strong> entrer en refuge chaque annee.',
+        eyebrow: 'Amériques',
+        title: 'Brésil, Mexique, États-Unis',
+        body: 'Le <strong>Brésil</strong> compte <strong>30 millions</strong> de chiens errants, le <strong>Mexique</strong> <strong>20 millions</strong>. Même les États-Unis voient <strong>3,1 millions d\'animaux</strong> entrer en refuge chaque année.',
         source: 'Instituto Pet Brasil / INEGI / ASPCA 2023',
         sourceUrl: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
       }
@@ -53,13 +53,13 @@ function buildWorldEuropeChapters() {
       id: 'world-africa',
       section: 'world',
       activeZone: 'africa',
-      label: 'A l\'echelle mondiale',
+      label: 'À l\'échelle mondiale',
       camera: { center: [22, 8], zoom: 3.2, pitch: 20, bearing: 0, duration: 2500 },
       card: {
         eyebrow: 'Afrique',
-        title: 'Ethiopie & Nigeria : 14 millions',
-        body: 'L\'<strong>Ethiopie</strong> et le <strong>Nigeria</strong> depassent chacun les <strong>7 millions</strong> de chiens errants. Un probleme de sante publique majeur, etroitement lie a la rage.',
-        source: 'WHO estimate 2023 — WSPA / FOUR PAWS 2022',
+        title: 'Éthiopie & Nigeria : 14 millions',
+        body: 'L\'<strong>Éthiopie</strong> et le <strong>Nigeria</strong> dépassent chacun les <strong>7 millions</strong> de chiens errants. Un problème de santé publique majeur, étroitement lié à la rage.',
+        source: 'WHO estimate 2023 / WSPA / FOUR PAWS 2022',
         sourceUrl: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
       }
     },
@@ -67,12 +67,12 @@ function buildWorldEuropeChapters() {
       id: 'world-dubai',
       section: 'world',
       activeZone: 'dubai',
-      label: 'A l\'echelle mondiale',
+      label: 'À l\'échelle mondiale',
       camera: { center: [55.3, 25.2], zoom: 6, pitch: 30, bearing: -20, duration: 2500 },
       card: {
         eyebrow: 'Cas particulier',
-        title: 'Dubai : la fuite des expatries',
-        body: 'Les conflits qui secouent la region depuis 2023 poussent des expatries a fuir precipitamment, <strong>laissant leurs animaux derriere eux</strong>. Chiffre estime — aucun registre officiel.',
+        title: 'Dubaï : la fuite des expatriés',
+        body: 'Les conflits qui secouent la région depuis 2023 poussent des expatriés à fuir précipitamment, <strong>laissant leurs animaux derrière eux</strong>. Chiffre estimé (aucun registre officiel).',
         source: 'ONG locales (Dubai Shelter, SNIFF) 2024'
       }
     },
@@ -84,8 +84,8 @@ function buildWorldEuropeChapters() {
       camera: { center: [14, 52], zoom: 3, pitch: 0, bearing: 0, duration: 2500 },
       card: {
         eyebrow: 'Focus Europe',
-        title: 'Un continent, deux realites',
-        body: 'A l\'<strong>Ouest</strong> : des flux annuels d\'abandons geres par des refuges. A l\'<strong>Est et au Sud</strong> : des populations entieres de chiens errants, heritees de decennies de non-gestion.',
+        title: 'Un continent, deux réalités',
+        body: 'À l\'<strong>Ouest</strong> : des flux annuels d\'abandons gérés par des refuges. À l\'<strong>Est et au Sud</strong> : des populations entières de chiens errants, héritées de décennies de non-gestion.',
         source: 'FOUR PAWS / ESDAW 2024',
         sourceUrl: 'https://www.esdaw-eu.eu/the-stray-dogs-in-europe.html'
       }
@@ -98,8 +98,8 @@ function buildWorldEuropeChapters() {
       camera: { center: [28, 43], zoom: 4.5, pitch: 20, bearing: 0, duration: 2000 },
       card: {
         eyebrow: 'Europe de l\'Est',
-        title: 'Turquie, Grece, Roumanie',
-        body: 'La <strong>Turquie</strong> : 4 millions de chiens errants, loi de capture adoptee en 2024. La <strong>Grece</strong> : 3 millions. La <strong>Roumanie</strong> : 500 000-600 000 — heritage du regime Ceausescu.',
+        title: 'Turquie, Grèce, Roumanie',
+        body: 'La <strong>Turquie</strong> : 4 millions de chiens errants, loi de capture adoptée en 2024. La <strong>Grèce</strong> : 3 millions. La <strong>Roumanie</strong> : 500 000-600 000 (héritage du régime Ceaușescu).',
         source: 'Gouvernement turc / MDPI 2024 / PETA UK',
         sourceUrl: 'https://www.esdaw-eu.eu/the-stray-dogs-in-europe.html'
       }
@@ -113,8 +113,8 @@ function buildWorldEuropeChapters() {
       card: {
         eyebrow: 'Europe de l\'Ouest',
         title: 'France, Espagne, Belgique',
-        body: 'La <strong>France</strong> : ~100 000 abandons/an. L\'<strong>Espagne</strong> : 173 000 chiens recueillis en 2023. La <strong>Belgique</strong> qualifie 2023 d\'annee noire avec 165 abandons par jour.',
-        source: 'SPA / Fundacion Affinity / Bien-etre Animal Wallonie',
+        body: 'La <strong>France</strong> : ~100 000 abandons/an. L\'<strong>Espagne</strong> : 173 000 chiens recueillis en 2023. La <strong>Belgique</strong> qualifie 2023 d\'année noire avec 165 abandons par jour.',
+        source: 'SPA / Fundación Affinity / Bien-être Animal Wallonie',
         sourceUrl: 'https://www.fundacion-affinity.org/fr/sensibilisation/il-ne-le-ferait-jamais-etude-sur-labandon-et-ladoption-2024'
       }
     },
@@ -125,9 +125,9 @@ function buildWorldEuropeChapters() {
       label: 'Focus Europe',
       camera: { center: [5.3, 52.4], zoom: 7, pitch: 30, bearing: 0, duration: 2000 },
       card: {
-        eyebrow: 'Un modele',
-        title: 'Pays-Bas : zero chien errant',
-        body: 'Les <strong>Pays-Bas</strong> ont quasiment elimine les chiens errants grace a des decennies de politique coherente : <strong>microchip obligatoire</strong>, prise en charge immediate, refuges structures.',
+        eyebrow: 'Un modèle',
+        title: 'Pays-Bas : zéro chien errant',
+        body: 'Les <strong>Pays-Bas</strong> ont quasiment éliminé les chiens errants grâce à des décennies de politique cohérente : <strong>microchip obligatoire</strong>, prise en charge immédiate, refuges structurés.',
         source: 'Diverses sources',
         sourceUrl: 'https://www.beatricesconseilscanins.fr/blog/les-pays-au-plus-taux-d-abandon-d-animaux-en-europe.html'
       }
@@ -141,11 +141,11 @@ function buildSwissChapters() {
       id: 'switzerland-overview',
       section: 'switzerland',
       label: 'La Suisse',
-      camera: { center: [8.2, 46.8], zoom: 7, pitch: 40, bearing: 0, duration: 2500 },
+      camera: { center: [8.23, 46.82], zoom: 6.8, pitch: 20, bearing: 0, duration: 2500 },
       card: {
         eyebrow: 'Chez nous',
         title: '1 826 chiens recueillis en 2024',
-        body: 'La Protection Suisse des Animaux (PSA/STS) a recueilli <strong>32 079 animaux</strong> en 2024 dans ses 66 sections affiliees. Parmi eux, <strong>1 826 chiens</strong> — contre 865 l\'annee precedente.',
+        body: 'La Protection Suisse des Animaux (PSA/STS) a recueilli <strong>32 079 animaux</strong> en 2024 dans ses 66 sections affiliées. Parmi eux, <strong>1 826 chiens</strong>, contre 865 l\'année précédente.',
         source: 'PSA / STS 2024',
         sourceUrl: 'https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/'
       }
@@ -158,8 +158,8 @@ function buildSwissChapters() {
       card: {
         eyebrow: 'Hausse alarmante',
         title: '+111 % en un an',
-        body: 'En un an, le nombre de chiens en refuge a <strong>plus que double</strong>. Achats impulsifs, couts veterinaires sous-estimes, lassitude : la Suisse n\'est plus a l\'abri de la crise.',
-        source: 'PSA / STS 2024 — RTS / 24 heures',
+        body: 'En un an, le nombre de chiens en refuge a <strong>plus que doublé</strong>. Achats impulsifs, coûts vétérinaires sous-estimés, lassitude : la Suisse n\'est plus à l\'abri de la crise.',
+        source: 'PSA / STS 2024 / RTS / 24 heures',
         sourceUrl: 'https://www.rts.ch/info/suisse/2025/article/hausse-alarmante-des-abandons-d-animaux-en-suisse-25-000-cas-en-2024-29036370.html'
       }
     }
@@ -195,7 +195,7 @@ function buildShelterChapters(shelters) {
       duration: 2000
     },
     card: {
-      eyebrow: 'Refuge — ' + s.city,
+      eyebrow: 'Refuge : ' + s.city,
       title: s.name,
       body: '<div class="shelter-detail">'
         + '<span>📍 ' + s.city + '</span>'
@@ -246,9 +246,11 @@ class StoryMap {
     this.map.on('load', () => {
       const needsWorld    = this.chapters.some(c => c.section === 'world' || c.section === 'europe' || c.section === 'switzerland');
       const needsShelters = this.chapters.some(c => c.section === 'shelters');
-      if (needsWorld)    this.addWorldLayer();
-      if (needsShelters) this.addShelterLayer();
+      const needsSwissCities = this.chapters.some(c => c.section === 'switzerland');
+      if (needsWorld)      this.addWorldLayer();
+      if (needsShelters)   this.addShelterLayer();
       this.addSwissBorderLayer();
+      if (needsSwissCities) this.addSwissCityLabels();
 
       if (this.opts.explorationOnly) {
         this.explorationMode = true;
@@ -287,15 +289,15 @@ class StoryMap {
     const spots = [
       { country: 'Inde',       coord: [80,    22],   estimate: 35000000, color: '#6699cc', zone: 'asia' },
       { country: 'Chine',      coord: [104,   34],   estimate: 27000000, color: '#6699cc', zone: 'asia' },
-      { country: 'Bresil',     coord: [-52,  -12],   estimate: 30000000, color: '#7a8a3a', zone: 'americas' },
+      { country: 'Brésil',     coord: [-52,  -12],   estimate: 30000000, color: '#7a8a3a', zone: 'americas' },
       { country: 'Mexique',    coord: [-102,  23],   estimate: 20000000, color: '#7a8a3a', zone: 'americas' },
-      { country: 'Etats-Unis', coord: [-99,   40],   estimate: 3100000,  color: '#7a8a3a', zone: 'americas' },
-      { country: 'Ethiopie',   coord: [40,    10],   estimate: 7000000,  color: '#c49a3e', zone: 'africa' },
+      { country: 'États-Unis', coord: [-99,   40],   estimate: 3100000,  color: '#7a8a3a', zone: 'americas' },
+      { country: 'Éthiopie',   coord: [40,    10],   estimate: 7000000,  color: '#c49a3e', zone: 'africa' },
       { country: 'Nigeria',    coord: [8,      9],   estimate: 7000000,  color: '#c49a3e', zone: 'africa' },
       { country: 'Turquie',    coord: [35,    39],   estimate: 4000000,  color: '#c49a3e', zone: 'europe-east' },
       { country: 'Suisse',     coord: [8.2,  46.8],  estimate: 1826,     color: '#c49a3e', zone: 'switzerland' },
-      { country: 'Dubai',      coord: [55.3, 25.2],  estimate: 1000,     color: '#6699cc', zone: 'dubai', noData: true },
-      { country: 'Grece',      coord: [22,    39],   estimate: 3000000,  color: '#c49a3e', zone: 'europe-east' },
+      { country: 'Dubaï',      coord: [55.3, 25.2],  estimate: 1000,     color: '#6699cc', zone: 'dubai', noData: true },
+      { country: 'Grèce',      coord: [22,    39],   estimate: 3000000,  color: '#c49a3e', zone: 'europe-east' },
       { country: 'Roumanie',   coord: [25,    46],   estimate: 500000,   color: '#c49a3e', zone: 'europe-east' },
       { country: 'Espagne',    coord: [-3.7,  40.4], estimate: 173000,   color: '#c49a3e', zone: 'europe-west' },
       { country: 'France',     coord: [2.2,   46.2], estimate: 100000,   color: '#c49a3e', zone: 'europe-west' },
@@ -647,6 +649,67 @@ class StoryMap {
     });
   }
 
+  addSwissCityLabels() {
+    const cities = [
+      { name: 'Genève',     coord: [6.1432,  46.2044] },
+      { name: 'Lausanne',   coord: [6.6323,  46.5197] },
+      { name: 'Lugano',     coord: [8.9511,  46.0037] },
+      { name: 'Sion',       coord: [7.3601,  46.2330] },
+      { name: 'Soleure',    coord: [7.5386,  47.2088] },
+      { name: 'Berne',      coord: [7.4474,  46.9480] },
+      { name: 'Zurich',     coord: [8.5417,  47.3769] },
+      { name: 'Bâle',       coord: [7.5886,  47.5596] },
+      { name: 'Lucerne',    coord: [8.3093,  47.0502] },
+      { name: 'Fribourg',    coord: [7.1560,  46.8065] },
+      { name: 'Saint-Gall',  coord: [9.3748,  47.4245] },
+    ];
+
+    this.map.addSource('swiss-cities', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: cities.map(c => ({
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: c.coord },
+          properties: { name: c.name }
+        }))
+      }
+    });
+
+    this.map.addLayer({
+      id: 'swiss-city-dots',
+      type: 'circle',
+      source: 'swiss-cities',
+      paint: {
+        'circle-radius': 3.5,
+        'circle-color': '#c49a3e',
+        'circle-opacity': 0.85,
+        'circle-stroke-color': '#0c0c0c',
+        'circle-stroke-width': 1.5
+      }
+    });
+
+    this.map.addLayer({
+      id: 'swiss-city-labels',
+      type: 'symbol',
+      source: 'swiss-cities',
+      layout: {
+        'text-field': ['get', 'name'],
+        'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
+        'text-size': 11,
+        'text-anchor': 'top',
+        'text-offset': [0, 0.55],
+        'text-allow-overlap': false,
+        'text-ignore-placement': false
+      },
+      paint: {
+        'text-color': '#ede9e0',
+        'text-halo-color': '#0c0c0c',
+        'text-halo-width': 2
+      }
+    });
+  }
+
   goToChapter(chapter) {
     if (!chapter || chapter.id === this.currentChapterId) return;
     this.currentChapterId = chapter.id;
@@ -724,21 +787,36 @@ class StoryMap {
 
   setupScroll() {
     if (this.opts.explorationOnly) return;
+    if (!this.opts.scrollSelector) {
+      this.map.dragPan.enable();
+      return;
+    }
     this.explorationMode = false;
-    const steps = document.querySelectorAll(this.opts.scrollSelector);
+    const steps = Array.from(document.querySelectorAll(this.opts.scrollSelector));
     this._scrollContainer = steps[0]?.parentElement || null;
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        if (this.explorationMode) return;
-        const id = entry.target.dataset.chapter;
-        const ch = this.chapters.find(c => c.id === id);
-        if (ch) this.goToChapter(ch);
-      });
-    }, { threshold: 0.5 });
+    let lastTriggeredId = null;
 
-    steps.forEach(step => observer.observe(step));
+    const onScroll = () => {
+      if (this.explorationMode) return;
+      const vh = window.innerHeight;
+      let best = null, bestRatio = -1;
+      steps.forEach(step => {
+        const rect = step.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+        const ratio = visible / vh;
+        if (ratio > bestRatio) { bestRatio = ratio; best = step; }
+      });
+      if (!best || bestRatio < 0.1) return;
+      const id = best.dataset.chapter;
+      if (id === lastTriggeredId) return;
+      lastTriggeredId = id;
+      this.currentChapterId = null; // force re-animation à chaque changement
+      const ch = this.chapters.find(c => c.id === id);
+      if (ch) this.goToChapter(ch);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     if (this.opts.exploreBtnId) this.setupExploreToggle();
   }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="1 826 chiens recueillis en Suisse en 2024. Une visualisation pour comprendre, comparer, et agir." />
-  <title>L'abandon invisible — Chiens abandonnés en Suisse</title>
+  <title>L'abandon invisible : Chiens abandonnés en Suisse</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +49,7 @@
     <p class="hero-subtitle">
       En Suisse, en 2024, <strong>1 826 chiens</strong> ont été recueillis en refuge.
       C'est <strong>+111%</strong> en un an.
-      Voici leur histoire — et celle de millions d'autres à travers le monde.
+      Voici leur histoire, et celle de millions d'autres à travers le monde.
     </p>
 
     <button class="hero-scroll-cta" id="hero-cta">
@@ -68,7 +68,7 @@
       <div class="intro-video-wrapper">
         <iframe
           src="https://www.youtube.com/embed/JLUZKiGk3k4"
-          title="Intro — abandon de chiens"
+          title="Intro : abandon de chiens"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -78,55 +78,38 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       CARTE MONDE + EUROPE
+       STORYMAP 1A — Monde · Europe
   ══════════════════════════════════════════════ -->
   <section id="section-storymap-world">
 
-    <div class="section-intro fade-in-up">
-      <p class="section-eyebrow">Contexte mondial</p>
-      <h2>~200 millions de chiens errants</h2>
-      <div class="divider"></div>
-      <p class="story-body" style="max-width:640px;margin:0 auto">
-        L'OMS estime à <strong>200 millions</strong> le nombre de chiens errants dans le monde.
-        Cliquez sur un pays pour afficher les données.
-      </p>
-    </div>
-
     <div id="storymap-world-map-wrapper">
       <div id="storymap-world-map"></div>
+
+      <div id="story-card-world">
+        <p class="card-eyebrow"></p>
+        <h2 class="card-title"></h2>
+        <div class="card-body"></div>
+        <p class="card-source"></p>
+      </div>
+
+      <div class="storymap-section-label" id="storymap-world-label"></div>
+
+      <nav class="storymap-nav" id="storymap-nav" aria-label="Navigation carte">
+        <button class="storymap-nav-dot active" data-section="world"  title="Monde"></button>
+        <button class="storymap-nav-dot"         data-section="europe" title="Europe"></button>
+      </nav>
     </div>
 
-    <div class="world-stats-row fade-in-up">
-      <div class="world-stat">
-        <div class="world-stat-region" style="color:#6699cc">Asie</div>
-        <div class="world-stat-num">62 M</div>
-        <div class="world-stat-detail">Inde 35M · Chine 27M</div>
-      </div>
-      <div class="world-stat">
-        <div class="world-stat-region" style="color:#7a8a3a">Amériques</div>
-        <div class="world-stat-num">53 M</div>
-        <div class="world-stat-detail">Brésil 30M · Mexique 20M · USA 3,1M/an</div>
-      </div>
-      <div class="world-stat">
-        <div class="world-stat-region" style="color:#c49a3e">Afrique</div>
-        <div class="world-stat-num">14 M</div>
-        <div class="world-stat-detail">Éthiopie 7M · Nigeria 7M</div>
-      </div>
-      <div class="world-stat">
-        <div class="world-stat-region" style="color:#c49a3e">Europe Est</div>
-        <div class="world-stat-num">7,5 M</div>
-        <div class="world-stat-detail">Turquie 4M · Grèce 3M · Roumanie 500k</div>
-      </div>
-      <div class="world-stat">
-        <div class="world-stat-region" style="color:#c49a3e">Europe Ouest</div>
-        <div class="world-stat-num">~373 k</div>
-        <div class="world-stat-detail">France 100k · Espagne 173k · Belgique 60k</div>
-      </div>
-      <div class="world-stat world-stat--ch">
-        <div class="world-stat-region">🇨🇭 Suisse</div>
-        <div class="world-stat-num">1 826</div>
-        <div class="world-stat-detail">chiens en refuge · +111% en un an</div>
-      </div>
+    <div id="storymap-world-scroll">
+      <div class="story-step" data-chapter="world-overview"></div>
+      <div class="story-step" data-chapter="world-asia"></div>
+      <div class="story-step" data-chapter="world-americas"></div>
+      <div class="story-step" data-chapter="world-africa"></div>
+      <div class="story-step" data-chapter="world-dubai"></div>
+      <div class="story-step" data-chapter="europe-overview"></div>
+      <div class="story-step" data-chapter="europe-east"></div>
+      <div class="story-step" data-chapter="europe-west"></div>
+      <div class="story-step" data-chapter="europe-netherlands"></div>
     </div>
 
   </section>
@@ -226,15 +209,15 @@
         </div>
         <p class="story-body">
           La Protection Suisse des Animaux (PSA/STS) a recueilli <strong>32 079 animaux</strong>
-          en 2024 dans ses 66 sections affiliées. Parmi eux, <strong>1 826 chiens</strong>
-          — contre 865 l'année précédente.
+          en 2024 dans ses 66 sections affiliées. Parmi eux, <strong>1 826 chiens</strong>,
+          contre 865 l'année précédente.
         </p>
         <p class="story-body">
           Achats impulsifs, coûts vétérinaires sous-estimés, lassitude :
           la Suisse n'est plus à l'abri de la crise.
         </p>
         <p class="story-source">
-          <a href="https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/" target="_blank" rel="noopener">Source : PSA / STS 2024 — RTS 2025</a>
+          <a href="https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/" target="_blank" rel="noopener">Source : PSA / STS 2024, RTS 2025</a>
         </p>
       </div>
     </div>
@@ -250,7 +233,7 @@
       <h2>Des histoires<br>qui circulent.</h2>
       <div class="divider"></div>
       <p class="story-body" style="max-width:600px;margin:0 auto">
-        Des témoignages, des photos, des vidéos — partagés par des refuges,
+        Des témoignages, des photos, des vidéos partagés par des refuges,
         des adoptants, des bénévoles. Chaque publication porte une histoire réelle.
       </p>
     </div>
@@ -318,7 +301,7 @@
         <div class="divider"></div>
         <p class="story-body">
           En 2024, les 66 sections affiliées à la Protection Suisse des Animaux
-          ont accueilli <strong>32 079 animaux</strong> — soit en moyenne
+          ont accueilli <strong>32 079 animaux</strong>, soit en moyenne
           <strong>486 animaux par refuge</strong>. Une charge qui ne cesse d'augmenter.
         </p>
         <p class="story-body">
@@ -427,7 +410,7 @@
     <p class="footer-text">Projet VisualDon · HEIG-VD 2026 · Ella Maiburg - Carla Hobeiche</p>
     <div class="footer-links">
       <a href="https://github.com/ellambg/visualisation-chien" target="_blank">GitHub ↗</a>
-      <a href="https://www.protection-animaux.com" target="_blank">PSA / STS ↗</a>
+      <a href="https://tierschutz.com/fr/" target="_blank">PSA / STS ↗</a>
       <a href="#hero">↑ Haut de page</a>
     </div>
   </footer>

@@ -259,7 +259,7 @@ function initCompareChart(data) {
         <div class="donut-legend-dot" style="background:${r.color}"></div>
         <div class="donut-legend-text">
           <span class="donut-legend-pct" style="color:${r.color}">${r.percentage}%</span>
-          <span class="donut-legend-label"> — ${r.reason}</span>
+          <span class="donut-legend-label"> ${r.reason}</span>
           <div class="donut-legend-count">${r.count.toLocaleString('fr-CH')} animaux</div>
         </div>
       </div>

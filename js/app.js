@@ -70,13 +70,13 @@ function initStorymap() {
       chapters:       buildWorldEuropeChapters()
     });
 
-    // Storymap 1B : Suisse
+    // Storymap 1B : Suisse (mode statique interactif)
     App.storymapSwiss = new StoryMap(App.data, {
       mapId:          'storymap-swiss-map',
-      cardId:         'story-card-swiss',
-      labelId:        'storymap-swiss-label',
+      cardId:         null,
+      labelId:        null,
       navSelector:    null,
-      scrollSelector: '#storymap-swiss-scroll .story-step',
+      scrollSelector: null,
       chapters:       buildSwissChapters()
     });
 
@@ -120,14 +120,14 @@ function buildSources() {
     {
       icon: '🏛️',
       name: 'PSA / STS',
-      desc: 'Protection Suisse des Animaux — statistiques officielles 2024 des 66 sections affiliées. Seule source fiable sur les abandons en Suisse.',
+      desc: 'Protection Suisse des Animaux, statistiques officielles 2024 des 66 sections affiliées. Seule source fiable sur les abandons en Suisse.',
       type: 'psa',
       typeLabel: 'Institutionnel CH',
       url: 'https://tierschutz.com/fr/protection-des-animaux/statistique-psa-de-la-protection-des-animaux/'
     },
     {
       icon: '🌍',
-      name: 'FOUR PAWS — Rapport annuel 2023',
+      name: 'FOUR PAWS, rapport annuel 2023',
       desc: 'Estimation de 200 millions de chiens errants dans le monde. Rapport annuel de l\'ONG internationale FOUR PAWS, référence pour les chiffres globaux.',
       type: 'ong',
       typeLabel: 'International',
@@ -143,7 +143,7 @@ function buildSources() {
     },
     {
       icon: '📰',
-      name: 'Euro Weekly — Espagne 2024',
+      name: 'Euro Weekly (Espagne 2024)',
       desc: 'Analyse de la situation espagnole post-loi de bien-être animal (2023). Contexte sur la baisse des abandons et les défis persistants pour les refuges.',
       type: 'intl',
       typeLabel: 'Espagne',
@@ -151,7 +151,7 @@ function buildSources() {
     },
     {
       icon: '📊',
-      name: 'FACCO — Abandons en France',
+      name: 'FACCO, abandons en France',
       desc: 'Chambre Syndicale des fabricants d\'aliments pour animaux. Données de référence sur les abandons en France : ~100 000 animaux/an, dont une majorité en été.',
       type: 'intl',
       typeLabel: 'France',
@@ -167,7 +167,7 @@ function buildSources() {
     },
     {
       icon: '📊',
-      name: 'Dogs Trust — Royaume-Uni',
+      name: 'Dogs Trust (Royaume-Uni)',
       desc: '36 965 chiens pris en charge en 2023-2024. La plus grande organisation de protection canine du Royaume-Uni publie une enquête annuelle sur les chiens errants.',
       type: 'intl',
       typeLabel: 'Royaume-Uni',
@@ -175,7 +175,7 @@ function buildSources() {
     },
     {
       icon: '🐾',
-      name: 'Dogs Trust — Irlande',
+      name: 'Dogs Trust (Irlande)',
       desc: '7 041 chiens pris en charge en 2024 en Irlande. Alerte sur la hausse des euthanasies dans les fourrières irlandaises faute de places en refuge.',
       type: 'intl',
       typeLabel: 'Irlande',
@@ -183,7 +183,7 @@ function buildSources() {
     },
     {
       icon: '🗺️',
-      name: 'ICNF — Portugal',
+      name: 'ICNF (Portugal)',
       desc: 'Premier recensement national au Portugal (2023) : 101 015 chiens errants + 830 541 chats errants. Un des taux d\'animaux errants les plus élevés d\'Europe.',
       type: 'opendata',
       typeLabel: 'Portugal',
@@ -191,7 +191,7 @@ function buildSources() {
     },
     {
       icon: '🌍',
-      name: 'ESDAW — Chiens errants en Europe',
+      name: 'ESDAW, chiens errants en Europe',
       desc: 'European Society of Dog and Animal Welfare. Données sur les millions de chiens errants en Europe de l\'Est et les politiques nationales de gestion des populations.',
       type: 'intl',
       typeLabel: 'Europe',
@@ -199,7 +199,7 @@ function buildSources() {
     },
     {
       icon: '🗺️',
-      name: 'Abandons par pays — Europe',
+      name: 'Abandons par pays en Europe',
       desc: 'Synthèse comparative des taux d\'abandon dans les pays européens. Comparaison des législations et des chiffres de refuges à l\'échelle du continent.',
       type: 'intl',
       typeLabel: 'Europe',
@@ -215,7 +215,7 @@ function buildSources() {
     },
     {
       icon: '📰',
-      name: '24 heures — Augmentation abandons',
+      name: '24 heures : Augmentation des abandons',
       desc: 'Article sur la hausse des abandons d\'animaux domestiques en Suisse en 2024. Achats impulsifs et coûts sous-estimés cités comme causes principales.',
       type: 'media',
       typeLabel: 'Presse CH',
@@ -223,7 +223,7 @@ function buildSources() {
     },
     {
       icon: '📻',
-      name: 'RTS — Hausse alarmante des abandons',
+      name: 'RTS : Hausse alarmante des abandons',
       desc: 'Reportage RTS sur les 25 000 cas d\'abandons en Suisse en 2024 et la saturation des refuges affiliés PSA/STS.',
       type: 'media',
       typeLabel: 'Presse CH',
@@ -231,7 +231,7 @@ function buildSources() {
     },
     {
       icon: '📰',
-      name: '24 heures — 32 000 animaux en refuges',
+      name: '24 heures : 32 000 animaux en refuges',
       desc: 'Article détaillant les 32 079 animaux recueillis en 2024 dans les refuges suisses, avec chiffres par espèce et analyse des causes.',
       type: 'media',
       typeLabel: 'Presse CH',
@@ -345,20 +345,18 @@ function setupDotControls() {
 
   const section = document.getElementById('section-dots');
   if (section) {
-    let alreadyDone = false;
-
     new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !alreadyDone) {
-        alreadyDone = true;
+      if (entries[0].isIntersecting) {
+        App.dotAnim?.transition('scatter');
+        btnScatter?.classList.add('active');
+        btnBars?.classList.remove('active');
         setTimeout(() => {
           App.dotAnim?.transition('bars');
           btnBars?.classList.add('active');
           btnScatter?.classList.remove('active');
         }, 700);
       }
-    }, {
-      threshold: 0.45
-    }).observe(section);
+    }, { threshold: 0.45 }).observe(section);
   }
 }
 
