@@ -154,14 +154,14 @@ function buildSources() {
       url: 'https://www.asiae.co.kr/en/article/2025100808355193561'
     },
     {
-      name: 'Ministère de l\'Environnement japonais — statistiques chiens et chats',
+      name: 'Ministère de l\'Environnement japonais : statistiques chiens et chats',
       desc: '~17 000 chiens pris en charge par les autorités japonaises par an, dont une partie abandonnée directement. Estimations actuelles : 10 000–20 000 chiens errants sur le territoire.',
       type: 'opendata',
       typeLabel: 'Japon',
       url: 'https://www.env.go.jp/nature/dobutsu/aigo/2_data/statistics/dog-cat.html'
     },
     {
-      name: 'Chien.com — chiens errants dans le monde',
+      name: 'Chien.com : chiens errants dans le monde',
       desc: 'Estimation de 10 000 à 20 000 chiens errants au Japon selon les données actuelles. Contexte comparatif international sur les populations de chiens sans foyer.',
       type: 'intl',
       typeLabel: 'Japon',
@@ -175,28 +175,28 @@ function buildSources() {
       url: 'https://www.channelnewsasia.com/singapore/animal-cruelty-abandonment-cases-2023-spca-report-4087421'
     },
     {
-      name: 'EnviroLiteracy — statistiques abandons animaux',
+      name: 'EnviroLiteracy : statistiques abandons animaux',
       desc: '~6,5 millions d\'animaux entrent en refuge aux États-Unis chaque année (chiens inclus). Données compilées par l\'Environmental Literacy Council.',
       type: 'intl',
       typeLabel: 'États-Unis',
       url: 'https://enviroliteracy.org/what-are-the-statistics-on-pet-abandonment/'
     },
     {
-      name: 'ZipDo — statistiques abandons animaux (causes)',
+      name: 'ZipDo : statistiques abandons animaux (causes)',
       desc: 'Données sur les causes d\'abandon aux États-Unis : coûts vétérinaires, problèmes comportementaux, changements de vie.',
       type: 'intl',
       typeLabel: 'États-Unis',
       url: 'https://zipdo.co/animal-abandonment-statistics/'
     },
     {
-      name: 'Gitnux — abandons animaux au Canada',
+      name: 'Gitnux : abandons animaux au Canada',
       desc: '~63 000 chiens et 104 000 chats abandonnés ou errants en refuge au Canada en 2022.',
       type: 'intl',
       typeLabel: 'Canada',
       url: 'https://gitnux.org/animal-abandonment-statistics/'
     },
     {
-      name: 'Reddit / dataisbeautiful — chiens errants en Amérique latine',
+      name: 'Reddit / dataisbeautiful : chiens errants en Amérique latine',
       desc: '~15 à 18 millions de chiens errants au Mexique, majoritairement liés à l\'abandon. Visualisation comparative des populations canines en Amérique latine.',
       type: 'intl',
       typeLabel: 'Mexique',
@@ -210,22 +210,22 @@ function buildSources() {
       url: 'https://media.4-paws.org/9/0/c/0/90c06b6c9285bce0629257006d733be56b20f6ee/AR23_FR_Final_040924.pdf'
     },
     {
-      name: 'Fundación Affinity — abandons en Espagne',
+      name: 'Fundación Affinity : abandons en Espagne',
       desc: '~100 000 à 140 000 animaux abandonnés/an en Espagne. Étude annuelle sur les abandons et adoptions, l\'Espagne étant l\'un des pays les plus touchés d\'Europe de l\'Ouest.',
       type: 'intl',
       typeLabel: 'Espagne',
       url: 'https://www.fundacion-affinity.org/en/dogs-cats-and-people/yearly-study'
     },
     {
-      name: 'La Presse.it — chiens abandonnés en Italie (2023)',
+      name: 'La Presse.it : chiens abandonnés en Italie (2023)',
       desc: '~85 000 chiens abandonnés en Italie en 2023 selon les données compilées par la Lega Nazionale per la Difesa del Cane.',
       type: 'intl',
       typeLabel: 'Italie',
       url: 'https://www.lapresse.it/ambiente/2024/08/09/animali-85mila-cani-abbandonati-in-italia-nel-2023-86/'
     },
     {
-      name: 'Deutscher Tierschutzbund — refuges en Allemagne',
-      desc: '~80 000 à 100 000 chiens entrant en refuge chaque année en Allemagne. Pas de statistique nationale directe sur les abandons — données issues du réseau de refuges affiliés.',
+      name: 'Deutscher Tierschutzbund : refuges en Allemagne',
+      desc: '~80 000 à 100 000 chiens entrant en refuge chaque année en Allemagne. Pas de statistique nationale directe sur les abandons, données issues du réseau de refuges affiliés.',
       type: 'intl',
       typeLabel: 'Allemagne',
       url: 'https://www.tierschutzbund.de/en/'
@@ -238,7 +238,7 @@ function buildSources() {
       url: 'https://euroweeklynews.com/2024/08/01/are-pets-a-pain-in-spain/'
     },
     {
-      name: 'SPA — Société Protectrice des Animaux (France)',
+      name: 'SPA : Société Protectrice des Animaux (France)',
       desc: '~100 000 abandons d\'animaux par an en France (chiens et chats). La SPA est la principale organisation de protection animale en France avec un réseau de refuges sur tout le territoire.',
       type: 'intl',
       typeLabel: 'France',

@@ -67,7 +67,7 @@ function buildWorldEuropeChapters() {
         title: 'Afrique du Sud',
         body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
           + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Chiens recueillis / an (estimation)</span><br><strong>~50 000</strong> chiens abandonnés ou saisis</div>'
-          + '<div style="font-size:0.75rem;color:#888;border-top:1px solid rgba(237,233,224,0.08);padding-top:0.5rem">Seule l\'Afrique du Sud dispose de données documentées via son réseau SPCA (plus de 200 000 animaux — chiens et chats — recueillis chaque année). Pour le reste du continent, il n\'existe pas de statistiques fiables sur les abandons — le problème est avant tout celui des <em>chiens errants</em>, lié à la rage et à la santé publique.</div>'
+          + '<div style="font-size:0.75rem;color:#888;border-top:1px solid rgba(237,233,224,0.08);padding-top:0.5rem">Seule l\'Afrique du Sud dispose de données documentées via son réseau SPCA (plus de 200 000 animaux (chiens et chats) recueillis chaque année). Pour le reste du continent, il n\'existe pas de statistiques fiables sur les abandons : le problème est avant tout celui des <em>chiens errants</em>, lié à la rage et à la santé publique.</div>'
           + '</div>',
         source: 'WHO 2023 / WSPA / FOUR PAWS 2022 / SPCA South Africa',
         sourceUrl: 'https://capespca.co.za/'
@@ -145,7 +145,7 @@ function buildWorldEuropeChapters() {
         title: 'Royaume-Uni & Irlande',
         body: '<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem">'
           + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">Chiens errants</span><br><strong>36 965</strong> Royaume-Uni (autorités locales 2023-2024)</div>'
-          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">En fourrière / an</span><br><strong>7 041</strong> Irlande — hausse des euthanasies faute de places.</div>'
+          + '<div><span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:#888">En fourrière / an</span><br><strong>7 041</strong> Irlande, hausse des euthanasies faute de places.</div>'
           + '</div>',
         source: 'Dogs Trust UK 2024 / Dogs Trust Ireland 2024',
         sourceUrl: 'https://www.dogstrust.org.uk/about-us/what-we-do/research/stray-dogs-survey-research'
