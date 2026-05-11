@@ -12,7 +12,7 @@ function buildWorldEuropeChapters() {
       id: 'world-overview',
       section: 'world',
       label: 'À l\'échelle mondiale',
-      camera: { center: [0, 20], zoom: 1.5, pitch: 0, bearing: 0, duration: 1500 },
+      camera: { center: [-20, 20], zoom: 1.5, pitch: 0, bearing: 0, duration: 1500 },
       card: {
         eyebrow: 'À l\'échelle mondiale',
         title: '~200 millions de chiens errants',
@@ -268,7 +268,8 @@ class StoryMap {
       scrollZoom:       false,
       dragPan:          false,
       touchZoomRotate:  false,
-      keyboard:         false
+      keyboard:         false,
+      renderWorldCopies: false
     });
 
     this.map.addControl(
